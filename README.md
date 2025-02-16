@@ -1,16 +1,95 @@
-## Hi there 👋
+# Who am I?
 
-<!--
-**playfairs/playfairs** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+  
 
-Here are some ideas to get you started:
+Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on creating Websites and Bots, sometimes I make scripts as well, such as tools for platforms such as Xbox, where I originally started my interest in coding in general.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+
+# Current Projects
+
+
+###### **Current Projects** include such as my Website, [playfairs.cc](https://playfairs.cc), and [heresy](https://heresy.vercel.app), to which I have not yet purchased a domain for Heresy, as I am still unsure if I want to continue working on it.
+
+
+# What I Know, Use, or have Used:
+
+<details><summary>Devices</summary>
+
+- [Mac Mini](https://www.apple.com/shop/buy-mac/mac-mini/apple-m4-chip-with-10-core-cpu-and-10-core-gpu-16gb-memory-256gb)
+
+- [Xbox Series S](https://www.microsoft.com/en-us/d/xbox-series-s/942j774tp9jn?activetab=pivot:overviewtab)
+
+- [iPhone SE 3rd Gen](https://www.apple.com/shop/buy-iphone/iphone-se)
+
+- [Acer Nitro XF3](https://www.acer.com/gb-en/monitors/gaming/nitro-xf3/pdp/UM.HX3EE.S09)
+
+- [HP Laptop 15"](https://www.hp.com/us-en/shop/pdp/hp-laptop-15-fd1073nr)
+
+</details>
+
+<details><summary>Languages</summary>
+
+- Python
+
+- JavaScript
+
+- TypeScript
+
+- Cython
+
+- C
+
+- C++
+
+- Roff
+
+- HTML
+
+</details>
+
+<details><summary>Linux Distributions</summary>
+
+- NixOS
+
+- Debian 12
+
+- Arch
+
+- Kali
+
+- Ubuntu
+
+- Mint
+
+- EndeavourOS
+
+</details>
+
+<details><summary>Tools and Software</summary>
+
+- AnyDesk
+
+- Flameshot
+
+- Goneovim
+
+- Kitty
+
+- Neovim
+
+- Nushell
+
+- Obsidian
+
+- Raycast
+
+- Tailscale
+
+- UTM
+
+- Visual Studio Code
+
+- Windsurf
+
+</details>
+  
