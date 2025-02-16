@@ -8,7 +8,7 @@ Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on cr
 # Current Projects
 
 
-###### **Current Projects** include such as my Website, [playfairs.cc](https://playfairs.cc), and [heresy](https://heresy.vercel.app), to which I have not yet purchased a domain for Heresy, as I am still unsure if I want to continue working on it.
+**Current Projects** include such as my Website, [playfairs.cc](https://playfairs.cc), and [heresy](https://heresy.vercel.app), to which I have not yet purchased a domain for Heresy, as I am still unsure if I want to continue working on it.
 
 
 # What I Know, Use, or have Used:
