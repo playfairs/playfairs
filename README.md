@@ -93,3 +93,16 @@ Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on cr
 
 </details>
   
+<details><summary>Socials</summary>
+
+- [TikTok](https://tiktok.com/@playfairs)
+
+- [GitHub](https://github.com/playfairs) (Your already here)
+
+- [YouTube](https://www.youtube.com/@%E3%98%A7)
+
+- [Website](https://playfairs.cc)
+
+- [Discord Server](https://discord.gg/heresy)
+
+</details>
