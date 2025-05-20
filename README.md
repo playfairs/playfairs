@@ -45,6 +45,10 @@ Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on cr
 
 - HTML
 
+- Rust
+
+- F#
+
 </details>
 
 <details><summary>Linux Distributions</summary>
@@ -101,8 +105,8 @@ Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on cr
 
 - [YouTube](https://www.youtube.com/@%E3%98%A7)
 
-- [Website](https://playfairs.cc)
+- [Website](https://playfairs.cc) - (Currently just a Mail Server)
 
-- [Discord Server](https://discord.gg/heresy)
+- [Discord Server](https://discord.gg/unix)
 
 </details>
