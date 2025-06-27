@@ -1,14 +1,16 @@
 # Who am I?
 
-  
 
 Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on creating Websites and Bots, sometimes I make scripts as well, such as tools for platforms such as Xbox, where I originally started my interest in coding in general.
 
+## What am I? 
+
+I'm a cute little femboy >.< (joke until you go to [＞＿＜](https://uwu.playfairs.cc)
 
 # Current Projects
 
 
-**Current Projects** include such as my Website, [playfairs.cc](https://playfairs.cc), and [heresy](https://heresy.vercel.app), to which I have not yet purchased a domain for Heresy, as I am still unsure if I want to continue working on it; I am also currently working on rewriting a Discord Bot, which I may or may not make open source, if not, I'll leak the old source.
+**Current Projects** include such as my Website, [playfairs.cc](https://playfairs.cc), and Vortex, Which is an All-In-One Discord Bot written in Python using the [discord.py](https://github.com/Rapptz/discord.py) library, and [Jishaku](https://github.com/scarletcafe/jishaku) for debugging and testing.
 
 
 # What I Know, Use, or have Used:
@@ -23,7 +25,7 @@ Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on cr
 
 - [Acer Nitro XF3](https://www.acer.com/gb-en/monitors/gaming/nitro-xf3/pdp/UM.HX3EE.S09)
 
-- [HP Laptop 15"](https://www.hp.com/us-en/shop/pdp/hp-laptop-15-fd1073nr)
+- [HP Laptop 15"](https://www.hp.com/us-en/shop/pdp/hp-laptop-15-fd1073nr) x2
 
 </details>
 
@@ -105,8 +107,18 @@ Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on cr
 
 - [YouTube](https://www.youtube.com/@%E3%98%A7)
 
-- [Website](https://playfairs.cc) - (Currently just a Mail Server)
+- [Website](https://playfairs.cc)
 
-- [Discord Server](https://discord.gg/unix)
+- [Discord Server](https://server.playfairs.cc)
+
+- [GitHub Pages](https://uwu.playfairs.cc)
+
+- [Last.FM](https://www.last.fm/user/pdwk)
+
+- [Guns.lol](https://guns.playfairs.cc) - Pretty bland, idc about having a com themed guns profile
+
+- [Slat.cc](https://slat.playfairs.cc)
+
+- [Spotify](https://open.spotify.com/user/darklore4201?si=3f1e08f13ef4483c)
 
 </details>
