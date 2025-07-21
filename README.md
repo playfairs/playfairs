@@ -1,5 +1,3 @@
-https://wakatime.com/badge/user/1ba9c159-9921-4e16-a5cc-90d9454b6069.svg
-
 # Who am I?
 
 
