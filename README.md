@@ -111,7 +111,7 @@ I'm a cute little femboy >.< (joke until you go to [＞＿＜](https://playfairs
 
 - [Discord Server](https://server.playfairs.cc)
 
-- [GitHub Pages](https://uwu.playfairs.cc)
+- [GitHub Pages](https://bio.playfairs.cc)
 
 - [Last.FM](https://www.last.fm/user/pdwk)
 
