@@ -5,7 +5,7 @@ Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on cr
 
 ## What am I? 
 
-I'm a cute little femboy >.< (joke until you go to [＞＿＜](https://uwu.playfairs.cc))
+I'm a cute little femboy >.< (joke until you go to [＞＿＜](https://playfairs.cc))
 
 # Current Projects
 
