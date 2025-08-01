@@ -1,5 +1,8 @@
-# Who am I?
+# @playfairs 
 
+![banner](banner.jpg)
+
+# Who am I?
 
 Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on creating Websites and Bots, sometimes I make scripts as well, such as tools for platforms such as Xbox, where I originally started my interest in coding in general.
 
