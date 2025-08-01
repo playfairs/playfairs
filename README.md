@@ -1,5 +1,3 @@
-# @playfairs 
-
 ![banner](banner.jpg)
 
 # Who am I?
