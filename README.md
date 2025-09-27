@@ -55,7 +55,7 @@ originally started my interest in coding in general.
 >>>> - Tailscale
 >>>> - UTM
 >>>> - Visual Studio Code
->>> Shell
+>>> ### Shell
 >>>> - Zsh (Oh-My-Zsh)
 >>>> - Brew (Pkg Manager)
 >>>> - Paru (Pkg Manager)
