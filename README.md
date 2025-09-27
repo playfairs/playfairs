@@ -31,6 +31,7 @@ originally started my interest in coding in general.
 >>> - Java
 >>> - C#
 >>> - Assembly
+
 >> **Operating Systems**
 >>> - **Linux**
 >>>> - NixOS
@@ -43,6 +44,7 @@ originally started my interest in coding in general.
 >>>> - Garuda
 >>>> - Mint
 >>>> - EndeavourOS
+
 >> **Workspace**
 >>> - Applications
 >>>> - Doom eMacs
