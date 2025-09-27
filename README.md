@@ -31,8 +31,8 @@ originally started my interest in coding in general.
 >>> - Java
 >>> - C#
 >>> - Assembly
->> Operating Systems
->>> - Linux
+>> **Operating Systems**
+>>> - **Linux**
 >>>> - NixOS
 >>>> - Arch
 >>>> - Manjaro
@@ -43,7 +43,7 @@ originally started my interest in coding in general.
 >>>> - Garuda
 >>>> - Mint
 >>>> - EndeavourOS
->> Workspace
+>> **Workspace**
 >>> - Applications
 >>>> - Doom eMacs
 >>>> - Flameshot
