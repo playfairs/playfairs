@@ -15,7 +15,7 @@ originally started my interest in coding in general.
 ## TechStack
 
 > What I Know, Use, or have Used:
->> **Languages**
+>> #### **Languages**
 >>> - Python
 >>> - JavaScript
 >>> - TypeScript
@@ -31,7 +31,7 @@ originally started my interest in coding in general.
 >>> - Java
 >>> - C#
 >>> - Assembly
->> - **Operating Systems**
+>> ####  **Operating Systems**
 >>> - **Linux**
 >>>> - NixOS
 >>>> - Arch
