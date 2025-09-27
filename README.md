@@ -59,10 +59,3 @@ originally started my interest in coding in general.
 >>>> - Brew (Pkg Manager)
 >>>> - Paru (Pkg Manager)
 >>>> - Home-Manager (Pkg Manager)
-
-
-- [Slat.cc](https://slat.playfairs.cc)
-
-- [Spotify](https://open.spotify.com/user/darklore4201?si=3f1e08f13ef4483c)
-
-</details>
