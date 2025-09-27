@@ -2,121 +2,64 @@
 
 # Who am I?
 
-Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on creating Websites and Bots, sometimes I make scripts as well, such as tools for platforms such as Xbox, where I originally started my interest in coding in general.
-
-## What am I? 
-
-I'm a cute little femboy >.< (joke until you go to [＞＿＜](https://playfairs.cc))
+Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on creating Websites and Bots, sometimes I make scripts as well, such as tools for platforms such as Xbox, where I 
+originally started my interest in coding in general.
 
 # Current Projects
 
+**Current Projects** Include the following but are not limited to:
+> - [Vortex](https://github.com/vortex-AIO) - An all-in-one Discord bot designed to streamline, manage, and elevate your Discord server experience
+> - [DunixOS](https://github.com/DunixOS) - An operating system based on Nix, and made with the thought of replacing the stock Operating System that the Xbox Series X|S comes with.
+> - [ByteLabs0](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music.
 
-**Current Projects** include such as my Website, [playfairs.cc](https://playfairs.cc), and Vortex, Which is an All-In-One Discord Bot written in Python using the [discord.py](https://github.com/Rapptz/discord.py) library, and [Jishaku](https://github.com/scarletcafe/jishaku) for debugging and testing.
+## TechStack
 
+> What I Know, Use, or have Used:
+>> **Languages**
+>>> - Python
+>>> - JavaScript
+>>> - TypeScript
+>>> - C
+>>> - C++
+>>> - Rust
+>>> - F#
+>>> - Go
+>>> - Nix
+>>> - Ruby
+>>> - Lua
+>>> - Carbon
+>>> - Java
+>>> - C#
+>>> - Assembly
+>> Operating Systems
+>>> - Linux
+>>>> - NixOS
+>>>> - Arch
+>>>> - Manjaro
+>>>> - Debian
+>>>> - Ubuntu
+>>>> - Linux (Bare Bones)
+>>>> - Kali
+>>>> - Garuda
+>>>> - Mint
+>>>> - EndeavourOS
+>> Workspace
+>>> - Applications
+>>>> - Doom eMacs
+>>>> - Flameshot
+>>>> - Kitty
+>>>> - Neovim
+>>>> - Obsidian
+>>>> - Raycast
+>>>> - Tailscale
+>>>> - UTM
+>>>> - Visual Studio Code
+>>> Shell
+>>>> - Zsh (Oh-My-Zsh)
+>>>> - Brew (Pkg Manager)
+>>>> - Paru (Pkg Manager)
+>>>> - Home-Manager (Pkg Manager)
 
-# What I Know, Use, or have Used:
-
-<details><summary>Devices</summary>
-
-- [Mac Mini](https://www.apple.com/shop/buy-mac/mac-mini/apple-m4-chip-with-10-core-cpu-and-10-core-gpu-16gb-memory-256gb)
-
-- [Xbox Series S](https://www.microsoft.com/en-us/d/xbox-series-s/942j774tp9jn?activetab=pivot:overviewtab)
-
-- [iPhone SE 3rd Gen](https://www.apple.com/shop/buy-iphone/iphone-se)
-
-- [Acer Nitro XF3](https://www.acer.com/gb-en/monitors/gaming/nitro-xf3/pdp/UM.HX3EE.S09)
-
-- [HP Laptop 15"](https://www.hp.com/us-en/shop/pdp/hp-laptop-15-fd1073nr) x2
-
-</details>
-
-<details><summary>Languages</summary>
-
-- Python
-
-- JavaScript
-
-- TypeScript
-
-- Cython
-
-- C
-
-- C++
-
-- Roff
-
-- HTML
-
-- Rust
-
-- F#
-
-</details>
-
-<details><summary>Linux Distributions</summary>
-
-- NixOS
-
-- Debian 12
-
-- Arch
-
-- Kali
-
-- Ubuntu
-
-- Mint
-
-- EndeavourOS
-
-</details>
-
-<details><summary>Tools and Software</summary>
-
-- AnyDesk
-
-- Flameshot
-
-- Goneovim
-
-- Kitty
-
-- Neovim
-
-- Nushell
-
-- Obsidian
-
-- Raycast
-
-- Tailscale
-
-- UTM
-
-- Visual Studio Code
-
-- Windsurf
-
-</details>
-  
-<details><summary>Socials</summary>
-
-- [TikTok](https://tiktok.com/@playfairs)
-
-- [GitHub](https://github.com/playfairs) (Your already here)
-
-- [YouTube](https://www.youtube.com/@%E3%98%A7)
-
-- [Website](https://playfairs.cc)
-
-- [Discord Server](https://server.playfairs.cc)
-
-- [GitHub Pages](https://bio.playfairs.cc)
-
-- [Last.FM](https://www.last.fm/user/pdwk)
-
-- [Guns.lol](https://guns.playfairs.cc) - Pretty bland, idc about having a com themed guns profile
 
 - [Slat.cc](https://slat.playfairs.cc)
 
