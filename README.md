@@ -44,7 +44,7 @@ originally started my interest in coding in general.
 >>>> - Mint
 >>>> - EndeavourOS
 
->> - **Workspace**
+>> #### **Workspace**
 >>> - Applications
 >>>> - Doom eMacs
 >>>> - Flameshot
