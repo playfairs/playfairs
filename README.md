@@ -10,7 +10,7 @@ originally started my interest in coding in general.
 **Current Projects** Include the following but are not limited to:
 > - [Vortex](https://github.com/vortex-AIO) - An all-in-one Discord bot designed to streamline, manage, and elevate your Discord server experience
 > - [DunixOS](https://github.com/DunixOS) - An operating system based on Nix, intended for replacing the stock OS that the Xbox Series X|S ships with.
-> - [ByteLabs0](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music.
+> - [ByteLabs](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music.
 
 ## TechStack
 
