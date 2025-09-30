@@ -43,6 +43,11 @@ originally started my interest in coding in general.
 >>>> - Garuda
 >>>> - Mint
 >>>> - EndeavourOS
+>>> - ####**Other**
+>>>> - macOS
+>>>> - TempleOS
+>>>> - Durango (Bare Bones)
+>>>> - iOS 12 (Checkm8)
 
 >> #### **Workspace**
 >>> - Applications
