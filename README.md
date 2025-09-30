@@ -43,7 +43,7 @@ originally started my interest in coding in general.
 >>>> - Garuda
 >>>> - Mint
 >>>> - EndeavourOS
->>> - ####**Other**
+>>> - #### **Other**
 >>>> - macOS
 >>>> - TempleOS
 >>>> - Durango (Bare Bones)
