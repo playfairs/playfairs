@@ -8,7 +8,7 @@ originally started my interest in coding in general.
 # Current Projects
 
 **Current Projects** Include the following but are not limited to:
-> - [ByteLabs](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music. https://bytelabs.uk
+> - [ByteLabs](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music. [Website](https://bytelabs.uk)
 
 ## TechStack
 
