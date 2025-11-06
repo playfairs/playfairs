@@ -13,7 +13,7 @@ originally started my interest in coding in general.
 ## TechStack
 
 > What I Know, Use, or have Used:
->> #### **Languages**
+>> ### **Languages**
 >>> - Python
 >>> - JavaScript
 >>> - TypeScript
@@ -29,14 +29,14 @@ originally started my interest in coding in general.
 >>> - Java
 >>> - C#
 >>> - Assembly
->> ####  **Operating Systems**
+>> ###  **Operating Systems**
 >>> - **Linux**
 >>>> - NixOS
 >>> - #### **Other**
 >>>> - macOS (Home-Manager)
 
->> #### **Workspace**
->>> ### Applications
+>> ### **Workspace**
+>>> #### Applications
 >>>> - Ghostty (Terminal)
 >>>> - Zed (Text Editor / IDE)
 >>>> - Yabai (Window Manager for macOS)
@@ -45,7 +45,7 @@ originally started my interest in coding in general.
 >>>> - Zen (Browser)
 >>>> - Helix (Text Editor)
 >>>> - Tailscale (Mesh VPN)
->>> ### Shell
+>>> #### Shell
 >>>> - Home-Manager (Pkg Manager)
 >>>> - Nix-Shell
 >>>> - Nushell
