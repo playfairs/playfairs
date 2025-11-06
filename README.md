@@ -8,9 +8,7 @@ originally started my interest in coding in general.
 # Current Projects
 
 **Current Projects** Include the following but are not limited to:
-> - [Vortex](https://github.com/vortex-AIO) - An all-in-one Discord bot designed to streamline, manage, and elevate your Discord server experience
-> - [DunixOS](https://github.com/DunixOS) - An operating system based on Nix, intended for replacing the stock OS that the Xbox Series X|S ships with.
-> - [ByteLabs](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music.
+> - [ByteLabs](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music. https://bytelabs.uk
 
 ## TechStack
 
@@ -34,34 +32,20 @@ originally started my interest in coding in general.
 >> ####  **Operating Systems**
 >>> - **Linux**
 >>>> - NixOS
->>>> - Arch
->>>> - Manjaro
->>>> - Debian
->>>> - Ubuntu
->>>> - Linux (Bare Bones)
->>>> - Kali
->>>> - Garuda
->>>> - Mint
->>>> - EndeavourOS
 >>> - #### **Other**
->>>> - macOS
->>>> - TempleOS
->>>> - Durango (Bare Bones)
->>>> - iOS 12 (Checkm8)
+>>>> - macOS (Home-Manager)
 
 >> #### **Workspace**
 >>> - Applications
->>>> - Doom eMacs
->>>> - Flameshot
->>>> - Kitty
->>>> - Neovim
->>>> - Obsidian
->>>> - Raycast
->>>> - Tailscale
->>>> - UTM
->>>> - Visual Studio Code
+>>>> - Ghostty (Terminal)
+>>>> - Zed (Text Editor / IDE)
+>>>> - Yabai (Window Manager for macOS)
+>>>> - skhd (Keybind Manager)
+>>>> - Flameshot (Screenshot Utility)
+>>>> - Zen (Browser)
+>>>> - Helix (Text Editor)
+>>>> - Tailscale (Mesh VPN)
 >>> ### Shell
->>>> - Zsh (Oh-My-Zsh)
->>>> - Brew (Pkg Manager)
->>>> - Paru (Pkg Manager)
 >>>> - Home-Manager (Pkg Manager)
+>>>> - Nix-Shell
+>>>> - Nushell
