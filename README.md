@@ -36,7 +36,7 @@ originally started my interest in coding in general.
 >>>> - macOS (Home-Manager)
 
 >> #### **Workspace**
->>> - Applications
+>>> ### Applications
 >>>> - Ghostty (Terminal)
 >>>> - Zed (Text Editor / IDE)
 >>>> - Yabai (Window Manager for macOS)
