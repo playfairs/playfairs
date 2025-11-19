@@ -54,7 +54,7 @@ export function App() {
     showMainContent && (
       <div className="min-h-screen bg-gray-900 transition-opacity duration-1000 ease-in-out opacity-0 animate-fade-in">
         <audio id="nova-audio" loop>
-          <source src="https://media.playfairs.cc/Labubu%20Dubai%20Chocolate.mp3" type="audio/mpeg" />
+          <source src="https://media.playfairs.cc/badapple.mp3" type="audio/mpeg" />
         </audio>
         <Router>
           <div className="min-h-screen">

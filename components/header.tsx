@@ -45,7 +45,7 @@ export default function Header() {
             onClick={toggleAudio}
             className="text-gray-300 hover:text-teal-400 transition-colors text-sm relative group cursor-pointer"
           >
-            {isPlaying ? 'Stop' : 'Nova Mode'}
+            {isPlaying ? 'Stop' : 'Bad Apple'}
             <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
           </button>
           <a 
