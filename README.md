@@ -1,4 +1,4 @@
-![banner](public/banner.jpg)
+![banner](banner.jpg)
 
 # Who am I?
 
