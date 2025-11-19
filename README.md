@@ -49,5 +49,3 @@ originally started my interest in coding in general.
 >>>> - Home-Manager (Pkg Manager)
 >>>> - Nix-Shell
 >>>> - Nushell
-
-#### Assuming you're reading this from visiting "playfairs.cc", this is temporary, I plan on making a proper site for this domain when I finish with other projects.
