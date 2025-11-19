@@ -5,9 +5,9 @@
 Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on creating Websites and Bots, sometimes I make scripts as well, such as tools for platforms such as Xbox, where I 
 originally started my interest in coding in general.
 
-# Current Projects
+# Current Git
 
-**Current Projects** Include the following but are not limited to:
+**Current Git** Include the following but are not limited to:
 > - [ByteLabs](https://github.com/ByteLabs-Studio) - Code. Sound. Visualize — ByteLab is a Open-source tool for making Byte music. [Website](https://bytelabs.uk)
 
 ## TechStack

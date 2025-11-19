@@ -2,10 +2,10 @@
 
 @layer base {
   :root {
-    @apply text-gray-900 bg-gray-50 font-sans;
+    @apply text-gray-100 bg-gray-900 font-sans;
   }
 
   body {
-    @apply min-h-screen m-0;
+    @apply min-h-screen m-0 bg-gray-900;
   }
 }
