@@ -100,7 +100,7 @@ export default function NowPlaying() {
 
   if (loading) {
     return (
-      <div className="w-48 mx-auto mt-6 h-8 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center justify-center">
+      <div className="w-[576px] mx-auto mt-6 h-8 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center justify-center">
         <div className="text-gray-400 text-sm">Loading &gt;_&lt;</div>
       </div>
     )
@@ -108,14 +108,14 @@ export default function NowPlaying() {
 
   if (!nowPlaying || !nowPlaying.isPlaying) {
     return (
-      <div className="w-48 mx-auto mt-6 h-8 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center justify-center">
+      <div className="w-[576px] mx-auto mt-6 h-8 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center justify-center">
         <div className="text-gray-400 text-sm">Not currently playing &gt;_&lt;</div>
       </div>
     )
   }
 
   return (
-    <div className="max-w-4xl mx-auto mt-6 h-24 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center px-6 group hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-200">
+    <div className="w-[576px] mx-auto mt-6 h-24 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center px-6 group hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-200">
       <div className="flex items-center w-full">
         <div className="flex-1 flex items-center justify-between">
           <div className="flex items-center space-x-16 mr-10">

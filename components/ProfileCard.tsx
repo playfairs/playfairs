@@ -36,7 +36,7 @@ export default function ProfileCard() {
   return (
     <div 
       ref={cardRef}
-      className="max-w-md mx-auto bg-gray-800 rounded-xl shadow-[0_0_30px_rgba(20,184,166,0.4),0_0_60px_rgba(20,184,166,0.2)] hover:shadow-[0_0_40px_rgba(20,184,166,0.6),0_0_80px_rgba(20,184,166,0.3)] overflow-hidden transition-all duration-200 ease-out border border-teal-500/30 relative"
+      className="w-[576px] mx-auto bg-gray-800 rounded-xl shadow-[0_0_30px_rgba(20,184,166,0.4),0_0_60px_rgba(20,184,166,0.2)] hover:shadow-[0_0_40px_rgba(20,184,166,0.6),0_0_80px_rgba(20,184,166,0.3)] overflow-hidden transition-all duration-200 ease-out border border-teal-500/30 relative"
       style={{ 
         transform,
         background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(20,184,166,${glowPosition.x === 50 && glowPosition.y === 50 ? '0.08' : '0.25'}) 0%, transparent 60%), radial-gradient(circle at 50% 25%, rgba(20,184,166,0.12) 0%, transparent 40%), rgb(31,41,55)`
