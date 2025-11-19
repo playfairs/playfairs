@@ -57,9 +57,9 @@ export default function ProfileCard() {
             href="https://github.com/playfairs" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-2xl font-bold text-white mb-2 hover:text-teal-400 transition-colors"
+            className="text-2xl font-serif text-white mb-2 hover:text-teal-400 transition-colors"
           >
-            playfairs.cc
+            @playfairs
           </a>
           <div className="w-34 h-px bg-gray-600 mb-5"></div>
           <p className="text-gray-300 text-center">
