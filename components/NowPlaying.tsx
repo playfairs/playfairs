@@ -18,11 +18,8 @@ export default function NowPlaying() {
   useEffect(() => {
     const fetchNowPlaying = async () => {
       try {
-        const apiKey = import.meta.env.VITE_LASTFM_API_KEY
-        const username = import.meta.env.VITE_LASTFM_USERNAME
-        
-        console.log('API Key:', apiKey ? 'set' : 'not set')
-        console.log('Username:', username)
+        const apiKey = 'baa82ae8105472406a1f05deee9ec88a'
+        const username = 'pdwk'
         
         const [recentResponse, topTracksResponse, topArtistsResponse] = await Promise.all([
           fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`),
@@ -89,6 +86,10 @@ export default function NowPlaying() {
         }
       } catch (error) {
         console.error('Error fetching now playing:', error)
+        if (error instanceof Error) {
+          console.error('Error message:', error.message)
+          console.error('Error stack:', error.stack)
+        }
         setNowPlaying(null)
       } finally {
         setLoading(false)
