@@ -115,55 +115,51 @@ export default function NowPlaying() {
   }
 
   return (
-    <div className="w-[576px] mx-auto mt-6 h-24 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center px-6 group hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-200">
-      <div className="flex items-center w-full">
-        <div className="flex-1 flex items-center justify-between">
-          <div className="flex items-center space-x-16 mr-10">
-            <div>
-              {nowPlaying.url ? (
-                <a 
-                  href={nowPlaying.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-300 text-base font-semibold hover:text-teal-400 transition-colors"
-                >
-                  {nowPlaying.track}
-                </a>
-              ) : (
-                <div className="text-gray-300 text-base font-semibold">{nowPlaying.track}</div>
-              )}
-              <div className={`text-gray-500 text-sm ${nowPlaying.artist === '$uicideboy$' ? 'text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : ''}`}>Artist: {nowPlaying.artist}</div>
-              <div className="text-gray-500 text-sm">Album: {nowPlaying.album}</div>
-              <div className="text-gray-600 text-xs">
-                {nowPlaying.trackPlays && `Track Plays: ${nowPlaying.trackPlays}`}
-                {nowPlaying.trackPlays && nowPlaying.artistPlays && ' • '}
-                {nowPlaying.artistPlays && `Artist Plays: ${nowPlaying.artistPlays}`}
-              </div>
-            </div>
+    <div className="w-[576px] mx-auto mt-6 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center px-6 py-4 group hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-200">
+      <div className="flex items-start w-full gap-4">
+        <div className="flex-1 min-w-0">
+          {nowPlaying.url ? (
+            <a 
+              href={nowPlaying.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-300 text-base font-semibold hover:text-teal-400 transition-colors block"
+            >
+              {nowPlaying.track}
+            </a>
+          ) : (
+            <div className="text-gray-300 text-base font-semibold">{nowPlaying.track}</div>
+          )}
+          <div className={`text-gray-500 text-sm ${nowPlaying.artist === '$uicideboy$' ? 'text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : ''}`}>Artist: {nowPlaying.artist}</div>
+          <div className="text-gray-500 text-sm">Album: {nowPlaying.album}</div>
+          <div className="text-gray-600 text-xs">
+            {nowPlaying.trackPlays && `Track Plays: ${nowPlaying.trackPlays}`}
+            {nowPlaying.trackPlays && nowPlaying.artistPlays && ' • '}
+            {nowPlaying.artistPlays && `Artist Plays: ${nowPlaying.artistPlays}`}
           </div>
-          
-          <div className="flex items-center space-x-4 ml-auto">
-            {nowPlaying.coverArt && nowPlaying.url ? (
-              <a 
-                href={nowPlaying.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block hover:opacity-80 transition-opacity"
-              >
-                <img 
-                  src={nowPlaying.coverArt} 
-                  alt={`${nowPlaying.track} cover art`}
-                  className="w-16 h-16 rounded object-cover"
-                />
-              </a>
-            ) : nowPlaying.coverArt ? (
+        </div>
+        
+        <div className="shrink-0">
+          {nowPlaying.coverArt && nowPlaying.url ? (
+            <a 
+              href={nowPlaying.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block hover:opacity-80 transition-opacity"
+            >
               <img 
                 src={nowPlaying.coverArt} 
                 alt={`${nowPlaying.track} cover art`}
-                className="w-16 h-16 rounded object-cover"
+                className="w-16 h-16 rounded object-cover shrink-0"
               />
-            ) : null}
-          </div>
+            </a>
+          ) : nowPlaying.coverArt ? (
+            <img 
+              src={nowPlaying.coverArt} 
+              alt={`${nowPlaying.track} cover art`}
+              className="w-16 h-16 rounded object-cover shrink-0"
+            />
+          ) : null}
         </div>
       </div>
     </div>
