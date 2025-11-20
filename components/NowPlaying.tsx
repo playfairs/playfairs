@@ -18,8 +18,8 @@ export default function NowPlaying() {
   useEffect(() => {
     const fetchNowPlaying = async () => {
       try {
-        const apiKey = 'baa82ae8105472406a1f05deee9ec88a'
-        const username = 'pdwk'
+        const apiKey = import.meta.env.VITE_LASTFM_API_KEY
+        const username = import.meta.env.VITE_LASTFM_USERNAME
         
         const [recentResponse, topTracksResponse, topArtistsResponse] = await Promise.all([
           fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`),
