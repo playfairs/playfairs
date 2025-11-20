@@ -21,6 +21,9 @@ export default function NowPlaying() {
         const apiKey = import.meta.env.VITE_LASTFM_API_KEY
         const username = import.meta.env.VITE_LASTFM_USERNAME
         
+        console.log('API Key:', apiKey ? 'set' : 'not set')
+        console.log('Username:', username)
+        
         const [recentResponse, topTracksResponse, topArtistsResponse] = await Promise.all([
           fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`),
           fetch(`https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${username}&api_key=${apiKey}&limit=1&format=json`),
