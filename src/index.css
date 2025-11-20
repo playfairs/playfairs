@@ -8,6 +8,14 @@
   body {
     @apply min-h-screen m-0 bg-gray-900;
   }
+
+  * {
+    cursor: inherit;
+  }
+
+  audio {
+    display: none;
+  }
 }
 
 @keyframes fade-in {

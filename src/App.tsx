@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ProfileCard from "../components/ProfileCard";
 import NowPlaying from "../components/NowPlaying";
 import Header from "../components/header";
@@ -7,6 +7,7 @@ import SocialsPage from "./pages/socials/page";
 import GitPage from "./pages/git/page";
 import LinksPage from "./pages/links/page";
 import "./index.css";
+import cursorImage from "./cursor.png" assert { type: "url" };
 
 export function App() {
   const [showEntryButton, setShowEntryButton] = useState(() => {
@@ -26,6 +27,45 @@ export function App() {
     const hasEntered = sessionStorage.getItem('hasEntered');
     return isReload || !hasEntered;
   })());
+
+  useEffect(() => {
+    const cursorStyle = `url('${cursorImage}'), auto`;
+    
+    const setCursorStyle = () => {
+      document.documentElement.style.cursor = cursorStyle;
+      document.body.style.cursor = cursorStyle;
+    };
+
+    setCursorStyle();
+
+    const observer = new MutationObserver(() => {
+      setCursorStyle();
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['style'],
+      subtree: true,
+    });
+
+    const handleFocus = () => setCursorStyle();
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        setCursorStyle();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('mouseenter', handleFocus);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('focus', handleFocus);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('mouseenter', handleFocus);
+    };
+  }, [cursorImage]);
 
   const handleEnterClick = () => {
     setShowEntryButton(false);
