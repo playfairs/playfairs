@@ -129,17 +129,17 @@ export function App() {
                   </main>
                 } />
                 <Route path="/socials" element={
-                  <main className="flex-1 pt-20 bg-inherit">
+                  <main className="flex-1 pt-4 md:pt-8 bg-inherit">
                     <SocialsPage />
                   </main>
                 } />
                 <Route path="/git" element={
-                  <main className="flex-1 pt-20 bg-inherit">
+                  <main className="flex-1 pt-4 md:pt-8 bg-inherit">
                     <GitPage />
                   </main>
                 } />
                 <Route path="/links" element={
-                  <main className="flex-1 pt-20 bg-inherit">
+                  <main className="flex-1 pt-4 md:pt-8 bg-inherit">
                     <LinksPage />
                   </main>
                 } />
