@@ -49,22 +49,22 @@ export default function LinksPage() {
 
   if (loading) {
     return (
-      <main className="max-w-4xl mx-auto px-6 py-12 bg-gray-900">
+      <main className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Links</h1>
-          <p className="text-gray-400">My personal projects and applications</p>
+          <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-text)' }}>Links</h1>
+          <p style={{ color: 'var(--color-text-muted)' }}>My personal projects and applications</p>
         </div>
-        <div className="text-center py-12">
-          <p className="text-gray-400">Loading links...</p>
+        <div className="flex justify-center items-center h-32">
+          <p style={{ color: 'var(--color-text-muted)' }}>Loading links...</p>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 bg-gray-900">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Links</h1>
+    <main className="max-w-4xl mx-auto px-4 py-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0">
+        <h1 className="text-3xl font-bold" style={{ color: 'var(--color-text)' }}>Links</h1>
       </div>
       
       <div className="space-y-4">
@@ -74,13 +74,33 @@ export default function LinksPage() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-4 bg-gray-800 border border-gray-700 rounded-lg hover:border-teal-500/50 hover:shadow-[0_0_15px_rgba(20,184,166,0.15)] transition-all duration-300"
+            className="group block p-4 border rounded-lg transition-all duration-200"
+            style={{
+              backgroundColor: 'var(--color-card-bg)',
+              borderColor: 'var(--color-border)',
+              '--hover-border': 'var(--color-primary)',
+              '--hover-shadow': '0 0 15px rgba(var(--color-primary-rgb), 0.1)'
+            } as React.CSSProperties}
+            onMouseOver={(e) => {
+              e.currentTarget.style.borderColor = 'var(--hover-border)';
+              e.currentTarget.style.boxShadow = 'var(--hover-shadow)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-border)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
           >
             <div className="flex flex-col">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center space-x-3">
-                    <h3 className="text-base font-semibold text-white group-hover:text-teal-400 transition-colors truncate">
+                    <h3 className="text-base font-semibold transition-colors truncate"
+                        style={{
+                          color: 'var(--color-text)',
+                          '--hover-color': 'var(--color-primary)'
+                        } as React.CSSProperties}
+                        onMouseOver={(e) => e.currentTarget.style.color = 'var(--hover-color)'}
+                        onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text)'}>
                       {link.name}
                     </h3>
                     <span className={`px-2 py-0.5 text-xs font-medium rounded-full border shrink-0 ${getTypeColor(link.type)}`}>
@@ -88,10 +108,18 @@ export default function LinksPage() {
                     </span>
                   </div>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-teal-400 transition-colors shrink-0 ml-3" />
+                <ExternalLink 
+                  className="w-4 h-4 transition-colors shrink-0 ml-3"
+                  style={{
+                    color: 'var(--color-text-muted)',
+                    '--hover-color': 'var(--color-primary)'
+                  } as React.CSSProperties}
+                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--hover-color)'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text-muted)'}
+                />
               </div>
-              <p className="text-gray-500 text-xs truncate mb-2">{link.url}</p>
-              <p className="text-gray-400 text-sm leading-tight">{link.description}</p>
+              <p className="text-xs truncate mb-2" style={{ color: 'var(--color-text-muted)' }}>{link.url}</p>
+              <p className="text-sm leading-tight" style={{ color: 'var(--color-text-secondary)' }}>{link.description}</p>
             </div>
           </a>
         ))}

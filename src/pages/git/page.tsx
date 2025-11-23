@@ -185,10 +185,16 @@ export default function GitPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{
+        backgroundColor: 'var(--color-bg)',
+        color: 'var(--color-text)'
+      } as React.CSSProperties}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4"></div>
-          <p>Loading repositories...</p>
+          <div 
+            className="animate-spin rounded-full h-12 w-12 border-b-2 mb-4 mx-auto"
+            style={{ borderColor: 'var(--color-primary)' }}
+          ></div>
+          <p style={{ color: 'var(--color-text)' } as React.CSSProperties}>Loading repositories...</p>
         </div>
       </div>
     );
@@ -196,12 +202,27 @@ export default function GitPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div 
+        className="min-h-screen flex items-center justify-center"
+        style={{
+          backgroundColor: 'var(--color-bg)',
+          color: 'var(--color-text)'
+        } as React.CSSProperties}
+      >
         <div className="text-center">
-          <p className="text-red-400 mb-4">Error: {error}</p>
+          <p className="mb-4" style={{ color: 'var(--color-error)' } as React.CSSProperties}>
+            Error: {error}
+          </p>
           <button 
             onClick={() => window.location.reload()} 
-            className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded transition-colors"
+            className="px-4 py-2 rounded transition-colors"
+            style={{
+              backgroundColor: 'var(--color-secondary)',
+              color: 'var(--color-text)',
+              '--hover-bg': 'var(--color-bg-hover)'
+            } as React.CSSProperties}
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-hover)'}
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--color-secondary)'}
           >
             Retry
           </button>
@@ -211,7 +232,13 @@ export default function GitPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4">
+    <div 
+      className="min-h-screen p-4"
+      style={{
+        backgroundColor: 'var(--color-bg)',
+        color: 'var(--color-text)'
+      } as React.CSSProperties}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -242,7 +269,14 @@ export default function GitPage() {
                   <select
                     value={selectedAccount}
                     onChange={(e) => setSelectedAccount(e.target.value)}
-                    className="w-full pl-2 pr-4 py-3 bg-gray-900/80 border border-gray-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all text-white"
+                    className="w-full pl-2 pr-4 py-3 rounded-lg focus:outline-none transition-all"
+                    style={{
+                      backgroundColor: 'var(--color-bg-hover)',
+                      border: '1px solid var(--color-border)',
+                      color: 'var(--color-text)',
+                      '--ring-color': 'var(--color-primary)',
+                      '--border-focus': 'var(--color-primary)'
+                    } as React.CSSProperties}
                   >
                     <option value="all">All Accounts</option>
                     {githubAccounts.map(account => (
@@ -256,7 +290,14 @@ export default function GitPage() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full pl-2 pr-4 py-3 bg-gray-900/80 border border-gray-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all text-white"
+                    className="w-full pl-2 pr-4 py-3 rounded-lg focus:outline-none transition-all"
+                    style={{
+                      backgroundColor: 'var(--color-bg-hover)',
+                      border: '1px solid var(--color-border)',
+                      color: 'var(--color-text)',
+                      '--ring-color': 'var(--color-primary)',
+                      '--border-focus': 'var(--color-primary)'
+                    } as React.CSSProperties}
                   >
                     <option value="updated">Last Updated</option>
                     <option value="stars">Stars</option>
@@ -270,7 +311,14 @@ export default function GitPage() {
                   <select
                     value={languageFilter}
                     onChange={(e) => setLanguageFilter(e.target.value)}
-                    className="w-full pl-2 pr-4 py-3 bg-gray-900/80 border border-gray-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all text-white"
+                    className="w-full pl-2 pr-4 py-3 rounded-lg focus:outline-none transition-all"
+                    style={{
+                      backgroundColor: 'var(--color-bg-hover)',
+                      border: '1px solid var(--color-border)',
+                      color: 'var(--color-text)',
+                      '--ring-color': 'var(--color-primary)',
+                      '--border-focus': 'var(--color-primary)'
+                    } as React.CSSProperties}
                   >
                     <option value="all">All Languages</option>
                     {languages.map(language => (
@@ -318,24 +366,44 @@ export default function GitPage() {
         ) : filteredRepositories.length === 0 ? (
           <div className="text-center py-12">
             <Package className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400">No repositories found</p>
+            <p style={{ color: 'var(--color-text-muted)' } as React.CSSProperties}>
+              No repositories found
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredRepositories.map((repo) => (
               <div 
                 key={repo.id} 
-                className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors group"
+                className="rounded-lg p-6 transition-colors group"
+                style={{
+                  backgroundColor: 'var(--color-secondary)',
+                  border: '1px solid var(--color-border)',
+                  '--hover-bg': 'var(--color-bg-hover)'
+                } as React.CSSProperties}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-hover)'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--color-secondary)'}
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
+                      <h3 
+                        className="text-lg font-semibold transition-colors"
+                        style={{
+                          color: 'var(--color-text)',
+                          '--hover-color': 'var(--color-primary)'
+                        } as React.CSSProperties}
+                      >
                         {repo.name}
                       </h3>
-                      <span className={`px-2 py-1 text-xs rounded-full ${
-                        repo.platform === 'github' ? 'bg-gray-700' : 'bg-orange-900'
-                      }`}>
+                      <span 
+                        className="px-2 py-1 text-xs rounded-full"
+                        style={{
+                          backgroundColor: 'var(--color-secondary)',
+                          color: 'var(--color-primary)',
+                          border: '1px solid var(--color-border)'
+                        } as React.CSSProperties}
+                      >
                         {repo.platform === 'github' ? 'GitHub' : 'GitLab'}
                       </span>
                       {repo.language && (
@@ -348,8 +416,14 @@ export default function GitPage() {
                         </div>
                       )}
                     </div>
-                    <p className="text-gray-400 mb-4 line-clamp-2">{repo.description}</p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <p 
+                      className="mb-4 line-clamp-2"
+                      style={{ color: 'var(--color-text-muted)' } as React.CSSProperties}
+                    >{repo.description}</p>
+                    <div 
+                      className="flex items-center space-x-4 text-sm"
+                      style={{ color: 'var(--color-text-muted)' } as React.CSSProperties}
+                    >
                       <div className="flex items-center space-x-1">
                         <Star className="w-4 h-4" />
                         <span>{repo.stargazers_count}</span>
@@ -372,7 +446,20 @@ export default function GitPage() {
                     href={repo.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-4 p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                    className="ml-4 p-2 rounded-lg transition-colors"
+                    style={{
+                      color: 'var(--color-text-muted)',
+                      '--hover-color': 'var(--color-text)',
+                      '--hover-bg': 'var(--color-bg-hover)'
+                    } as React.CSSProperties}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = 'var(--color-text)';
+                      e.currentTarget.style.backgroundColor = 'var(--color-bg-hover)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = 'var(--color-text-muted)';
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                    }}
                   >
                     <ExternalLink className="w-5 h-5" />
                   </a>
