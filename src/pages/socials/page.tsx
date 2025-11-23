@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import type { CSSProperties } from "react";
 import { ChevronDown, ExternalLink } from "lucide-react";
 
-// Define a type for the style object with hover states
 type StyleWithHover = {
   '--hover-bg'?: string;
   '--hover-border'?: string;
@@ -40,7 +39,6 @@ export default function SocialsPage() {
       .then((data) => {
         const socialsData = data.default;
         
-        // Group socials by platform first
         const grouped = socialsData.reduce((acc: Record<string, Social[]>, social: Social) => {
           if (!acc[social.platform]) {
             acc[social.platform] = [];
@@ -49,7 +47,6 @@ export default function SocialsPage() {
           return acc;
         }, {});
 
-        // Set all platforms to be collapsed by default
         const initialExpandedState = Object.keys(grouped).reduce((acc, platform) => {
           acc[platform] = false;
           return acc;
@@ -59,7 +56,6 @@ export default function SocialsPage() {
         setSocials(socialsData);
         setIsLoading(false);
         
-        // Fetch stats after setting initial state
         socialsData.forEach(async (social: Social) => {
           if (shouldFetchStats(social.platform)) {
             try {
@@ -93,33 +89,33 @@ export default function SocialsPage() {
 
   const getPlatformColor = (platform: string) => {
     const colors: Record<string, string> = {
-      'x': '#000000',          // X black
-      'github': '#000000',     // BLACK AS FUCK
-      'tiktok': '#000000',     // TikTok black
-      'youtube': '#FF0000',    // YouTube red
-      'instagram': '#E1306C',  // Instagram pink
-      'discord': '#7289DA',    // Discord blurple
-      'twitch': '#9147FF',     // Twitch purple
-      'reddit': '#FF5700',     // Reddit orange
-      'linkedin': '#0A66C2',   // LinkedIn blue
-      'spotify': '#1ED760',    // Spotify green (brighter)
-      'steam': '#00ADEE',      // Steam blue
-      'gitlab': '#FCA326',     // GitLab orange (brighter)
-      'lastfm': '#D51007',     // Last.fm red
-      'soundcloud': '#FF8800', // SoundCloud orange
-      'pinterest': '#E60023',  // Pinterest red
-      'behance': '#0057FF',    // Behance blue
-      'dribbble': '#EA4C89',   // Dribbble pink
-      'medium': '#00AB6C',     // Medium green
-      'telegram': '#2AABEE',   // Telegram blue
-      'whatsapp': '#25D366',   // WhatsApp green
-      'slack': '#4A154B',      // Slack purple
-      'dropbox': '#0061FF',    // Dropbox blue
-      'figma': '#F24E1E',      // Figma orange
-      'notion': '#000000',     // Notion black
-      'vimeo': '#1AB7EA',      // Vimeo blue
-      'tumblr': '#35465C',     // Tumblr blue
-      'snapchat': '#FFFC00',   // Snapchat yellow
+      'x': '#000000',
+      'github': '#000000',
+      'tiktok': '#000000',
+      'youtube': '#FF0000',
+      'instagram': '#E1306C',
+      'discord': '#7289DA',
+      'twitch': '#9147FF',
+      'reddit': '#FF5700',
+      'linkedin': '#0A66C2',
+      'spotify': '#1ED760',
+      'steam': '#00ADEE',
+      'gitlab': '#FCA326',
+      'lastfm': '#D51007',
+      'soundcloud': '#FF8800',
+      'pinterest': '#E60023',
+      'behance': '#0057FF',
+      'dribbble': '#EA4C89',
+      'medium': '#00AB6C',
+      'telegram': '#2AABEE',
+      'whatsapp': '#25D366',
+      'slack': '#4A154B',
+      'dropbox': '#0061FF',
+      'figma': '#F24E1E',
+      'notion': '#000000',
+      'vimeo': '#1AB7EA',
+      'tumblr': '#35465C',
+      'snapchat': '#FFFC00',
     };
     return colors[platform.toLowerCase()] || 'var(--color-primary)';
   };
