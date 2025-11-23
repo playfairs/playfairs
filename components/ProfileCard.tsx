@@ -5,7 +5,22 @@ import { useState, useRef, useEffect } from 'react'
 export default function ProfileCard() {
   const [transform, setTransform] = useState('')
   const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 })
+  const [mousePosition, setMousePosition] = useState<{x: number, y: number} | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
+  const avatarRef = useRef<HTMLDivElement>(null)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+    if (avatarRef.current && cardRef.current) {
+      const avatarRect = avatarRef.current.getBoundingClientRect()
+      const cardRect = cardRef.current.getBoundingClientRect()
+      setMousePosition({
+        x: avatarRect.left + avatarRect.width / 2 - cardRect.left,
+        y: avatarRect.top + avatarRect.height / 2 - cardRect.top
+      })
+    }
+  }, [])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -21,32 +36,98 @@ export default function ProfileCard() {
     const rotateX = (mouseY / (rect.height / 2)) * -10
     const rotateY = (mouseX / (rect.width / 2)) * 10
     
-    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`)
+    const distance = Math.min(1, Math.sqrt(mouseX * mouseX + mouseY * mouseY) / (rect.width / 2))
+    
+    const intensity = 0.7 + (distance * 0.5)
+    
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`)
     
     const glowX = ((e.clientX - rect.left) / rect.width) * 100
     const glowY = ((e.clientY - rect.top) / rect.height) * 100
+    
+    card.style.setProperty('--glow-opacity', (0.1 + (distance * 0.15)).toString())
+    card.style.setProperty('--glow-intensity', intensity.toString())
+    card.style.setProperty('--glow-spread', `${8 + (distance * 20)}px`)
+    card.style.setProperty('--glow-blur', `${20 + (distance * 40)}px`)
+    
     setGlowPosition({ x: glowX, y: glowY })
+    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
   }
 
   const handleMouseLeave = () => {
     setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)')
-    setGlowPosition({ x: 50, y: 50 })
+    
+    if (cardRef.current) {
+      cardRef.current.style.setProperty('--glow-opacity', '0.1')
+      cardRef.current.style.setProperty('--glow-intensity', '2.7')
+      cardRef.current.style.setProperty('--glow-spread', '8px')
+      cardRef.current.style.setProperty('--glow-blur', '20px')
+    }
+    
+    if (avatarRef.current && cardRef.current) {
+      const avatarRect = avatarRef.current.getBoundingClientRect()
+      const cardRect = cardRef.current.getBoundingClientRect()
+      setMousePosition({
+        x: avatarRect.left + avatarRect.width / 2 - cardRect.left,
+        y: avatarRect.top + avatarRect.height / 2 - cardRect.top
+      })
+    }
+    setGlowPosition({ x: 50, y: 25 })
   }
+
+  const orbPosition = mousePosition || { x: 0, y: 0 }
 
   return (
     <div 
       ref={cardRef}
-      className="w-[576px] mx-auto bg-gray-800 rounded-xl shadow-[0_0_30px_rgba(20,184,166,0.4),0_0_60px_rgba(20,184,166,0.2)] hover:shadow-[0_0_40px_rgba(20,184,166,0.6),0_0_80px_rgba(20,184,166,0.3)] overflow-hidden transition-all duration-200 ease-out border border-teal-500/30 relative"
+      className="w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group"
       style={{ 
         transform,
-        background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(20,184,166,${glowPosition.x === 50 && glowPosition.y === 50 ? '0.08' : '0.25'}) 0%, transparent 60%), radial-gradient(circle at 50% 25%, rgba(20,184,166,0.12) 0%, transparent 40%), rgb(31,41,55)`
-      }}
+        backgroundColor: 'var(--color-card-bg)',
+        border: '1px solid var(--color-border)',
+        '--glow-opacity': glowPosition.x === 50 && glowPosition.y === 50 ? '0.1' : '0.2',
+        '--glow-color': 'var(--color-iris, #c4a7e7)',
+        '--glow-color-rgb': '196, 167, 231',
+        '--glow-spread': '20px',
+        '--glow-blur': '30px',
+        '--glow-intensity': '2.7',
+        boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
+                  0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
+                  inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
+        background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, 
+          rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
+          radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
+          var(--color-card-bg)`
+      } as React.CSSProperties}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="p-8">
+      {isMounted && (
+        <div 
+          className="absolute pointer-events-none transition-all duration-300 ease-out"
+          style={{
+            left: `${orbPosition.x}px`,
+            top: `${orbPosition.y}px`,
+            transform: 'translate(-50%, -50%)',
+            width: '200px',
+            height: '200px',
+            background: 'radial-gradient(circle, rgba(196, 167, 231, 0.4) 0%, rgba(196, 167, 231, 0) 70%)',
+            borderRadius: '50%',
+            filter: 'blur(20px)',
+            zIndex: 0,
+            opacity: mousePosition && (mousePosition.x !== 0 || mousePosition.y !== 0) ? 0.8 : 0.5,
+            transition: 'opacity 0.3s ease-out, left 0.2s ease-out, top 0.2s ease-out',
+            willChange: 'left, top, opacity'
+          }}
+        />
+      )}
+
+      <div className="p-8 relative z-10">
         <div className="flex flex-col items-center">
-          <div className="w-32 h-32 rounded-full mb-6 overflow-hidden">
+          <div 
+            ref={avatarRef}
+            className="w-32 h-32 rounded-full mb-6 overflow-hidden relative z-10"
+          >
             <img
               src="https://avatars.githubusercontent.com/playfairs"
               alt="playfairs avatar"
@@ -57,12 +138,15 @@ export default function ProfileCard() {
             href="https://github.com/playfairs" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-2xl font-serif text-white mb-2 hover:text-teal-400 transition-colors"
+            className="text-2xl font-serif mb-2 transition-colors"
+            style={{ color: 'var(--color-text)', '--hover-color': 'var(--color-primary)' } as React.CSSProperties}
+            onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+            onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text)'}
           >
             @playfairs
           </a>
-          <div className="w-34 h-px bg-gray-600 mb-5"></div>
-          <p className="text-gray-300 text-center">
+          <div className="w-34 h-px mb-5" style={{ backgroundColor: 'var(--color-border)' }}></div>
+          <p className="text-center" style={{ color: 'var(--color-text-muted)' }}>
             hi, I'm still working on this, please be patient or something, idk
           </p>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface NowPlayingData {
   track: string
@@ -14,6 +14,44 @@ interface NowPlayingData {
 export default function NowPlaying() {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null)
   const [loading, setLoading] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return
+    
+    const card = containerRef.current
+    const rect = card.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    
+    const mouseX = e.clientX - centerX
+    const mouseY = e.clientY - centerY
+    
+    const distance = Math.min(1, Math.sqrt(mouseX * mouseX + mouseY * mouseY) / (rect.width / 2))
+    
+    const intensity = 0.7 + (distance * 0.5)
+    
+    const glowX = ((e.clientX - rect.left) / rect.width) * 100
+    const glowY = ((e.clientY - rect.top) / rect.height) * 100
+    
+    card.style.setProperty('--glow-opacity', (0.1 + (distance * 0.15)).toString())
+    card.style.setProperty('--glow-intensity', intensity.toString())
+    card.style.setProperty('--glow-spread', `${8 + (distance * 20)}px`)
+    card.style.setProperty('--glow-blur', `${20 + (distance * 40)}px`)
+    
+    setGlowPosition({ x: glowX, y: glowY })
+  }
+
+  const handleMouseLeave = () => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty('--glow-opacity', '0.1')
+      containerRef.current.style.setProperty('--glow-intensity', '1.7')
+      containerRef.current.style.setProperty('--glow-spread', '8px')
+      containerRef.current.style.setProperty('--glow-blur', '20px')
+    }
+    setGlowPosition({ x: 50, y: 50 })
+  }
 
   useEffect(() => {
     const fetchNowPlaying = async () => {
@@ -102,48 +140,91 @@ export default function NowPlaying() {
     return () => clearInterval(interval)
   }, [])
 
+  const containerStyles = {
+    backgroundColor: 'var(--color-card-bg)',
+    border: '1px solid var(--color-border)',
+    '--glow-opacity': '0.1',
+    '--glow-color': 'var(--color-iris, #c4a7e7)',
+    '--glow-color-rgb': '196, 167, 231',
+    '--glow-spread': '8px',
+    '--glow-blur': '20px',
+    '--glow-intensity': '1.7',
+    boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
+                0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
+                inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
+    transition: 'all 0.2s ease-out',
+    background: 'var(--color-card-bg)'
+  } as React.CSSProperties;
+
   if (loading) {
     return (
-      <div className="w-[576px] mx-auto mt-6 h-8 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center justify-center">
-        <div className="text-gray-400 text-sm">Loading &gt;_&lt;</div>
+      <div 
+        className="w-[576px] mx-auto mt-6 h-8 rounded-lg flex items-center justify-center transition-all duration-200 relative"
+        style={containerStyles}
+      >
+        <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>Loading...</div>
       </div>
     )
   }
 
   if (!nowPlaying || !nowPlaying.isPlaying) {
     return (
-      <div className="w-[576px] mx-auto mt-6 h-8 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center justify-center">
-        <div className="text-gray-400 text-sm">Not currently playing &gt;_&lt;</div>
+      <div 
+        className="w-[576px] mx-auto mt-6 h-8 rounded-lg flex items-center justify-center transition-all duration-200 relative"
+        style={containerStyles}
+      >
+        <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>Not currently playing</div>
       </div>
     )
   }
 
   return (
-    <div className="w-[576px] mx-auto mt-6 bg-gray-800 rounded-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] border border-teal-500/20 flex items-center px-6 py-4 group hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-200">
+    <div 
+      ref={containerRef}
+      className="w-[576px] mx-auto mt-6 rounded-lg flex items-center px-6 py-4 group transition-all duration-200 relative overflow-hidden"
+      style={containerStyles}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="flex items-start w-full gap-4">
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 relative z-10">
           {nowPlaying.url ? (
             <a 
               href={nowPlaying.url} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-300 text-base font-semibold hover:text-teal-400 transition-colors block"
+              className="text-base font-semibold block transition-colors"
+              style={{
+                color: 'var(--color-text)',
+                '--hover-color': 'var(--color-primary)',
+              } as React.CSSProperties}
+              onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+              onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text)'}
             >
               {nowPlaying.track}
             </a>
           ) : (
-            <div className="text-gray-300 text-base font-semibold">{nowPlaying.track}</div>
+            <div className="text-base font-semibold" style={{ color: 'var(--color-text)' }}>
+              {nowPlaying.track}
+            </div>
           )}
-          <div className={`text-gray-500 text-sm ${nowPlaying.artist === '$uicideboy$' ? 'text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : ''}`}>Artist: {nowPlaying.artist}</div>
-          <div className="text-gray-500 text-sm">Album: {nowPlaying.album}</div>
-          <div className="text-gray-600 text-xs">
+          <div 
+            className={`text-sm ${nowPlaying.artist === '$uicideboy$' ? 'text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : ''}`}
+            style={{ color: 'var(--color-text-muted)' }}
+          >
+            Artist: {nowPlaying.artist}
+          </div>
+          <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
+            Album: {nowPlaying.album}
+          </div>
+          <div className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
             {nowPlaying.trackPlays && `Track Plays: ${nowPlaying.trackPlays}`}
             {nowPlaying.trackPlays && nowPlaying.artistPlays && ' • '}
             {nowPlaying.artistPlays && `Artist Plays: ${nowPlaying.artistPlays}`}
           </div>
         </div>
         
-        <div className="shrink-0">
+        <div className="shrink-0 relative z-10">
           {nowPlaying.coverArt && nowPlaying.url ? (
             <a 
               href={nowPlaying.url} 
@@ -154,14 +235,16 @@ export default function NowPlaying() {
               <img 
                 src={nowPlaying.coverArt} 
                 alt={`${nowPlaying.track} cover art`}
-                className="w-16 h-16 rounded object-cover shrink-0"
+                className="w-16 h-16 rounded object-cover shrink-0 border transition-transform group-hover:scale-105"
+                style={{ borderColor: 'var(--color-border)' }}
               />
             </a>
           ) : nowPlaying.coverArt ? (
             <img 
               src={nowPlaying.coverArt} 
               alt={`${nowPlaying.track} cover art`}
-              className="w-16 h-16 rounded object-cover shrink-0"
+              className="w-16 h-16 rounded object-cover shrink-0 border transition-transform group-hover:scale-105"
+              style={{ borderColor: 'var(--color-border)' }}
             />
           ) : null}
         </div>
