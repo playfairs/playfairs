@@ -1,13 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import ProfileCard from "../components/ProfileCard";
 import NowPlaying from "../components/NowPlaying";
 import Header from "../components/header";
 import SocialsPage from "./pages/socials/page";
 import GitPage from "./pages/git/page";
 import LinksPage from "./pages/links/page";
+import { ThemeProvider } from './contexts/ThemeContext';
 import "./index.css";
-import cursorImage from "./cursor.png" assert { type: "url" };
+import cursorImage from "./cursor.png";
 
 export function App() {
   const [showEntryButton, setShowEntryButton] = useState(() => {
@@ -91,29 +92,62 @@ export function App() {
   }
 
   return (
-    showMainContent && (
-      <div className="min-h-screen bg-gray-900 transition-opacity duration-1000 ease-in-out opacity-0 animate-fade-in">
-        <audio id="nova-audio" loop>
-          <source src="https://media.playfairs.cc/badapple.mp3" type="audio/mpeg" />
-        </audio>
-        <Router>
-          <div className="min-h-screen">
+    <ThemeProvider>
+      <div
+        className="min-h-screen flex flex-col"
+        style={{
+          cursor: `url(${cursorImage}), auto`,
+          background: 'var(--color-bg)',
+          color: 'var(--color-text)',
+        }}
+      >
+        <div className="fixed inset-0 overflow-hidden pointer-events-none">
+          <div 
+            className="absolute inset-0 opacity-0 transition-opacity duration-1000"
+            style={{
+              background: `radial-gradient(circle at center, var(--color-primary) 0%, transparent 70%)`,
+              opacity: showEntryButton ? 0 : 0.2
+            }}
+          />
+        </div>
+        <div className="relative z-10 flex-1 flex flex-col bg-inherit">
+          <audio id="background-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <Router>
             <Header />
-            <Routes>
-              <Route path="/" element={
-                <main className="flex flex-col items-center justify-center p-4 pt-20" style={{ minHeight: 'calc(100vh - 60px)' }}>
-                  <ProfileCard />
-                  <NowPlaying />
-                </main>
-              } />
-              <Route path="/socials" element={<div className="pt-20"><SocialsPage /></div>} />
-              <Route path="/git" element={<div className="pt-20"><GitPage /></div>} />
-              <Route path="/links" element={<div className="pt-20"><LinksPage /></div>} />
-            </Routes>
-          </div>
-        </Router>
+              <Routes>
+                <Route path="/" element={
+                  <main className="flex-1 flex flex-col justify-start pt-20 bg-inherit">
+                    <div className="container mx-auto px-4 py-6">
+                      <div className="max-w-2xl mx-auto space-y-8">
+                        <ProfileCard />
+                        <NowPlaying />
+                      </div>
+                    </div>
+                  </main>
+                } />
+                <Route path="/socials" element={
+                  <main className="flex-1 pt-20 bg-inherit">
+                    <SocialsPage />
+                  </main>
+                } />
+                <Route path="/git" element={
+                  <main className="flex-1 pt-20 bg-inherit">
+                    <GitPage />
+                  </main>
+                } />
+                <Route path="/links" element={
+                  <main className="flex-1 pt-20 bg-inherit">
+                    <LinksPage />
+                  </main>
+                } />
+              </Routes>
+          </Router>
+        </div>
       </div>
-    )
+    </ThemeProvider>
   );
 }
 
