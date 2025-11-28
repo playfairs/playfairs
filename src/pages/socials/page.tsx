@@ -99,7 +99,7 @@ export default function SocialsPage() {
       'reddit': '#FF5700',
       'linkedin': '#0A66C2',
       'spotify': '#1ED760',
-      'steam': '#00ADEE',
+      'steam': '#66C0F4',
       'gitlab': '#FCA326',
       'lastfm': '#D51007',
       'soundcloud': '#FF8800',
