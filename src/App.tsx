@@ -11,25 +11,11 @@ import "./index.css";
 import cursorImage from "./cursor.png";
 
 export function App() {
-  const [showEntryButton, setShowEntryButton] = useState(() => {
-    const navigationEntries = performance.getEntriesByType('navigation');
-    const isReload = navigationEntries.length > 0 && 
-                    (navigationEntries[0] as PerformanceNavigationTiming).type === 'reload';
-    
-    const hasEntered = sessionStorage.getItem('hasEntered');
-    
-    return isReload || !hasEntered;
-  });
-
-  const [showMainContent, setShowMainContent] = useState(!(() => {
-    const navigationEntries = performance.getEntriesByType('navigation');
-    const isReload = navigationEntries.length > 0 && 
-                    (navigationEntries[0] as PerformanceNavigationTiming).type === 'reload';
-    const hasEntered = sessionStorage.getItem('hasEntered');
-    return isReload || !hasEntered;
-  })());
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    
     const cursorStyle = `url('${cursorImage}'), auto`;
     
     const setCursorStyle = () => {
@@ -61,6 +47,7 @@ export function App() {
     window.addEventListener('mouseenter', handleFocus);
 
     return () => {
+      clearTimeout(timer);
       observer.disconnect();
       window.removeEventListener('focus', handleFocus);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -68,33 +55,10 @@ export function App() {
     };
   }, [cursorImage]);
 
-  const handleEnterClick = () => {
-    setShowEntryButton(false);
-    setShowMainContent(true);
-    sessionStorage.setItem('hasEntered', 'true');
-  };
-
-  if (showEntryButton) {
-    return (
-      <div className="min-h-screen bg-gray-900 relative">
-        <div className="absolute inset-0 backdrop-blur-xl bg-black/40"></div>
-        
-        <div className="absolute inset-0 flex items-center justify-center">
-          <button
-            onClick={handleEnterClick}
-            className="px-6 py-2 bg-white/5 backdrop-blur-2xl border border-white/30 text-white font-medium text-sm rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:bg-white/10 hover:border-white/40 hover:shadow-white/10"
-          >
-            Click to enter...
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <ThemeProvider>
       <div
-        className="min-h-screen flex flex-col"
+        className={`min-h-screen flex flex-col transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         style={{
           cursor: `url(${cursorImage}), auto`,
           background: 'var(--color-bg)',
@@ -103,10 +67,10 @@ export function App() {
       >
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
           <div 
-            className="absolute inset-0 opacity-0 transition-opacity duration-1000"
+            className="absolute inset-0 transition-opacity duration-1000"
             style={{
               background: `radial-gradient(circle at center, var(--color-primary) 0%, transparent 70%)`,
-              opacity: showEntryButton ? 0 : 0.2
+              opacity: 0.2
             }}
           />
         </div>
