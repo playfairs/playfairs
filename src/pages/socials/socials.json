@@ -29,5 +29,6 @@
   {"name": "䳥", "url": "https://www.youtube.com/@䳥", "platform": "youtube", "icon": "youtube"},
   {"name": "矔", "url": "https://www.youtube.com/@矔", "platform": "youtube", "icon": "youtube"},
   {"name": "颣", "url": "https://www.youtube.com/@颣", "platform": "youtube", "icon": "youtube"},
-  {"name": "pdwk", "url": "https://www.last.fm/user/pdwk", "platform": "lastfm", "icon": "lastfm"}
+  {"name": "pdwk", "url": "https://www.last.fm/user/pdwk", "platform": "lastfm", "icon": "lastfm"},
+  {"name": "playfairs", "url": "https://steamcommunity.com/id/playfairs", "platform": "steam", "icon": "steam"}
 ]
