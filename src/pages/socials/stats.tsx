@@ -1,4 +1,4 @@
-import { FaGithub, FaSpotify, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaSteam, FaSpotify, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { SiTiktok, SiX, SiLastdotfm, SiGitlab } from "react-icons/si";
 
 export interface PlatformStats {
@@ -38,6 +38,7 @@ export const platformIcons: Record<string, React.ComponentType<{ className?: str
   instagram: FaInstagram,
   youtube: FaYoutube,
   lastfm: SiLastdotfm,
+  steam: FaSteam
 };
 
 export const platformNames: Record<string, string> = {
@@ -50,7 +51,8 @@ export const platformNames: Record<string, string> = {
   instagram: 'Instagram',
   youtube: 'YouTube',
   linkedin: 'LinkedIn',
-  lastfm: 'LastFM'
+  lastfm: 'LastFM',
+  steam: 'Steam'
 };
 
 async function fetchGitLabStats(username: string): Promise<PlatformStats> {
