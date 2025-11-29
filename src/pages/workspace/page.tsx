@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ExternalLink, Cpu as CpuIcon, HardDrive, Monitor, Laptop, Smartphone, Server, Database } from "lucide-react";
+import { ExternalLink, Cpu as CpuIcon, HardDrive, Monitor, Laptop, Smartphone, Server, Database, Search } from "lucide-react";
 import "../../index.css";
 
 interface HardwareItem {
@@ -72,6 +72,7 @@ export default function WorkspacePage() {
   const [activeTab, setActiveTab] = useState<'hardware' | 'software'>('hardware');
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
   const [allExpanded, setAllExpanded] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchData = () => {
@@ -400,94 +401,84 @@ export default function WorkspacePage() {
     );
   }
 
+  const filteredItems = activeTab === 'hardware' 
+    ? hardware.filter(item => 
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.cpu.model.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : software.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.developer.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-3xl font-bold mb-8" style={{ color: 'var(--color-text)' }}>My Workspace</h1>
       
-      <div className="flex items-end" style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '1px' }}>
+      <div className="flex items-end" style={{ borderBottom: '1px solid var(--color-primary)', paddingBottom: '1px' }}>
         <div className="flex flex-1">
-        <button
-          className={`px-4 py-2 text-sm font-medium transition-colors border hover:bg-opacity-90 ${activeTab === 'hardware' ? '' : 'opacity-70'}`}
-          style={{
-            backgroundColor: activeTab === 'hardware' ? 'var(--color-secondary)' : 'transparent',
-            color: 'var(--color-text)',
-            border: '1px solid var(--color-border)',
-            borderBottom: activeTab === 'hardware' ? 'none' : '1px solid var(--color-border)',
-            borderBottomLeftRadius: 0,
-            borderBottomRightRadius: 0,
-            marginBottom: '-1px',
-            position: 'relative',
-            top: '1px',
-            zIndex: activeTab === 'hardware' ? 2 : 1
-          } as React.CSSProperties}
-          onClick={() => setActiveTab('hardware')}
-          onMouseEnter={(e) => {
-            if (activeTab !== 'hardware') {
-              e.currentTarget.style.opacity = '1';
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (activeTab !== 'hardware') {
-              e.currentTarget.style.opacity = '0.7';
-            }
-          }}
-        >
-          Hardware
-        </button>
-        <button
-          className={`px-4 py-2 text-sm font-medium transition-colors border hover:bg-opacity-90 ${activeTab === 'software' ? '' : 'opacity-70'}`}
-          style={{
-            backgroundColor: activeTab === 'software' ? 'var(--color-secondary)' : 'transparent',
-            color: 'var(--color-text)',
-            border: '1px solid var(--color-border)',
-            borderBottom: activeTab === 'software' ? 'none' : '1px solid var(--color-border)',
-            borderBottomLeftRadius: 0,
-            borderBottomRightRadius: 0,
-            marginBottom: '-1px',
-            position: 'relative',
-            top: '1px',
-            zIndex: activeTab === 'software' ? 2 : 1,
-            marginLeft: '0.5rem'
-          } as React.CSSProperties}
-          onClick={() => setActiveTab('software')}
-          onMouseEnter={(e) => {
-            if (activeTab !== 'software') {
-              e.currentTarget.style.opacity = '1';
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (activeTab !== 'software') {
-              e.currentTarget.style.opacity = '0.7';
-            }
-          }}
-        >
-          Software
-        </button>
+          {(['hardware', 'software'] as const).map((tab) => (
+            <button
+              key={tab}
+              className={`px-4 py-2 text-sm font-medium transition-colors border hover:bg-opacity-90 ${activeTab === tab ? '' : 'opacity-70'}`}
+              style={{
+                backgroundColor: activeTab === tab ? 'var(--color-secondary)' : 'transparent',
+                color: 'var(--color-text)',
+                border: '1px solid var(--color-primary)',
+                borderBottom: activeTab === tab ? 'none' : '1px solid var(--color-primary)',
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+                marginBottom: '-1px',
+                position: 'relative',
+                top: '1px',
+                zIndex: activeTab === tab ? 2 : 1,
+                marginRight: '0.5rem'
+              } as React.CSSProperties}
+              onClick={() => setActiveTab(tab)}
+              onMouseEnter={(e) => {
+                if (activeTab !== tab) {
+                  e.currentTarget.style.opacity = '1';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeTab !== tab) {
+                  e.currentTarget.style.opacity = '0.7';
+                }
+              }}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
         </div>
-        <div className="flex items-center space-x-2">
+        
+        <div className="relative flex items-end" style={{ marginBottom: '-1px' }}>
           <button
             onClick={toggleAllItems}
-            className="px-4 py-2 text-sm font-medium transition-colors border hover:bg-opacity-90 w-full sm:w-auto"
+            className="px-4 py-2 text-sm font-medium transition-colors border hover:bg-opacity-90 flex items-center"
             style={{
               backgroundColor: 'var(--color-secondary)',
               color: 'var(--color-text)',
-              border: '1px solid var(--color-border)',
+              border: '1px solid var(--color-primary)',
               borderBottom: 'none',
-              borderBottomLeftRadius: 0,
-              borderBottomRightRadius: 0,
-              marginBottom: '-1px',
+              height: '100%',
               position: 'relative',
-              top: '1px',
-              zIndex: 1
-            } as React.CSSProperties}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.setProperty('background-color', 'var(--color-secondary-hover)');
+              zIndex: 1,
             }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.setProperty('background-color', 'var(--color-secondary)');
-            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
           >
-            {allExpanded ? 'Collapse All' : 'Expand All'}
+            <span className="mr-2">{allExpanded ? 'Collapse All' : 'Expand All'}</span>
+            <svg
+              className={`w-4 h-4 transition-transform ${allExpanded ? 'rotate-180' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              style={{ color: 'var(--color-text-muted)' }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
         </div>
       </div>
@@ -498,9 +489,7 @@ export default function WorkspacePage() {
             <h2 className="text-2xl font-semibold mt-6" style={{ color: 'var(--color-text)' }}>My Hardware</h2>
             {hardware.length > 0 ? (
               <div className="space-y-4">
-                {[...hardware]
-                  .sort((a, b) => a.name.localeCompare(b.name))
-                  .map((item, index) => renderHardwareItem(item, index))}
+                {filteredItems.map((item, index) => renderHardwareItem(item as HardwareItem, index))}
               </div>
             ) : (
               <p style={{ color: 'var(--color-text-muted)' }}>No hardware information available.</p>
@@ -511,7 +500,7 @@ export default function WorkspacePage() {
             <h2 className="text-2xl font-semibold mt-6 mb-4" style={{ color: 'var(--color-text)' }}>My Software Stack</h2>
             {software.length > 0 ? (
               <div className="space-y-4">
-                {[...software]
+                {(filteredItems as SoftwareItem[])
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map((item, index) => renderSoftwareItem(item, index))}
               </div>
