@@ -7,6 +7,7 @@ import SocialsPage from "./pages/socials/page";
 import GitPage from "./pages/git/page";
 import LinksPage from "./pages/links/page";
 import WorkspacePage from "./pages/workspace/page";
+import InterestsPage from "./pages/interests/page";
 import { ThemeProvider } from './contexts/ThemeContext';
 import "./index.css";
 import cursorImage from "./cursor.png";
@@ -111,6 +112,11 @@ export function App() {
                 <Route path="/workspace" element={
                   <main className="flex-1 pt-4 md:pt-8 bg-inherit">
                     <WorkspacePage />
+                  </main>
+                } />
+                <Route path="/interests" element={
+                  <main className="flex-1 pt-4 md:pt-8 bg-inherit">
+                    <InterestsPage />
                   </main>
                 } />
               </Routes>
