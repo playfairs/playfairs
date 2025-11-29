@@ -1,0 +1,206 @@
+[
+    {
+        "name": "Visual Studio Code",
+        "category": "IDE",
+        "description": "The open source AI-enhanced code editor.",
+        "url": "https://code.visualstudio.com/",
+        "developer": "Microsoft",
+        "license": "MIT License",
+        "platforms": ["Windows", "macOS", "Linux", "Web"],
+        "features": [
+            "Extensible extensions marketplace",
+            "Built-in Git support",
+            "IntelliSense autocompletion",
+            "Integrated terminal",
+            "AI coding assistant support"
+        ]
+    },
+    {
+        "name": "Helix",
+        "category": "Text Editor",
+        "description": "A post-modern text editor focused on correctness and modal editing.",
+        "url": "https://helix-editor.com/",
+        "developer": "Helix Community",
+        "license": "MPL-2.0",
+        "platforms": ["Windows", "macOS", "Linux"],
+        "features": [
+            "Modal editing (like Vim)",
+            "Tree-sitter syntax highlighting",
+            "LSP-native support",
+            "GPU-accelerated rendering",
+            "Zero-config philosophy"
+        ]
+    },
+    {
+        "name": "Neovim",
+        "category": "Text Editor",
+        "description": "A highly extensible, Lua-configurable modern fork of Vim.",
+        "url": "https://neovim.io/",
+        "developer": "Neovim Foundation",
+        "license": "Apache 2.0",
+        "platforms": ["Windows", "macOS", "Linux", "BSD"],
+        "features": [
+            "Lua configuration and plugin system",
+            "Terminal emulator mode",
+            "Async job control",
+            "Huge plugin ecosystem",
+            "Lightweight modal editing"
+        ]
+    },
+    {
+        "name": "Alacritty",
+        "category": "Terminal",
+        "description": "A fast, cross-platform, GPU-accelerated terminal emulator.",
+        "url": "https://alacritty.org/",
+        "developer": "Alacritty Community",
+        "license": "Apache 2.0",
+        "platforms": ["Windows", "macOS", "Linux", "BSD"],
+        "features": [
+            "GPU-accelerated text rendering",
+            "Simple TOML-based config",
+            "High performance",
+            "No tabs or splits (minimalism)"
+        ]
+    },
+    {
+        "name": "Ghostty",
+        "category": "Terminal",
+        "description": "A modern, GPU-accelerated terminal with native UI and extensive configuration.",
+        "url": "https://ghostty.org/",
+        "developer": "Mitchell Hashimoto (HashiCorp Founder)",
+        "license": "Apache 2.0",
+        "platforms": ["macOS", "Linux"],
+        "features": [
+            "GPU rendering",
+            "Native UI per platform",
+            "Powerful configuration system",
+            "Tabs, splits, search",
+            "Very fast startup"
+        ]
+    },
+    {
+        "name": "Zen Browser",
+        "category": "Browser",
+        "description": "A privacy-focused, distraction-free browser fork of Firefox.",
+        "url": "https://zen-browser.app",
+        "developer": "Henrik M.",
+        "license": "MPL-2.0 (Firefox base)",
+        "platforms": ["Windows", "macOS", "Linux"],
+        "features": [
+            "Vertical tabs",
+            "Sidebars and tiling UI",
+            "Reduced tracking and telemetry",
+            "Customizable design",
+            "Based on Firefox Gecko engine"
+        ]
+    },
+    {
+        "name": "Tailscale",
+        "category": "Mesh VPN",
+        "description": "A zero-config mesh VPN powered by WireGuard.",
+        "url": "https://tailscale.com/",
+        "developer": "Tailscale Inc.",
+        "license": "Proprietary",
+        "platforms": ["Windows", "macOS", "Linux", "iOS", "Android", "BSD"],
+        "features": [
+            "Peer-to-peer networking",
+            "Zero-configuration setup",
+            "WireGuard secure connections",
+            "MagicDNS",
+            "ACL-based access control"
+        ]
+    },
+    {
+        "name": "Raycast",
+        "category": "Launcher",
+        "description": "A productivity launcher for macOS with extensions, commands, and automation.",
+        "url": "https://raycast.com/",
+        "developer": "Raycast Technologies Ltd",
+        "license": "Proprietary (Free tier available)",
+        "platforms": ["macOS"],
+        "features": [
+            "Global command launcher",
+            "Extensions store",
+            "Clipboard manager",
+            "Snippets and scripts",
+            "Window and app control"
+        ]
+    },
+    {
+        "name": "WhatsApp",
+        "category": "Messenger",
+        "description": "A cross-platform messaging app for personal, group, and business communication.",
+        "url": "https://whatsapp.com/",
+        "developer": "Meta Platforms Inc.",
+        "license": "Proprietary",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "iOS",
+            "Android",
+            "Web (browser, including Linux/BSD)"
+        ],
+        "features": [
+            "End-to-end encrypted messaging",
+            "Voice & video calls",
+            "Group chats",
+            "Media sharing",
+            "Status updates",
+            "WhatsApp Web",
+            "Multi-device support",
+            "Business messaging tools"
+        ]
+    },
+    {
+        "name": "Telegram",
+        "category": "Messenger",
+        "description": "A fast, cloud-based messaging app focused on speed, security, and extensibility.",
+        "url": "https://telegram.org/",
+        "developer": "Telegram FZ-LLC",
+        "license": "GPLv3 for the client, Proprietary server-side",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "Linux",
+            "iOS",
+            "Android",
+            "Web",
+            "BSD (via third-party ports)"
+        ],
+        "features": [
+            "Cloud-synced messages",
+            "End-to-end encrypted Secret Chats",
+            "Voice and video calls",
+            "Groups up to 200,000 members",
+            "Channels for broadcasting",
+            "Bot API system",
+            "Custom themes & stickers",
+            "File sharing up to 2GB per file",
+            "Multi-device support",
+            "Username-based messaging (no phone # needed after setup)"
+        ]
+    },
+    {
+        "name": "Flameshot",
+        "category": "Screenshot Tool",
+        "description": "A powerful, customizable, open-source screenshot tool with annotation features.",
+        "url": "https://flameshot.org/",
+        "developer": "Flameshot Community",
+        "license": "GPLv3",
+        "platforms": [
+            "Linux",
+            "Windows",
+            "macOS"
+        ],
+        "features": [
+            "Customizable shortcut keys",
+            "In-app image annotation (arrows, boxes, text, blur, highlight)",
+            "Upload to Imgur",
+            "DBus integration",
+            "System tray support",
+            "Configurable UI",
+            "Pin screenshots to screen"
+        ]
+    }
+
+]

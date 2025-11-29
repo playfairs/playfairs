@@ -112,12 +112,13 @@ export default function Header() {
 
                 <div className="hidden md:flex items-center space-x-8">
                   <div className="h-6 w-px" style={{ backgroundColor: 'var(--color-border)' }} />
-                  <nav className="flex items-center space-x-8">
+                  <div className="hidden md:flex items-center space-x-8 ml-8">
                     <NavLink href="/">Home</NavLink>
                     <NavLink href="/links">Links</NavLink>
                     <NavLink href="/socials">Socials</NavLink>
                     <NavLink href="/git">Git</NavLink>
-                  </nav>
+                    <NavLink href="/workspace">Workspace</NavLink>
+                  </div>
                 </div>
 
                 <div className="md:hidden">
@@ -152,11 +153,12 @@ export default function Header() {
               </div>
 
               <div className={`md:hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96' : 'max-h-0 overflow-hidden'}`}>
-                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div className="flex flex-col space-y-2 py-2">
                   <MobileNavLink href="/" onClick={() => setOpen(false)}>Home</MobileNavLink>
-                  <MobileNavLink href="/links" onClick={() => setOpen(false)}>Links</MobileNavLink>
                   <MobileNavLink href="/socials" onClick={() => setOpen(false)}>Socials</MobileNavLink>
                   <MobileNavLink href="/git" onClick={() => setOpen(false)}>Git</MobileNavLink>
+                  <MobileNavLink href="/links" onClick={() => setOpen(false)}>Links</MobileNavLink>
+                  <MobileNavLink href="/workspace" onClick={() => setOpen(false)}>Workspace</MobileNavLink>
                 </div>
               </div>
             </div>

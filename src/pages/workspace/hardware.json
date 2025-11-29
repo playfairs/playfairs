@@ -1,0 +1,155 @@
+[
+    {
+        "name": "Mac Mini",
+        "category": "Desktop",
+        "operating_system": "macOS 26+",
+        "url": "https://www.apple.com/shop/buy-mac/mac-mini",
+        "cpu": {
+            "model": "Apple M4",
+            "architecture": "ARM64",
+            "performance_cores": 6,
+            "efficiency_cores": 4,
+            "total_cores": 10,
+            "neural_engine": "16-core"
+        },
+        "gpu": {
+            "model": "Apple M4 GPU",
+            "cores": 10,
+            "type": "Integrated"
+        },
+        "ram": {
+            "capacity": "16GB",
+            "type": "Unified LPDDR5"
+        },
+        "storage": [
+            {
+                "capacity": "256GB",
+                "type": "Internal SSD"
+            },
+            {
+                "capacity": "2TB",
+                "type": "External SSD"
+            }
+        ]
+    },
+
+    {
+        "name": "HP Envy TS 17 Notebook",
+        "category": "Laptop",
+        "operating_system": "Debian 13",
+        "url": "Not Available",
+        "cpu": {
+            "model": "Intel Core i7-4510U",
+            "generation": "4th Gen (Haswell)",
+            "cores": 2,
+            "threads": 4,
+            "base_clock": "2.0 GHz",
+            "boost_clock": "3.1 GHz"
+        },
+        "gpu": {
+            "model": "NVIDIA GeForce 820M",
+            "vram": "2GB DDR3",
+            "type": "Dedicated"
+        },
+        "ram": {
+            "capacity": "16GB",
+            "type": "DDR3L"
+        },
+        "storage": {
+            "capacity": "960GB",
+            "type": "SATA SSD"
+        }
+    },
+
+    {
+        "name": "HP Laptop 15 Notebook",
+        "category": "Laptop",
+        "operating_system": "Debian 13",
+        "url": "Not Available",
+        "cpu": {
+            "model": "Intel Core i7-7500U",
+            "generation": "7th Gen (Kaby Lake)",
+            "cores": 2,
+            "threads": 4,
+            "base_clock": "2.7 GHz",
+            "boost_clock": "3.5 GHz"
+        },
+        "gpu": {
+            "model": "Intel HD Graphics 620",
+            "type": "Integrated"
+        },
+        "ram": {
+            "capacity": "8GB",
+            "type": "DDR4"
+        },
+        "storage": [
+            {
+                "capacity": "256GB",
+                "type": "NVMe SSD"
+            },
+            {
+                "capacity": "4TB",
+                "type": "External HDD"
+            }
+        ]
+    },
+
+    {
+        "name": "HP Laptop 15 Notebook",
+        "category": "Laptop",
+        "operating_system": "ParrotOS 6",
+        "url": "Not Available",
+        "cpu": {
+            "model": "Intel Core i7-7500U",
+            "generation": "7th Gen (Kaby Lake)",
+            "cores": 2,
+            "threads": 4,
+            "base_clock": "2.7 GHz",
+            "boost_clock": "3.5 GHz"
+        },
+        "gpu": {
+            "model": "Intel HD Graphics 620",
+            "type": "Integrated"
+        },
+        "ram": {
+            "capacity": "8GB",
+            "type": "DDR4"
+        },
+        "storage": [
+            {
+                "capacity": "256GB",
+                "type": "SSD M.2"
+            },
+            {
+                "capacity": "4TB",
+                "type": "External HDD"
+            }
+        ]
+    },
+
+    {
+        "name": "Lenovo IdeaCentre 3",
+        "category": "Desktop",
+        "operating_system": "Debian 13 (OpenMediaVault)",
+        "url": "Not Available",
+        "cpu": {
+            "model": "AMD Athlon Silver 3050U",
+            "cores": 2,
+            "threads": 2,
+            "base_clock": "2.3 GHz",
+            "boost_clock": "3.2 GHz"
+        },
+        "gpu": {
+            "model": "AMD Radeon Vega 8",
+            "type": "Integrated"
+        },
+        "ram": {
+            "capacity": "16GB",
+            "type": "DDR4"
+        },
+        "storage": {
+            "capacity": "1TB",
+            "type": "NVMe SSD"
+        }
+    }
+]
