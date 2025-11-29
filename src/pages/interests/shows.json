@@ -1,0 +1,22 @@
+[
+  {
+    "name": "The Blacklist",
+    "type": "shows",
+    "description": "A master criminal, Raymond 'Red' Reddington, voluntarily surrenders to the FBI and offers to help catch the world's most dangerous criminals — but only if he works exclusively with rookie profiler Elizabeth Keen.",
+    "url": "https://www.imdb.com/title/tt2741602/",
+    "category": "Crime / Drama / Thriller",
+    "year": 2013,
+    "creator": "Jon Bokenkamp",
+    "platform": "Prime Video, Netflix",
+    "tags": ["Crime", "Drama", "Thriller", "Mystery"],
+    "seasons": 10,
+    "rating": "TV-14",
+    "main_cast": [
+      "James Spader",
+      "Megan Boone",
+      "Diego Klattenhoff",
+      "Harry Lennix"
+    ],
+    "icon": "https://m.media-amazon.com/images/M/MV5BNDk4MGU4NTItNDMyMC00NjQ0LWFlMWUtYzJlMTM1M2M2ZTU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+  }
+]

@@ -52,6 +52,14 @@ const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'mus
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
+  
+  const isShowItem = (item: any): item is InterestItem & { 
+    rating: string; 
+    seasons: number; 
+    main_cast: string[] 
+  } => {
+    return type === 'shows' && 'seasons' in item && 'main_cast' in item;
+  };
 
   return (
     <div 
@@ -174,12 +182,35 @@ const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'mus
                 <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
                   <span className="font-medium">Category:</span> {item.category}
                 </p>
-                {item.playtime && (
+                {isShowItem(item) ? (
+                  <>
+                    <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
+                      <span className="font-medium">Seasons:</span> {item.seasons}
+                    </p>
+                    <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
+                      <span className="font-medium">Rating:</span> {item.rating}
+                    </p>
+                  </>
+                ) : item.playtime && (
                   <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
                     <span className="font-medium">Playtime:</span> {item.playtime}
                   </p>
                 )}
               </div>
+              
+              {isShowItem(item) && item.main_cast && item.main_cast.length > 0 && (
+                <div className="mt-2">
+                  <h4 className="text-sm font-medium mb-1" style={{ color: 'var(--color-text)' }}>Main Cast</h4>
+                  <ul className="text-sm space-y-1" style={{ color: 'var(--color-text-muted)' }}>
+                    {item.main_cast.slice(0, 4).map((actor, i) => (
+                      <li key={i} className="truncate">{actor}</li>
+                    ))}
+                    {item.main_cast.length > 4 && (
+                      <li className="text-xs opacity-70">+{item.main_cast.length - 4} more</li>
+                    )}
+                  </ul>
+                </div>
+              )}
             </div>
             
             {item.metacritic_score && (

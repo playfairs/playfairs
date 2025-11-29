@@ -122,7 +122,7 @@
     "platform": "Web, iOS, Android, Windows, Mac",
     "tags": ["Strategy", "Board Game", "Puzzle", "Online Multiplayer"],
     "metacritic_score": 88,
-    "playtime": "500+ hours",
+    "playtime": "10+ hours",
     "icon": "https://www.chess.com/favicon.ico"
   },
   {
@@ -140,17 +140,32 @@
     "icon": "https://tetris.com/favicon.ico"
   },
   {
-    "name": "Pokémon Red & Blue",
+    "name": "Pokémon Ruby & Sapphire",
     "type": "game",
-    "description": "The first installments in the Pokémon series, where players capture, train, and battle creatures known as Pokémon while striving to become the Pokémon Champion.",
-    "url": "https://www.pokemon.com/us/pokemon-video-games/pokemon-red-version-and-pokemon-blue-version/",
+    "description": "The third-generation Pokémon games set in the Hoenn region, where players collect, train, and battle Pokémon while uncovering the plots of Team Magma and Team Aqua.",
+    "url": "https://www.pokemon.com/us/pokemon-video-games/pokemon-ruby-version-and-pokemon-sapphire-version/",
     "category": "RPG / Adventure",
-    "year": 1996,
+    "year": 2002,
     "creator": "Game Freak",
-    "platform": "Game Boy",
+    "platform": "Game Boy Advance, Nintendo DS",
     "tags": ["RPG", "Adventure", "Turn-based"],
-    "metacritic_score": 84,
-    "playtime": "30+ hours",
+    "metacritic_score": 82,
+    "playtime": "30–40 hours",
     "icon": "https://www.pokemon.com/favicon.ico"
+  },
+  {
+    "name": "Golf With Your Friends",
+    "type": "game",
+    "description": "A fast-paced, chaotic multiplayer mini-golf game where up to 12 players compete across creative and challenging courses.",
+    "url": "https://www.team17.com/games/golf-with-your-friends/",
+    "category": "Sports / Party",
+    "year": 2020,
+    "creator": "Blacklight Interactive",
+    "platform": "PC, PlayStation 4, Xbox One, Nintendo Switch",
+    "tags": ["Sports", "Multiplayer", "Party", "Casual"],
+    "metacritic_score": 62,
+    "playtime": "10–50 hours",
+    "icon": "https://26630753.fs1.hubspotusercontent-eu1.net/hubfs/26630753/gwyf%20favicon.png"
   }
+
 ]
