@@ -55,7 +55,7 @@ const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'mus
 
   return (
     <div 
-      className="border rounded-lg overflow-hidden transition-all duration-200 shadow-sm"
+      className="border rounded overflow-hidden transition-all duration-200 shadow-sm"
       style={{
         '--border-color': 'var(--color-border)',
         '--bg-color': 'var(--color-card-bg)',
@@ -302,8 +302,7 @@ export default function InterestsPage() {
                 color: 'var(--color-text)',
                 border: '1px solid var(--color-primary)',
                 borderBottom: activeTab === tab ? 'none' : '1px solid var(--color-primary)',
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
+                borderRadius: '0.25rem 0.25rem 0 0',
                 marginBottom: '-1px',
                 position: 'relative',
                 top: '1px',
@@ -332,7 +331,8 @@ export default function InterestsPage() {
             <div className="relative" style={{ 
               border: '1px solid var(--color-primary)',
               borderBottom: 'none',
-              backgroundColor: 'var(--color-secondary)'
+              backgroundColor: 'var(--color-secondary)',
+              borderRadius: '0.25rem 0.25rem 0 0',
             }}>
               <div className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--color-text-muted)' }}>
                 <Search className="h-4 w-4" />

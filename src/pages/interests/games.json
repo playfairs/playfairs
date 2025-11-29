@@ -112,6 +112,20 @@
     "icon": "https://www.slimerancher.com/favicon.ico"
   },
   {
+    "name": "Chess.com",
+    "type": "game",
+    "description": "The world's #1 way to play chess. Join millions of players to play online chess, solve puzzles, and improve your game.",
+    "url": "https://www.chess.com/",
+    "category": "Board / Strategy / Online",
+    "year": 2007,
+    "creator": "Chess.com",
+    "platform": "Web, iOS, Android, Windows, Mac",
+    "tags": ["Strategy", "Board Game", "Puzzle", "Online Multiplayer"],
+    "metacritic_score": 88,
+    "playtime": "500+ hours",
+    "icon": "https://www.chess.com/favicon.ico"
+  },
+  {
     "name": "Tetris",
     "type": "game",
     "description": "A classic tile-matching puzzle game where players complete lines by moving differently shaped pieces that descend onto the playing field.",

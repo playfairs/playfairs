@@ -128,7 +128,7 @@ export default function WorkspacePage() {
     return (
       <div 
         key={`hw-${index}`} 
-        className="border rounded-lg overflow-hidden transition-all duration-200 shadow-sm"
+        className="border rounded overflow-hidden transition-all duration-200 shadow-sm"
         style={{
           '--border-color': 'var(--color-border)',
           '--bg-color': 'var(--color-card-bg)',
@@ -273,7 +273,7 @@ export default function WorkspacePage() {
     return (
       <div 
         key={`sw-${index}`} 
-        className="border rounded-lg overflow-hidden transition-all duration-200 shadow-sm"
+        className="border rounded overflow-hidden transition-all duration-200 shadow-sm"
         style={{
           '--border-color': 'var(--color-border)',
           '--bg-color': 'var(--color-card-bg)',
@@ -428,8 +428,7 @@ export default function WorkspacePage() {
                 color: 'var(--color-text)',
                 border: '1px solid var(--color-primary)',
                 borderBottom: activeTab === tab ? 'none' : '1px solid var(--color-primary)',
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
+                borderRadius: '0.25rem 0.25rem 0 0',
                 marginBottom: '-1px',
                 position: 'relative',
                 top: '1px',
@@ -462,6 +461,7 @@ export default function WorkspacePage() {
               color: 'var(--color-text)',
               border: '1px solid var(--color-primary)',
               borderBottom: 'none',
+              borderRadius: '0.25rem 0.25rem 0 0',
               height: '100%',
               position: 'relative',
               zIndex: 1,
