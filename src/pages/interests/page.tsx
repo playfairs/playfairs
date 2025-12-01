@@ -357,7 +357,7 @@ export default function InterestsPage() {
           ))}
         </div>
         
-        <div className="relative flex items-end" style={{ marginBottom: '-1px' }}>
+        <div className="relative hidden md:flex items-end" style={{ marginBottom: '-1px' }}>
           <div className="relative flex items-center h-full">
             <div className="relative" style={{ 
               border: '1px solid var(--color-primary)',

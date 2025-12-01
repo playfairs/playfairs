@@ -13,11 +13,12 @@ interface NowPlayingData {
 
 export default function NowPlaying() {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null)
+  const [topArtist, setTopArtist] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
   const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 })
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const updateGlowEffect = (clientX: number, clientY: number) => {
     if (!containerRef.current) return
     
     const card = containerRef.current
@@ -25,15 +26,13 @@ export default function NowPlaying() {
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
     
-    const mouseX = e.clientX - centerX
-    const mouseY = e.clientY - centerY
+    const mouseX = clientX - centerX
+    const mouseY = clientY - centerY
     
     const distance = Math.min(1, Math.sqrt(mouseX * mouseX + mouseY * mouseY) / (rect.width / 2))
-    
     const intensity = 0.7 + (distance * 0.5)
-    
-    const glowX = ((e.clientX - rect.left) / rect.width) * 100
-    const glowY = ((e.clientY - rect.top) / rect.height) * 100
+    const glowX = ((clientX - rect.left) / rect.width) * 100
+    const glowY = ((clientY - rect.top) / rect.height) * 100
     
     card.style.setProperty('--glow-opacity', (0.1 + (distance * 0.15)).toString())
     card.style.setProperty('--glow-intensity', intensity.toString())
@@ -41,6 +40,17 @@ export default function NowPlaying() {
     card.style.setProperty('--glow-blur', `${20 + (distance * 40)}px`)
     
     setGlowPosition({ x: glowX, y: glowY })
+  }
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    updateGlowEffect(e.clientX, e.clientY)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches?.[0]
+    if (touch) {
+      updateGlowEffect(touch.clientX, touch.clientY)
+    }
   }
 
   const handleMouseLeave = () => {
@@ -51,6 +61,13 @@ export default function NowPlaying() {
       containerRef.current.style.setProperty('--glow-blur', '20px')
     }
     setGlowPosition({ x: 50, y: 50 })
+  }
+
+  const truncateText = (text: string, maxLength: number = 20): string => {
+    if (typeof window !== 'undefined' && window.innerWidth < 640) {
+      return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text
+    }
+    return text
   }
 
   useEffect(() => {
@@ -134,33 +151,63 @@ export default function NowPlaying() {
       }
     }
 
-    fetchNowPlaying()
-    const interval = setInterval(fetchNowPlaying, 2000)
+    const fetchTopArtist = async () => {
+      try {
+        const response = await fetch(
+          `https://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=pdwk&api_key=baa82ae8105472406a1f05deee9ec88a&limit=1&format=json`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          if (data.topartists?.artist?.[0]?.name) {
+            setTopArtist(data.topartists.artist[0].name);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching top artist:', error);
+      }
+    };
+
+    fetchNowPlaying();
+    fetchTopArtist();
+    
+    const interval = setInterval(() => {
+      fetchNowPlaying();
+      if (Math.random() < 0.1) {
+        fetchTopArtist();
+      }
+    }, 2000);
+
+    const truncateText = (text: string, maxLength: number = 20): string => {
+      if (typeof window !== 'undefined' && window.innerWidth < 640) {
+        return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text
+      }
+      return text
+    };
 
     return () => clearInterval(interval)
   }, [])
 
-  const containerStyles = {
-    backgroundColor: 'var(--color-card-bg)',
-    border: '1px solid var(--color-border)',
-    '--glow-opacity': '0.1',
-    '--glow-color': 'var(--color-iris, #c4a7e7)',
-    '--glow-color-rgb': '196, 167, 231',
-    '--glow-spread': '8px',
-    '--glow-blur': '20px',
-    '--glow-intensity': '1.7',
-    boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
-                0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
-                inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
-    transition: 'all 0.2s ease-out',
-    background: 'var(--color-card-bg)'
-  } as React.CSSProperties;
-
   if (loading) {
     return (
       <div 
-        className="w-[576px] mx-auto mt-6 h-8 rounded-lg flex items-center justify-center transition-all duration-200 relative"
-        style={containerStyles}
+        className="w-[90vw] sm:w-[80vw] md:w-[700px] lg:w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group p-3 sm:p-4 md:p-6"
+        style={{ 
+          backgroundColor: 'var(--color-card-bg)',
+          border: '1px solid var(--color-border)',
+          '--glow-opacity': '0.1',
+          '--glow-color': 'var(--color-iris, #c4a7e7)',
+          '--glow-color-rgb': '196, 167, 231',
+          '--glow-spread': '8px',
+          '--glow-blur': '20px',
+          '--glow-intensity': '1.7',
+          boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
+                    0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
+                    inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
+          background: `radial-gradient(circle at 50% 50%, 
+            rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
+            radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
+            var(--color-card-bg)`
+        } as React.CSSProperties}
       >
         <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>Loading...</div>
       </div>
@@ -170,8 +217,24 @@ export default function NowPlaying() {
   if (!nowPlaying || !nowPlaying.isPlaying) {
     return (
       <div 
-        className="w-[576px] mx-auto mt-6 h-8 rounded-lg flex items-center justify-center transition-all duration-200 relative"
-        style={containerStyles}
+        className="w-[90vw] sm:w-[80vw] md:w-[700px] lg:w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group p-3 sm:p-4 md:p-6"
+        style={{ 
+          backgroundColor: 'var(--color-card-bg)',
+          border: '1px solid var(--color-border)',
+          '--glow-opacity': '0.1',
+          '--glow-color': 'var(--color-iris, #c4a7e7)',
+          '--glow-color-rgb': '196, 167, 231',
+          '--glow-spread': '8px',
+          '--glow-blur': '20px',
+          '--glow-intensity': '1.7',
+          boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
+                    0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
+                    inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
+          background: `radial-gradient(circle at 50% 50%, 
+            rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
+            radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
+            var(--color-card-bg)`
+        } as React.CSSProperties}
       >
         <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>Not currently playing</div>
       </div>
@@ -181,49 +244,30 @@ export default function NowPlaying() {
   return (
     <div 
       ref={containerRef}
-      className="w-[576px] mx-auto mt-6 rounded-lg flex items-center px-6 py-4 group transition-all duration-200 relative overflow-hidden"
-      style={containerStyles}
+      className="w-[90vw] sm:w-[80vw] md:w-[700px] lg:w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group p-3 sm:p-4 md:p-6"
+      style={{ 
+        backgroundColor: 'var(--color-card-bg)',
+        border: '1px solid var(--color-border)',
+        '--glow-opacity': '0.1',
+        '--glow-color': 'var(--color-iris, #c4a7e7)',
+        '--glow-color-rgb': '196, 167, 231',
+        '--glow-spread': '8px',
+        '--glow-blur': '20px',
+        '--glow-intensity': '1.7',
+        boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
+                  0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
+                  inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
+        background: `radial-gradient(circle at 50% 50%, 
+          rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
+          radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
+          var(--color-card-bg)`
+      } as React.CSSProperties}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleMouseLeave}
     >
-      <div className="flex items-start w-full gap-4">
-        <div className="flex-1 min-w-0 relative z-10">
-          {nowPlaying.url ? (
-            <a 
-              href={nowPlaying.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-base font-semibold block transition-colors"
-              style={{
-                color: 'var(--color-text)',
-                '--hover-color': 'var(--color-primary)',
-              } as React.CSSProperties}
-              onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-              onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text)'}
-            >
-              {nowPlaying.track}
-            </a>
-          ) : (
-            <div className="text-base font-semibold" style={{ color: 'var(--color-text)' }}>
-              {nowPlaying.track}
-            </div>
-          )}
-          <div 
-            className={`text-sm ${nowPlaying.artist === '$uicideboy$' ? 'text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : ''}`}
-            style={{ color: 'var(--color-text-muted)' }}
-          >
-            Artist: {nowPlaying.artist}
-          </div>
-          <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
-            Album: {nowPlaying.album}
-          </div>
-          <div className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
-            {nowPlaying.trackPlays && `Track Plays: ${nowPlaying.trackPlays}`}
-            {nowPlaying.trackPlays && nowPlaying.artistPlays && ' • '}
-            {nowPlaying.artistPlays && `Artist Plays: ${nowPlaying.artistPlays}`}
-          </div>
-        </div>
-        
+      <div className="flex items-center space-x-3 sm:space-x-4">
         <div className="shrink-0 relative z-10">
           {nowPlaying.coverArt && nowPlaying.url ? (
             <a 
@@ -235,18 +279,91 @@ export default function NowPlaying() {
               <img 
                 src={nowPlaying.coverArt} 
                 alt={`${nowPlaying.track} cover art`}
-                className="w-16 h-16 rounded object-cover shrink-0 border transition-transform group-hover:scale-105"
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded object-cover border transition-transform group-hover:scale-105"
                 style={{ borderColor: 'var(--color-border)' }}
+                width={64}
+                height={64}
+                loading="lazy"
               />
             </a>
           ) : nowPlaying.coverArt ? (
             <img 
               src={nowPlaying.coverArt} 
               alt={`${nowPlaying.track} cover art`}
-              className="w-16 h-16 rounded object-cover shrink-0 border transition-transform group-hover:scale-105"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded object-cover border transition-transform group-hover:scale-105"
               style={{ borderColor: 'var(--color-border)' }}
+              width={64}
+              height={64}
+              loading="lazy"
             />
           ) : null}
+        </div>
+
+        <div className="flex-1 min-w-0 overflow-hidden">
+          <div className="flex items-center space-x-2 mb-1.5 sm:mb-2">
+            <div className="text-xs font-medium px-1.5 py-0.5 rounded" style={{ 
+              backgroundColor: 'var(--color-primary-faded)', 
+              color: 'var(--color-primary)' 
+            }}>
+              {nowPlaying.isPlaying ? 'Now Playing' : 'Recent'}
+            </div>
+            
+            {(nowPlaying.trackPlays || nowPlaying.artistPlays) && (
+              <div className="immediateOverflow shrink-0 text-xs opacity-70 whitespace-nowrap overflow-hidden text-ellipsis" style={{ color: 'var(--color-text-muted)' }}>
+                {nowPlaying.trackPlays && <span className="whitespace-nowrap"><span className="font-bold">Plays:</span> {nowPlaying.trackPlays}</span>}
+                {nowPlaying.trackPlays && nowPlaying.artistPlays && <span className="mx-1">•</span>}
+                {nowPlaying.artistPlays && <span className="whitespace-nowrap"><span className="font-bold">Artist:</span> {nowPlaying.artistPlays}</span>}
+              </div>
+            )}
+          </div>
+          
+          {nowPlaying.url ? (
+            <a 
+              href={nowPlaying.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm sm:text-base font-semibold hover:text-primary transition-colors block truncate"
+              style={{
+                color: 'var(--color-text)',
+                '--hover-color': 'var(--color-primary)'
+              } as React.CSSProperties}
+              onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+              onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text)'}
+            >
+              {truncateText(nowPlaying.track, window.innerWidth < 640 ? 20 : 30)}
+            </a>
+          ) : (
+            <div className="text-sm sm:text-base font-semibold truncate" style={{ color: 'var(--color-text)' }}>
+              {truncateText(nowPlaying.track, window.innerWidth < 640 ? 20 : 30)}
+            </div>
+          )}
+          
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
+            <div 
+              className={`text-xs sm:text-sm truncate ${
+                nowPlaying.artist === topArtist 
+                  ? 'text-yellow-400 drop-shadow-[0_0_4px_rgba(250,204,21,0.5)] font-medium' 
+                  : ''
+              }`}
+              style={{ color: nowPlaying.artist === topArtist ? '' : 'var(--color-text-muted)' }}
+              title={nowPlaying.artist}
+            >
+              {truncateText(nowPlaying.artist, window.innerWidth < 640 ? 15 : 25)}
+            </div>
+            
+            {nowPlaying.album && (
+              <>
+                <span className="text-xs opacity-50 hidden sm:inline">•</span>
+                <div 
+                  className="text-xs sm:text-sm truncate hidden sm:block" 
+                  style={{ color: 'var(--color-text-muted)', opacity: 0.8 }}
+                  title={nowPlaying.album}
+                >
+                  {truncateText(nowPlaying.album, window.innerWidth < 768 ? 15 : 25)}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

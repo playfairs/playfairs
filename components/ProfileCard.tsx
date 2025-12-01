@@ -77,10 +77,47 @@ export default function ProfileCard() {
 
   const orbPosition = mousePosition || { x: 0, y: 0 }
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !e.touches || e.touches.length === 0) return;
+    
+    const touch = e.touches[0];
+    if (!touch) return;
+    
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+    
+    if (
+      touch.clientX < rect.left || 
+      touch.clientX > rect.right || 
+      touch.clientY < rect.top || 
+      touch.clientY > rect.bottom
+    ) {
+      handleMouseLeave();
+      return;
+    }
+    
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const mouseX = touch.clientX - centerX;
+    const mouseY = touch.clientY - centerY;
+    
+    const rotateX = (mouseY / (rect.height / 2)) * 5;
+    const rotateY = (mouseX / (rect.width / 2)) * 5;
+    
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`);
+    
+    const glowX = ((touch.clientX - rect.left) / rect.width) * 100;
+    const glowY = ((touch.clientY - rect.top) / rect.height) * 100;
+    
+    setGlowPosition({ x: glowX, y: glowY });
+    setMousePosition({ x: touch.clientX - rect.left, y: touch.clientY - rect.top });
+  }
+
   return (
     <div 
       ref={cardRef}
-      className="w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group"
+      className="w-[90vw] sm:w-[80vw] md:w-[700px] lg:w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group"
       style={{ 
         transform,
         backgroundColor: 'var(--color-card-bg)',
@@ -97,10 +134,13 @@ export default function ProfileCard() {
         background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, 
           rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
           radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
-          var(--color-card-bg)`
+          var(--color-card-bg)`,
+        touchAction: 'pan-y'
       } as React.CSSProperties}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleMouseLeave}
     >
       {isMounted && (
         <div 
@@ -122,31 +162,41 @@ export default function ProfileCard() {
         />
       )}
 
-      <div className="p-8 relative z-10">
+      <div className="p-4 sm:p-6 md:p-8 relative z-10">
         <div className="flex flex-col items-center">
           <div 
             ref={avatarRef}
-            className="w-32 h-32 rounded-full mb-6 overflow-hidden relative z-10"
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full mb-4 sm:mb-5 md:mb-6 overflow-hidden relative z-10"
           >
             <img
               src="https://avatars.githubusercontent.com/playfairs"
               alt="playfairs avatar"
               className="w-full h-full object-cover"
+              width={128}
+              height={128}
+              loading="lazy"
             />
           </div>
           <a 
             href="https://github.com/playfairs" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-2xl font-serif mb-2 transition-colors"
-            style={{ color: 'var(--color-text)', '--hover-color': 'var(--color-primary)' } as React.CSSProperties}
+            className="text-xl sm:text-2xl font-serif mb-1 sm:mb-2 transition-colors text-center px-2 py-1 rounded-md hover:bg-opacity-10 active:bg-opacity-20"
+            style={{ color: 'var(--color-text)' }}
+            onTouchStart={(e) => {
+              const target = e.currentTarget;
+              target.style.color = 'var(--color-primary)';
+              setTimeout(() => {
+                target.style.color = 'var(--color-text)';
+              }, 300);
+            }}
             onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
             onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text)'}
           >
             @playfairs
           </a>
-          <div className="w-34 h-px mb-5" style={{ backgroundColor: 'var(--color-border)' }}></div>
-          <p className="text-center" style={{ color: 'var(--color-text-muted)' }}>
+          <div className="w-24 sm:w-32 h-px my-3 sm:my-4 md:my-5" style={{ backgroundColor: 'var(--color-border)' }}></div>
+          <p className="text-sm sm:text-base text-center px-2 sm:px-0" style={{ color: 'var(--color-text-muted)' }}>
             hi, I'm still working on this, please be patient or something, idk
           </p>
         </div>

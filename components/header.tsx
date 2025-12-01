@@ -105,12 +105,12 @@ export default function Header() {
                 </Link>
 
                 <div className="flex-1" />
-
-                <div className="absolute left-1/2 transform -translate-x-1/2">
+                
+                <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2">
                   <ThemeSelector />
                 </div>
-
-                <div className="hidden md:flex items-center">
+                
+                <div className="hidden lg:flex items-center ml-auto">
                   <div className="flex items-center space-x-6">
                     <NavLink href="/">Home</NavLink>
                     <NavLink href="/links">Links</NavLink>
@@ -120,8 +120,41 @@ export default function Header() {
                     <NavLink href="/git">Git</NavLink>
                   </div>
                 </div>
+                
+                <div className="lg:hidden flex items-center ml-auto">
+                  <ThemeSelector />
+                  <div className="ml-2">
+                    <button
+                      onClick={() => setOpen(!open)}
+                      className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
+                      aria-expanded="false"
+                    >
+                      <span className="sr-only">menu</span>
+                      <svg
+                        className={`${open ? 'hidden' : 'block'} h-6 w-6`}
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                      <svg
+                        className={`${open ? 'block' : 'hidden'} h-6 w-6`}
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
-                <div className="md:hidden">
+                <div className="hidden">
                   <button
                     onClick={() => setOpen(!open)}
                     className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
@@ -152,7 +185,7 @@ export default function Header() {
                 </div>
               </div>
 
-              <div className={`md:hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96' : 'max-h-0 overflow-hidden'}`}>
+              <div className={`lg:hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96' : 'max-h-0 overflow-hidden'}`}>
                 <div className="flex flex-col space-y-1 py-2">
                   <MobileNavLink href="/" onClick={() => setOpen(false)}>Home</MobileNavLink>
                   <MobileNavLink href="/interests" onClick={() => setOpen(false)}>Interests</MobileNavLink>
