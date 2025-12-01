@@ -49,11 +49,23 @@ function MobileNavLink({
   const isActive = location.pathname === href || 
                   (href !== "/" && location.pathname.startsWith(href));
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      onClick();
+    }
+    setTimeout(() => {
+      const menuButton = document.querySelector('[aria-expanded="true"]') as HTMLButtonElement;
+      if (menuButton) {
+        menuButton.click();
+      }
+    }, 100);
+  };
+
   return (
     <Link
       to={href}
-      onClick={onClick}
-      className="px-3 py-2 rounded-md transition-colors duration-200"
+      onClick={handleClick}
+      className="px-3 py-2 rounded-md transition-colors duration-200 block w-full text-left"
       style={{
         backgroundColor: isActive ? 'var(--color-primary-faded)' : 'transparent',
         color: isActive ? 'var(--color-primary)' : 'var(--color-text)',
@@ -89,25 +101,48 @@ export default function Header() {
       <div style={{ height: isScrolled ? '4rem' : '5rem' }} />
       <div className="absolute top-0 left-0 right-0">
         <div 
-          className={`w-full transition-all duration-300 border-b`}
+          className={`w-full transition-all duration-300`}
           style={{
             backgroundColor: isScrolled ? 'rgba(var(--color-bg-rgb), 0.95)' : 'rgba(var(--color-bg-rgb), 0.8)',
-            borderColor: 'var(--color-border)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
+            position: 'relative',
           }}
         >
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-px"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, var(--color-border) 15%, var(--color-border) 85%, transparent 100%)',
+              opacity: 0.7,
+            }}
+          />
           <div className="relative z-10">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center h-16 w-full">
-                <Link to="/" className="shrink-0">
+                <Link 
+                  to="/" 
+                  className="shrink-0"
+                  onClick={() => setOpen(false)}
+                >
                   <span className="text-xl font-bold" style={{ color: 'var(--color-text)' }}>playfairs.cc</span>
                 </Link>
 
                 <div className="flex-1" />
                 
-                <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2">
-                  <ThemeSelector />
+                <div 
+                  className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 ease-in-out ${
+                    open ? 'opacity-0' : 'opacity-100'
+                  }`}
+                  style={{
+                    willChange: 'opacity',
+                    transitionProperty: 'opacity',
+                    transitionTimingFunction: 'ease-in-out',
+                    transitionDuration: '300ms'
+                  }}
+                >
+                  <div className="transform transition-transform duration-300 hover:scale-105">
+                    <ThemeSelector />
+                  </div>
                 </div>
                 
                 <div className="hidden lg:flex items-center ml-auto">
@@ -122,43 +157,12 @@ export default function Header() {
                 </div>
                 
                 <div className="lg:hidden flex items-center ml-auto">
-                  <ThemeSelector />
-                  <div className="ml-2">
-                    <button
-                      onClick={() => setOpen(!open)}
-                      className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
-                      aria-expanded="false"
-                    >
-                      <span className="sr-only">menu</span>
-                      <svg
-                        className={`${open ? 'hidden' : 'block'} h-6 w-6`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
-                      <svg
-                        className={`${open ? 'block' : 'hidden'} h-6 w-6`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="hidden">
+                  <div className="flex-1 lg:hidden" />
                   <button
                     onClick={() => setOpen(!open)}
                     className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
-                    aria-expanded="false"
+                    aria-expanded={open}
+                    aria-label="Toggle navigation menu"
                   >
                     <span className="sr-only">menu</span>
                     <svg
@@ -182,11 +186,19 @@ export default function Header() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
+                  <div className="flex-1 lg:hidden" />
                 </div>
               </div>
 
               <div className={`lg:hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96' : 'max-h-0 overflow-hidden'}`}>
                 <div className="flex flex-col space-y-1 py-2">
+                  <div className="pl-2 pr-3 py-2 mb-2 -ml-1">
+                    <div className="text-xs font-medium text-gray-400 mb-1 px-1">THEME</div>
+                    <div>
+                      <ThemeSelector />
+                    </div>
+                  </div>
+                  <div className="border-t border-gray-700/30 mt-2 pt-2" />
                   <MobileNavLink href="/" onClick={() => setOpen(false)}>Home</MobileNavLink>
                   <MobileNavLink href="/interests" onClick={() => setOpen(false)}>Interests</MobileNavLink>
                   <MobileNavLink href="/workspace" onClick={() => setOpen(false)}>Workspace</MobileNavLink>

@@ -63,7 +63,7 @@ export default function ThemeSelector() {
   }, [isOpen]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative w-full" ref={dropdownRef}>
       <button
         onClick={(e) => {
           e.stopPropagation();
@@ -102,13 +102,14 @@ export default function ThemeSelector() {
       {isOpen && (
         <>
           <div 
-            className="fixed inset-0 z-40 bg-black/10 backdrop-blur-[1px] transition-opacity duration-300" 
+            className="fixed inset-0 z-60 bg-black/10 backdrop-blur-[1px] transition-opacity duration-300" 
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
           />
           <div 
-            className="absolute left-1/2 -translate-x-1/2 z-50 mt-2 w-56 origin-top overflow-hidden rounded-xl bg-gray-900/95 backdrop-blur-xl shadow-2xl border border-gray-800/70 transform transition-all duration-200 scale-95 opacity-0 animate-[fadeIn_0.15s_ease-out_0.1s_forwards]"
-            style={{
+            className={`absolute left-0 z-70 mt-1 w-56 origin-top-left rounded-lg bg-gray-900/95 shadow-lg ring-1 ring-black/5 backdrop-blur-md focus:outline-none transition-all duration-200 transform ${
+            isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+          } lg:left-auto lg:right-0`}  style={{
               boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
             }}
           >
