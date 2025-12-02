@@ -32,6 +32,7 @@ interface InterestItem {
   metacritic_score?: number;
   playtime?: string;
   icon?: string;
+  artistPlays?: string;
 }
 
 const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'music' | 'shows' }) => {
@@ -92,9 +93,33 @@ const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'mus
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between">
+              <div className="min-w-0">
               <h3 className="font-medium text-lg truncate pr-2" style={{ color: 'var(--color-text)' }}>
                 {item.name}
               </h3>
+              {item.category && type === 'music' ? (
+              <div className="flex flex-wrap gap-1.5 mt-1">
+                {item.category.split(',').map((genre, i) => (
+                  <span 
+                    key={i} 
+                    className="px-2 py-0.5 text-xs rounded whitespace-nowrap"
+                    style={{
+                      '--bg-color': 'var(--color-primary-faded)',
+                      '--text-color': 'var(--color-primary)',
+                      backgroundColor: 'var(--bg-color)',
+                      color: 'var(--text-color)'
+                    } as React.CSSProperties}
+                  >
+                    {genre.trim()}
+                  </span>
+                ))}
+              </div>
+            ) : item.category && (
+              <p className="text-xs mt-0.5 text-ellipsis overflow-hidden whitespace-nowrap" style={{ color: 'var(--color-text-muted)' }}>
+                {item.category}
+              </p>
+            )}
+            </div>
               <div className="flex items-center space-x-2 shrink-0">
                 {item.url && (
                   <a 
@@ -137,9 +162,13 @@ const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'mus
               </div>
             </div>
             
-            <p className="text-sm mt-1" style={{ color: 'var(--color-text-muted)' }}>
-              {item.creator} • {item.year} • {item.platform}
-            </p>
+            {(item.creator || item.year || item.platform) && (
+              <p className="text-sm mt-1" style={{ color: 'var(--color-text-muted)' }}>
+                {item.creator && <>{item.creator} • </>}
+                {item.year && <>{item.year} • </>}
+                {item.platform}
+              </p>
+            )}
             
             {item.tags && item.tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mt-2">
@@ -168,20 +197,23 @@ const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'mus
         style={{ borderTop: isExpanded ? '1px solid var(--color-border)' : 'none' }}
       >
         <div className="p-4 pt-2 space-y-4">
-          {item.description && (
-            <div>
-              <h4 className="text-sm font-medium mb-1" style={{ color: 'var(--color-text)' }}>Description</h4>
-              <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>{item.description}</p>
-            </div>
-          )}
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <h4 className="text-sm font-medium mb-1" style={{ color: 'var(--color-text)' }}>Details</h4>
-              <div className="space-y-1">
+          <div className="space-y-4">
+            <div className="space-y-4">
+              {item.description && (
+                <div>
+                  <h4 className="text-sm font-medium mb-1" style={{ color: 'var(--color-text)' }}>About</h4>
+                  <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>{item.description}</p>
+                </div>
+              )}
+              {item.artistPlays && (
                 <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
-                  <span className="font-medium">Category:</span> {item.category}
+                  <span className="font-medium" style={{ color: 'var(--color-text)' }}>Artist Plays: </span>
+                  {item.artistPlays}
                 </p>
+              )}
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
                 {isShowItem(item) ? (
                   <>
                     <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
@@ -250,24 +282,79 @@ const InterestCard = ({ item, type }: { item: InterestItem; type: 'games' | 'mus
   );
 };
 
+const artistCache = new Map<string, { data: InterestItem[]; timestamp: number }>();
+const CACHE_DURATION = 2 * 60 * 1000;
+
 export default function InterestsPage() {
   const [activeTab, setActiveTab] = useState<'games' | 'music' | 'shows'>('games');
   const [items, setItems] = useState<InterestItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState('Loading...');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState<'name' | 'year' | 'rating'>('name');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
+  interface ArtistInfo {
+    plays: string;
+  }
+
+  const fetchArtistPlays = async (artistName: string): Promise<ArtistInfo> => {
+    try {
+      const response = await fetch(
+        `https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=baa82ae8105472406a1f05deee9ec88a&artist=${encodeURIComponent(artistName)}&username=pdwk&format=json`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        const result: ArtistInfo = { plays: 'N/A' };
+        
+        if (data.artist?.stats?.userplaycount) {
+          result.plays = parseInt(data.artist.stats.userplaycount).toLocaleString();
+        } else if (data.artist?.stats?.playcount) {
+          result.plays = parseInt(data.artist.stats.playcount).toLocaleString();
+        }
+        
+        return result;
+      }
+    } catch (error) {
+      console.error('Error fetching artist info:', error);
+    }
+    return { plays: 'N/A' };
+  };
   const { theme } = useTheme();
 
   useEffect(() => {
-    const loadData = () => {
+    const loadData = async () => {
+      if (activeTab === 'music' && artistCache.has('music')) {
+        const cached = artistCache.get('music');
+        if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) {
+          setItems(cached.data);
+          setLoading(false);
+          return;
+        }
+      }
+
       setLoading(true);
+      setLoadingMessage(activeTab === 'music' ? 'Fetching Last.fm Stats...' : 'Loading...');
+      
       try {
         let data;
         if (activeTab === 'games') {
           data = require('./games.json');
         } else if (activeTab === 'music') {
           data = require('./music.json');
+          const artistsWithPlays = await Promise.all(data.map(async (artist: any) => {
+            const artistInfo = await fetchArtistPlays(artist.name);
+            return { 
+              ...artist, 
+              artistPlays: artistInfo.plays,
+              description: artist.description
+            };
+          }));
+          data = artistsWithPlays;
+          artistCache.set('music', {
+            data,
+            timestamp: Date.now()
+          });
         } else if (activeTab === 'shows') {
           data = require('./shows.json');
         }
@@ -410,16 +497,14 @@ export default function InterestsPage() {
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2" style={{ borderColor: 'var(--color-primary)' }}></div>
+          <div className="flex flex-col items-center justify-center p-8 space-y-4">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <p className="text-sm text-muted-foreground">
+              {activeTab === 'music' ? 'Fetching Last.fm Stats...' : 'Loading...'}
+            </p>
           </div>
         ) : filteredItems.length === 0 ? (
-          <div className="text-center py-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ backgroundColor: 'var(--color-primary-faded)' }}>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: 'var(--color-primary)' }}>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+          <div className="text-center py-12">
             <h3 className="text-xl font-semibold mb-1" style={{ color: 'var(--color-text)' }}>
               {searchTerm ? 'No matches found' : `No ${activeTab} added yet`}
             </h3>
