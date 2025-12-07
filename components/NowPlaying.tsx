@@ -189,180 +189,145 @@ export default function NowPlaying() {
 
   if (loading) {
     return (
-      <div 
-        className="w-[90vw] sm:w-[80vw] md:w-[700px] lg:w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group p-3 sm:p-4 md:p-6"
-        style={{ 
-          backgroundColor: 'var(--color-card-bg)',
-          border: '1px solid var(--color-border)',
-          '--glow-opacity': '0.1',
-          '--glow-color': 'var(--color-iris, #c4a7e7)',
-          '--glow-color-rgb': '196, 167, 231',
-          '--glow-spread': '8px',
-          '--glow-blur': '20px',
-          '--glow-intensity': '1.7',
-          boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
-                    0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
-                    inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
-          background: `radial-gradient(circle at 50% 50%, 
-            rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
-            radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
-            var(--color-card-bg)`
-        } as React.CSSProperties}
-      >
-        <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>Loading...</div>
+      <div className="relative group w-full max-w-2xl mx-auto">
+        <div 
+          className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 to-pink-600 opacity-75 group-hover:opacity-100 blur transition-all duration-200"
+        />
+        <div 
+          className="relative w-full rounded-lg transition-all duration-200 ease-out p-4"
+          style={{ 
+            backgroundColor: 'var(--color-card-bg)',
+            border: '1px solid var(--color-border)'
+          }}
+        >
+          <div className="text-sm text-gray-400">Loading...</div>
+        </div>
       </div>
     )
   }
 
   if (!nowPlaying || !nowPlaying.isPlaying) {
     return (
-      <div 
-        className="w-[90vw] sm:w-[80vw] md:w-[700px] lg:w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group p-3 sm:p-4 md:p-6"
-        style={{ 
-          backgroundColor: 'var(--color-card-bg)',
-          border: '1px solid var(--color-border)',
-          '--glow-opacity': '0.1',
-          '--glow-color': 'var(--color-iris, #c4a7e7)',
-          '--glow-color-rgb': '196, 167, 231',
-          '--glow-spread': '8px',
-          '--glow-blur': '20px',
-          '--glow-intensity': '1.7',
-          boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
-                    0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
-                    inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
-          background: `radial-gradient(circle at 50% 50%, 
-            rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
-            radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
-            var(--color-card-bg)`
-        } as React.CSSProperties}
-      >
-        <div className="text-sm" style={{ color: 'var(--color-text-muted)' }}>Not currently playing</div>
+      <div className="relative group w-full max-w-2xl mx-auto">
+        <div 
+          className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 to-pink-600 opacity-75 group-hover:opacity-100 blur transition-all duration-200"
+        />
+        <div 
+          className="relative w-full rounded-lg transition-all duration-200 ease-out p-4"
+          style={{ 
+            backgroundColor: 'var(--color-card-bg)',
+            border: '1px solid var(--color-border)'
+          }}
+        >
+          <div className="text-sm text-gray-400">Not currently playing</div>
+        </div>
       </div>
     )
   }
 
   return (
-    <div 
-      ref={containerRef}
-      className="w-[90vw] sm:w-[80vw] md:w-[700px] lg:w-[576px] mx-auto rounded-xl overflow-hidden transition-all duration-200 ease-out relative group p-3 sm:p-4 md:p-6"
-      style={{ 
-        backgroundColor: 'var(--color-card-bg)',
-        border: '1px solid var(--color-border)',
-        '--glow-opacity': '0.1',
-        '--glow-color': 'var(--color-iris, #c4a7e7)',
-        '--glow-color-rgb': '196, 167, 231',
-        '--glow-spread': '8px',
-        '--glow-blur': '20px',
-        '--glow-intensity': '1.7',
-        boxShadow: `0 0 var(--glow-blur) calc(var(--glow-spread) / 2) rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-intensity))),
-                  0 0 calc(var(--glow-blur) * 1.5) var(--glow-spread) rgba(var(--glow-color-rgb), calc(0.2 * var(--glow-intensity))),
-                  inset 0 0 15px rgba(var(--glow-color-rgb), 0.1)`,
-        background: `radial-gradient(circle at 50% 50%, 
-          rgba(var(--glow-color-rgb), calc(0.3 * var(--glow-opacity))) 0%, transparent 60%), 
-          radial-gradient(circle at 50% 25%, rgba(var(--glow-color-rgb), 0.15) 0%, transparent 40%), 
-          var(--color-card-bg)`
-      } as React.CSSProperties}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleMouseLeave}
-    >
-      <div className="flex items-center space-x-3 sm:space-x-4">
-        <div className="shrink-0 relative z-10">
-          {nowPlaying.coverArt && nowPlaying.url ? (
-            <a 
-              href={nowPlaying.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block hover:opacity-80 transition-opacity"
-            >
+    <div className="relative group w-full max-w-2xl mx-auto">
+      <div 
+        className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 via-pink-500 to-purple-600 bg-size-[200%_200%] opacity-75 group-hover:opacity-100 blur transition-all duration-200 group-hover:animate-gradient-rotate"
+        style={{
+          backgroundPosition: '0% 50%',
+          animation: 'gradient-rotate 6s linear infinite',
+          animationPlayState: 'paused'
+        }}
+      />
+      <div 
+        ref={containerRef}
+        className="relative w-full rounded-lg transition-all duration-200 ease-out p-4 text-left"
+        style={{ 
+          backgroundColor: 'var(--color-card-bg)',
+          border: '1px solid var(--color-border)',
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleMouseLeave}
+      >
+        <div className="flex items-center space-x-4 w-full">
+          <div className="shrink-0 relative z-10">
+            {nowPlaying.coverArt ? (
+              <a 
+                href={nowPlaying.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block hover:opacity-90 transition-opacity"
+              >
               <img 
                 src={nowPlaying.coverArt} 
                 alt={`${nowPlaying.track} cover art`}
-                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded object-cover border transition-transform group-hover:scale-105"
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-md object-cover border transition-transform group-hover:scale-102"
                 style={{ borderColor: 'var(--color-border)' }}
                 width={64}
                 height={64}
                 loading="lazy"
               />
             </a>
-          ) : nowPlaying.coverArt ? (
-            <img 
-              src={nowPlaying.coverArt} 
-              alt={`${nowPlaying.track} cover art`}
-              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded object-cover border transition-transform group-hover:scale-105"
-              style={{ borderColor: 'var(--color-border)' }}
-              width={64}
-              height={64}
-              loading="lazy"
-            />
-          ) : null}
+          ) : (
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-md border flex items-center justify-center" 
+                 style={{ borderColor: 'var(--color-border)', backgroundColor: 'rgba(0,0,0,0.05)' }}>
+              <span className="text-xs text-gray-400">No Art</span>
+            </div>
+          )}
         </div>
 
         <div className="flex-1 min-w-0 overflow-hidden">
-          <div className="flex items-center space-x-2 mb-1.5 sm:mb-2">
-            <div className="text-xs font-medium px-1.5 py-0.5 rounded" style={{ 
-              backgroundColor: 'var(--color-primary-faded)', 
-              color: 'var(--color-primary)' 
-            }}>
+          <div className="flex items-center flex-wrap gap-2 mb-1">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full" 
+                  style={{ 
+                    backgroundColor: 'var(--color-primary-faded)', 
+                    color: 'var(--color-primary)' 
+                  }}>
               {nowPlaying.isPlaying ? 'Now Playing' : 'Recent'}
-            </div>
+            </span>
             
             {(nowPlaying.trackPlays || nowPlaying.artistPlays) && (
-              <div className="immediateOverflow shrink-0 text-xs opacity-70 whitespace-nowrap overflow-hidden text-ellipsis" style={{ color: 'var(--color-text-muted)' }}>
-                {nowPlaying.trackPlays && <span className="whitespace-nowrap"><span className="font-bold">Plays:</span> {nowPlaying.trackPlays}</span>}
-                {nowPlaying.trackPlays && nowPlaying.artistPlays && <span className="mx-1">•</span>}
-                {nowPlaying.artistPlays && <span className="whitespace-nowrap"><span className="font-bold">Artist:</span> {nowPlaying.artistPlays}</span>}
+              <div className="text-xs text-gray-400 flex items-center gap-1">
+                {nowPlaying.trackPlays && (
+                  <span className="whitespace-nowrap">
+                    <span className="font-medium">{nowPlaying.trackPlays}</span> plays
+                  </span>
+                )}
+                {nowPlaying.trackPlays && nowPlaying.artistPlays && (
+                  <span className="opacity-50">•</span>
+                )}
+                {nowPlaying.artistPlays && (
+                  <span className="whitespace-nowrap">
+                    <span className="font-medium">{nowPlaying.artistPlays}</span> artist plays
+                  </span>
+                )}
               </div>
             )}
           </div>
           
-          {nowPlaying.url ? (
-            <a 
-              href={nowPlaying.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm sm:text-base font-semibold hover:text-primary transition-colors block truncate"
-              style={{
-                color: 'var(--color-text)',
-                '--hover-color': 'var(--color-primary)'
-              } as React.CSSProperties}
-              onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-              onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-text)'}
-            >
-              {truncateText(nowPlaying.track, window.innerWidth < 640 ? 20 : 30)}
-            </a>
-          ) : (
-            <div className="text-sm sm:text-base font-semibold truncate" style={{ color: 'var(--color-text)' }}>
-              {truncateText(nowPlaying.track, window.innerWidth < 640 ? 20 : 30)}
-            </div>
-          )}
+          <h3 
+            className="text-sm sm:text-base font-medium leading-tight truncate" 
+            style={{ color: 'var(--color-text)' }}
+            title={nowPlaying.track}
+          >
+            {nowPlaying.track}
+          </h3>
           
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
-            <div 
-              className={`text-xs sm:text-sm truncate ${
-                nowPlaying.artist === topArtist 
-                  ? 'text-yellow-400 drop-shadow-[0_0_4px_rgba(250,204,21,0.5)] font-medium' 
-                  : ''
-              }`}
-              style={{ color: nowPlaying.artist === topArtist ? '' : 'var(--color-text-muted)' }}
+          <div className="flex flex-wrap items-center gap-x-2 text-sm text-gray-400">
+            <span 
+              className={nowPlaying.artist === topArtist ? 'text-yellow-400 font-medium' : ''}
               title={nowPlaying.artist}
             >
-              {truncateText(nowPlaying.artist, window.innerWidth < 640 ? 15 : 25)}
-            </div>
+              {nowPlaying.artist}
+            </span>
             
-            {nowPlaying.album && (
-              <>
-                <span className="text-xs opacity-50 hidden sm:inline">•</span>
-                <div 
-                  className="text-xs sm:text-sm truncate hidden sm:block" 
-                  style={{ color: 'var(--color-text-muted)', opacity: 0.8 }}
-                  title={nowPlaying.album}
-                >
-                  {truncateText(nowPlaying.album, window.innerWidth < 768 ? 15 : 25)}
-                </div>
-              </>
-            )}
+              {nowPlaying.album && (
+                <>
+                  <span className="opacity-50 hidden sm:inline">•</span>
+                  <span className="truncate hidden sm:inline" title={nowPlaying.album}>
+                    {nowPlaying.album}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
