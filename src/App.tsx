@@ -191,7 +191,7 @@ export function App() {
                               </a>
                             </h1>
                             <p className="text-gray-400">
-                              Software + Web Developer & Distro Hopper (lol)
+                              can this world please explode.
                             </p>
                           </div>
                           
