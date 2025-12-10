@@ -10,6 +10,7 @@ import GitPage from "./pages/git/page";
 import LinksPage from "./pages/links/page";
 import WorkspacePage from "./pages/workspace/page";
 import InterestsPage from "./pages/interests/page";
+import ThemesPage from "./pages/themes/page";
 import { ThemeProvider } from './contexts/ThemeContext';
 import "./index.css";
 import cursorImage from "./cursor.png";
@@ -191,7 +192,7 @@ export function App() {
                               </a>
                             </h1>
                             <p className="text-gray-400">
-                              can this world please explode.
+                              meow
                             </p>
                           </div>
                           
@@ -310,7 +311,7 @@ export function App() {
                               style={{ 
                                 backgroundColor: 'var(--color-card-bg)',
                                 border: '1px solid var(--color-border)',
-                                color: '#ffffff',
+                                color: 'var(--color-text)',
                                 boxShadow: 'none',
                                 transition: 'all 0.3s ease, box-shadow 0.3s ease, color 0.3s ease',
                                 fontWeight: 500
@@ -383,6 +384,11 @@ export function App() {
                 <Route path="/interests" element={
                   <main className="flex-1 pt-4 md:pt-8 bg-inherit">
                     <InterestsPage />
+                  </main>
+                } />
+                <Route path="/themes" element={
+                  <main className="flex-1 flex flex-col justify-start pt-1 md:pt-1 bg-inherit">
+                    <ThemesPage />
                   </main>
                 } />
               </Routes>
