@@ -118,33 +118,17 @@ export default function Header() {
           />
           <div className="relative z-10">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center h-16 w-full">
-                <Link 
-                  to="/" 
-                  className="shrink-0"
-                  onClick={() => setOpen(false)}
-                >
-                  <span className="text-xl font-bold" style={{ color: 'var(--color-text)' }}>playfairs.cc</span>
-                </Link>
-
-                <div className="flex-1" />
-                
-                <div 
-                  className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 ease-in-out ${
-                    open ? 'opacity-0' : 'opacity-100'
-                  }`}
-                  style={{
-                    willChange: 'opacity',
-                    transitionProperty: 'opacity',
-                    transitionTimingFunction: 'ease-in-out',
-                    transitionDuration: '300ms'
-                  }}
-                >
-                  <div className="transform transition-transform duration-300 hover:scale-105">
-                    <ThemeSelector />
-                  </div>
+              <div className="flex items-center justify-between h-16 w-full">
+                <div className="flex items-center">
+                  <Link 
+                    to="/" 
+                    className="shrink-0"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span className="text-xl font-bold" style={{ color: 'var(--color-text)' }}>playfairs.cc</span>
+                  </Link>
                 </div>
-                
+
                 <div className="hidden lg:flex items-center ml-auto">
                   <div className="flex items-center space-x-6">
                     <NavLink href="/">Home</NavLink>
@@ -192,13 +176,6 @@ export default function Header() {
 
               <div className={`lg:hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96' : 'max-h-0 overflow-hidden'}`}>
                 <div className="flex flex-col space-y-1 py-2">
-                  <div className="pl-2 pr-3 py-2 mb-2 -ml-1">
-                    <div className="text-xs font-medium text-gray-400 mb-1 px-1">THEME</div>
-                    <div>
-                      <ThemeSelector />
-                    </div>
-                  </div>
-                  <div className="border-t border-gray-700/30 mt-2 pt-2" />
                   <MobileNavLink href="/" onClick={() => setOpen(false)}>Home</MobileNavLink>
                   <MobileNavLink href="/interests" onClick={() => setOpen(false)}>Interests</MobileNavLink>
                   <MobileNavLink href="/workspace" onClick={() => setOpen(false)}>Workspace</MobileNavLink>
