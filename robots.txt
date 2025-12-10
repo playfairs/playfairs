@@ -1,0 +1,46 @@
+User-agent: *
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: 008
+User-agent: AhrefsBot
+User-agent: bingbot
+User-agent: DataForSeoBot
+User-agent: DotBot
+User-agent: MJ12bot
+User-agent: SemrushBot
+User-agent: YandexBot
+Disallow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+Disallow: /*?
+Disallow: /*.php$
+Disallow: /*.js$
+Disallow: /*.swf$
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /assets/
+Disallow: /cgi-bin/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /private/
+Disallow: /src/
+Disallow: /vendor/
+
+Sitemap: https://playfairs.cc/sitemap.xml
+
+Crawl-delay: 10
