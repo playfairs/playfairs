@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
-type Theme = 'default' | 'dark' | 'light' | 'catppuccin-latte' | 'catppuccin-frappe' | 'catppuccin-macchiato' | 'rose-pine' | 'rose-pine-moon' | 'rose-pine-dawn';
+type Theme = 'default' | 'dark' | 'light' | 'catppuccin-latte' | 'catppuccin-frappe' | 'catppuccin-macchiato' | 'rose-pine' | 'rose-pine-moon' | 'rose-pine-dawn' | 'frutiger-aero';
 
 type ThemeContextType = {
   theme: Theme;
@@ -11,7 +11,7 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('rose-pine-moon');
+  const [theme, setTheme] = useState<Theme>('frutiger-aero');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
@@ -30,7 +30,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       'theme-catppuccin-macchiato',
       'theme-rose-pine',
       'theme-rose-pine-moon',
-      'theme-rose-pine-dawn'
+      'theme-rose-pine-dawn',
+      'theme-frutiger-aero'
     );
     document.documentElement.classList.add(`theme-${theme}`);
     localStorage.setItem('theme', theme);

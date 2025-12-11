@@ -12,6 +12,7 @@ import WorkspacePage from "./pages/workspace/page";
 import InterestsPage from "./pages/interests/page";
 import ThemesPage from "./pages/themes/page";
 import { ThemeProvider } from './contexts/ThemeContext';
+import AeroHeader from '../components/AeroHeader';
 import "./index.css";
 import cursorImage from "./cursor.png";
 
@@ -30,32 +31,58 @@ const Section = ({ title, children, id }: { title: string; children: React.React
 
 const ProjectCard = ({ title, description, tags, href }: { title: string; description: string; tags: string[]; href: string }) => (
   <motion.div 
-    whileHover={{ y: -5 }}
-    className="rounded-xl p-6 transition-all duration-300"
-    style={{ backgroundColor: 'var(--color-card-bg)', border: '1px solid var(--color-border)' }}
+    whileHover={{ y: -5, scale: 1.02 }}
+    className="glass-card p-6 transition-all duration-300 relative overflow-hidden group"
+    style={{ 
+      backdropFilter: 'blur(15px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(15px) saturate(180%)',
+      border: '1px solid rgba(255, 255, 255, 0.5)',
+      borderRadius: '16px',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 0 20px rgba(0, 153, 255, 0.1)'
+    }}
   >
-    <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p className="text-sm mb-4" style={{ color: 'var(--color-text-muted)' }}>{description}</p>
-    <div className="flex flex-wrap gap-2 mb-4">
-      {tags.map((tag) => (
-        <span 
-          key={tag} 
-          className="text-xs px-2 py-1 rounded-full"
-          style={{ backgroundColor: 'var(--color-primary-soft)', color: 'var(--color-primary)' }}
-        >
-          {tag}
+    <div className="relative z-10">
+      <h3 className="text-xl font-semibold mb-2 text-[#003366] flex items-center">
+        {title}
+        <span className="ml-2 text-sm px-2 py-0.5 rounded-full bg-blue-100 text-blue-600">
+          New
         </span>
-      ))}
+      </h3>
+      <p className="text-sm mb-4 text-[#4a6b8a]">{description}</p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {tags.map((tag) => (
+          <span 
+            key={tag} 
+            className="text-xs px-3 py-1 rounded-full font-medium"
+            style={{ 
+              background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(230,240,255,0.9))',
+              color: '#0066cc',
+              border: '1px solid rgba(255, 255, 255, 0.8)',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+      <div className="mt-4 pt-4 border-t border-white/20">
+        <a 
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-all duration-200"
+          style={{
+            background: 'linear-gradient(to bottom, #ffffff, #e6f2ff)',
+            color: '#0066cc',
+            border: '1px solid rgba(255, 255, 255, 0.8)',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8)'
+          }}
+        >
+          View Project <FiArrowRight className="ml-1.5 transition-transform group-hover:translate-x-1" />
+        </a>
+      </div>
     </div>
-    <a 
-      href={href} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="inline-flex items-center text-sm font-medium"
-      style={{ color: 'var(--color-primary)' }}
-    >
-      View Project <FiArrowRight className="ml-1" />
-    </a>
+    <div className="absolute inset-0 bg-linear-to-br from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   </motion.div>
 );
 
@@ -157,7 +184,8 @@ export function App() {
           </audio>
           <Router>
             <Header />
-              <Routes>
+            <AeroHeader />
+            <Routes>
                 <Route path="/" element={
                   <main className="flex-1 flex flex-col justify-start pt-1 md:pt-1 bg-inherit">
                     <section className="relative py-12 md:py-16 overflow-hidden">

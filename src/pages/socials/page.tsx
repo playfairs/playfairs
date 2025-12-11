@@ -184,25 +184,46 @@ export default function SocialsPage() {
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 space-y-4 sm:space-y-0">
         <h1 className="text-3xl font-bold" style={{ color: 'var(--color-text)' } as CSSProperties}>Socials</h1>
-        <div className="flex space-x-2 w-full sm:w-auto">
+        <div className="relative flex items-center w-full sm:w-auto" style={{ height: '40px' }}>
           <button
             onClick={toggleAll}
-            className="w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-md transition-colors border hover:bg-opacity-90"
+            className="px-4 py-2 text-sm font-medium transition-colors border hover:bg-opacity-90 flex items-center justify-center"
             style={{
               backgroundColor: 'var(--color-secondary)',
               color: 'var(--color-text)',
-              borderColor: 'var(--color-border)',
+              border: '1px solid var(--color-primary)',
+              borderBottom: '1px solid transparent',
+              borderRadius: '5px 5px 0 0',
+              height: 'calc(100% + 1px)',
+              minHeight: '40px',
+              position: 'relative',
+              zIndex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '-1px',
+              padding: '0.5rem 1rem',
+              transform: 'translateY(1px)'
             } as CSSProperties}
             onMouseEnter={(e) => {
-              e.currentTarget.style.setProperty('background-color', 'var(--color-secondary-hover)');
+              e.currentTarget.style.opacity = '0.9';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.setProperty('background-color', 'var(--color-secondary)');
+              e.currentTarget.style.opacity = '1';
             }}
           >
-            {allExpanded ? 'Collapse All' : 'Expand All'}
+            <span className="mr-2">{allExpanded ? 'Collapse All' : 'Expand All'}</span>
+            <svg
+              className={`w-4 h-4 transition-transform ${allExpanded ? 'rotate-180' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              style={{ color: 'var(--color-text-muted)' } as CSSProperties}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
         </div>
       </div>

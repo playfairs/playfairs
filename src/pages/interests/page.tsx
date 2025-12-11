@@ -414,7 +414,7 @@ export default function InterestsPage() {
           {(['games', 'music', 'shows'] as const).map((tab) => (
             <button
               key={tab}
-              className={`px-4 py-2 text-sm font-medium transition-colors border hover:bg-opacity-90 ${activeTab === tab ? '' : 'opacity-70'}`}
+              className={`px-4 text-sm font-medium transition-colors border hover:bg-opacity-90 flex items-center justify-center ${activeTab === tab ? '' : 'opacity-70'}`}
               style={{
                 backgroundColor: activeTab === tab ? 'var(--color-secondary)' : 'transparent',
                 color: 'var(--color-text)',
@@ -425,7 +425,10 @@ export default function InterestsPage() {
                 position: 'relative',
                 top: '1px',
                 zIndex: activeTab === tab ? 2 : 1,
-                marginRight: '0.5rem'
+                marginRight: '0.5rem',
+                height: '40px',
+                paddingTop: '2px',
+                lineHeight: '1.2'
               } as React.CSSProperties}
               onClick={() => setActiveTab(tab)}
               onMouseEnter={(e) => {

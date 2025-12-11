@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTheme } from '../src/contexts/ThemeContext'
 
 interface NowPlayingData {
   track: string
@@ -17,6 +18,8 @@ export default function NowPlaying() {
   const [loading, setLoading] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
   const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 })
+  const { theme } = useTheme()
+  const isFrutigerAero = theme === 'frutiger-aero'
 
   const updateGlowEffect = (clientX: number, clientY: number) => {
     if (!containerRef.current) return
@@ -227,20 +230,32 @@ export default function NowPlaying() {
 
   return (
     <div className="relative group w-full max-w-2xl mx-auto">
-      <div 
-        className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 via-pink-500 to-purple-600 bg-size-[200%_200%] opacity-75 group-hover:opacity-100 blur transition-all duration-200 group-hover:animate-gradient-rotate"
-        style={{
-          backgroundPosition: '0% 50%',
-          animation: 'gradient-rotate 6s linear infinite',
-          animationPlayState: 'paused'
-        }}
-      />
+      {isFrutigerAero ? (
+        <div 
+          className="absolute inset-0 rounded-lg opacity-75 group-hover:opacity-100 transition-opacity duration-200"
+          style={{
+            background: 'linear-gradient(135deg, rgba(0, 120, 215, 0.4) 0%, rgba(0, 90, 180, 0.6) 100%)',
+            filter: 'blur(8px)'
+          }}
+        />
+      ) : (
+        <div 
+          className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 via-pink-500 to-purple-600 bg-size-[200%_200%] opacity-75 group-hover:opacity-100 blur transition-all duration-200 group-hover:animate-gradient-rotate"
+          style={{
+            backgroundPosition: '0% 50%',
+            animation: 'gradient-rotate 6s linear infinite',
+            animationPlayState: 'paused'
+          }}
+        />
+      )}
       <div 
         ref={containerRef}
-        className="relative w-full rounded-lg transition-all duration-200 ease-out p-4 text-left"
+        className={`relative w-full transition-all duration-200 ease-out p-4 text-left ${isFrutigerAero ? 'glass-card' : 'rounded-lg'}`}
         style={{ 
-          backgroundColor: 'var(--color-card-bg)',
-          border: '1px solid var(--color-border)',
+          backgroundColor: isFrutigerAero ? 'rgba(255, 255, 255, 0.6)' : 'var(--color-card-bg)',
+          border: isFrutigerAero ? '1px solid rgba(255, 255, 255, 0.7)' : '1px solid var(--color-border)',
+          backdropFilter: isFrutigerAero ? 'blur(8px)' : 'none',
+          WebkitBackdropFilter: isFrutigerAero ? 'blur(8px)' : 'none'
         }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -259,28 +274,37 @@ export default function NowPlaying() {
               <img 
                 src={nowPlaying.coverArt} 
                 alt={`${nowPlaying.track} cover art`}
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-md object-cover border transition-transform group-hover:scale-102"
-                style={{ borderColor: 'var(--color-border)' }}
+                className={`w-14 h-14 sm:w-16 sm:h-16 object-cover border transition-transform group-hover:scale-102 ${isFrutigerAero ? 'rounded-sm shadow-sm' : 'rounded-md'}`}
+                style={{ 
+                  borderColor: isFrutigerAero ? 'rgba(255, 255, 255, 0.5)' : 'var(--color-border)',
+                  backgroundColor: isFrutigerAero ? 'rgba(255, 255, 255, 0.3)' : 'transparent'
+                }}
                 width={64}
                 height={64}
                 loading="lazy"
               />
             </a>
           ) : (
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-md border flex items-center justify-center" 
-                 style={{ borderColor: 'var(--color-border)', backgroundColor: 'rgba(0,0,0,0.05)' }}>
-              <span className="text-xs text-gray-400">No Art</span>
+            <div className={`w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center ${isFrutigerAero ? 'bg-white/30 border border-white/40' : 'border rounded-md'}`} 
+                 style={{ 
+                   borderColor: isFrutigerAero ? 'rgba(255, 255, 255, 0.4)' : 'var(--color-border)',
+                   backgroundColor: isFrutigerAero ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0,0,0,0.05)'
+                 }}>
+              <span className="text-xs" style={{ color: isFrutigerAero ? '#4a6b8a' : 'var(--color-text-muted)' }}>No Art</span>
             </div>
           )}
         </div>
 
         <div className="flex-1 min-w-0 overflow-hidden">
           <div className="flex items-center flex-wrap gap-2 mb-1">
-            <span className="text-xs font-medium px-2 py-0.5 rounded-full" 
-                  style={{ 
-                    backgroundColor: 'var(--color-primary-faded)', 
-                    color: 'var(--color-primary)' 
-                  }}>
+            <span 
+              className={`text-xs font-medium px-2 py-0.5 rounded-full ${isFrutigerAero ? 'shadow-sm' : ''}`}
+              style={{ 
+                backgroundColor: isFrutigerAero ? 'rgba(0, 120, 215, 0.2)' : 'var(--color-primary-faded)',
+                color: 'var(--color-primary)',
+                border: isFrutigerAero ? '1px solid rgba(0, 120, 215, 0.4)' : 'none',
+                textShadow: isFrutigerAero ? '0 1px 1px rgba(255, 255, 255, 0.7)' : 'none'
+              }}>
               {nowPlaying.isPlaying ? 'Now Playing' : 'Recent'}
             </span>
             
@@ -311,7 +335,7 @@ export default function NowPlaying() {
             {nowPlaying.track}
           </h3>
           
-          <div className="flex flex-wrap items-center gap-x-2 text-sm text-gray-400">
+          <div className="flex flex-wrap items-center gap-x-2 text-sm" style={{ color: isFrutigerAero ? '#4a6b8a' : 'var(--color-text-muted)' }}>
             <span 
               className={nowPlaying.artist === topArtist ? 'text-yellow-400 font-medium' : ''}
               title={nowPlaying.artist}
@@ -321,8 +345,8 @@ export default function NowPlaying() {
             
               {nowPlaying.album && (
                 <>
-                  <span className="opacity-50 hidden sm:inline">•</span>
-                  <span className="truncate hidden sm:inline" title={nowPlaying.album}>
+                  <span className="hidden sm:inline" style={{ opacity: isFrutigerAero ? 0.7 : 0.5 }}>•</span>
+                  <span className="truncate hidden sm:inline" title={nowPlaying.album} style={{ opacity: isFrutigerAero ? 0.9 : 1 }}>
                     {nowPlaying.album}
                   </span>
                 </>

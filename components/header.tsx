@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ThemeSelector from "../src/components/ThemeSelector";
+import { useTheme } from '../src/contexts/ThemeContext';
 
 function NavLink({
   href,
@@ -86,6 +87,7 @@ function MobileNavLink({
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,6 +97,10 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  if (theme === 'frutiger-aero') {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 left-0 right-0 z-50">
