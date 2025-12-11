@@ -201,6 +201,43 @@
             "Configurable UI",
             "Pin screenshots to screen"
         ]
+    },
+    {
+        "name": "Yabai",
+        "category": "Tiling Window Manager",
+        "description": " A tiling window manager for macOS based on binary space partitioning.",
+        "url": "https://github.com/asmvik/yabai",
+        "developer": "asmvik",
+        "license": "MIT License",
+        "platforms": [
+            "macOS"
+        ],
+        "features": [
+            "Amazing Window Tiling.",
+            "User-Defined keybinds using skhd and other third-party software.",
+            "Full Configuration / Customization (May require disableing SIP)"
+        ]
+    },
+    {
+        "name": "FileZilla",
+        "category": "File Manager",
+        "description": "FileZilla is an open source software that supports FTP, FTPS and SFTP protocols.",
+        "url": "https://filezilla-project.org/",
+        "developer": "Tim Kosse",
+        "license": "GNU General Public License",
+        "platforms": [
+            "Linux",
+            "Windows",
+            "macOS"
+        ],
+        "features": [
+            "Supports FTP, FTP over SSL/TLS (FTPS) and SSH File Transfer Protocol (SFTP)",
+            "IPv6 support",
+            "Supports resume and transfer of large files >4GB",
+            "Tabbed user interface",
+            "Drag & drop support",
+            "HTTP/1.1, SOCKS5 and FTP-Proxy support",
+            "Remote file search"
+        ]
     }
-
 ]
