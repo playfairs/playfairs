@@ -267,7 +267,7 @@ export function App() {
                               </a>
                             </h1>
                             <p className="text-gray-400">
-                              rip your eyes out and go insane
+                              let your brain leak out of your ears, go insane
                             </p>
                           </div>
                           
