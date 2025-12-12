@@ -1,0 +1,81 @@
+@layer base {
+  .theme-frutiger-aero {
+    --color-bg: transparent;
+    --color-bg-rgb: 126, 196, 255;
+    --color-bg-hover: rgba(255, 255, 255, 0.7);
+    --color-text: #003366;
+    --gradient-1: #7ec4ff;
+    --gradient-2: #b3e0ff;
+    --gradient-3: #ffffff;
+    --color-text-muted: #4a6b8a;
+    --color-primary: #0078d7;
+    --color-primary-rgb: 0, 120, 215;
+    --color-primary-hover: #106ebe;
+    --color-primary-faded: rgba(0, 120, 215, 0.2);
+    --color-secondary: rgba(255, 255, 255, 0.6);
+    --color-secondary-hover: rgba(255, 255, 255, 0.9);
+    --color-accent: #ff6b6b;
+    --color-accent-rgb: 255, 107, 107;
+    --color-border: rgba(255, 255, 255, 0.5);
+    --color-border-muted: rgba(255, 255, 255, 0.2);
+    --color-card-bg: rgba(255, 255, 255, 0.5);
+    --color-card-hover: rgba(255, 255, 255, 0.7);
+    --color-glow-1: rgba(0, 120, 215, 0.4);
+    --color-glow-2: rgba(0, 120, 215, 0.2);
+    
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    font-family: 'Segoe UI', 'Tahoma', 'Verdana', sans-serif;
+    line-height: 1.6;
+    position: relative;
+  }
+  
+  .theme-frutiger-aero body {
+    background: url('https://frutiger-aero.org/mainbg-2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .theme-frutiger-aero::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, transparent 30%),
+      linear-gradient(to right, rgba(200, 230, 255, 0.3) 0%, transparent 30%, transparent 70%, rgba(200, 230, 255, 0.3) 100%),
+      radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(200, 230, 255, 0.6) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .theme-frutiger-aero .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 248, 255, 0.7) 50%, rgba(225, 240, 255, 0.6) 100%);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .theme-frutiger-aero .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  }
+}

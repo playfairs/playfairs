@@ -37,12 +37,18 @@ export default function ThemesPage() {
             {themeOptions.map((option) => (
               <button
                 key={option.value}
-                onClick={() => handleThemeChange(option.value)}
+                onClick={() => option.value !== 'rose-pine' && handleThemeChange(option.value)}
+                disabled={option.value === 'rose-pine'}
                 className={`flex items-center p-4 rounded-lg transition-all duration-200 border ${
                   theme === option.value
                     ? 'border-primary bg-primary/10 ring-2 ring-primary/20'
-                    : 'border-border hover:border-primary/50 bg-card-bg hover:bg-bg-alt/50'
+                    : option.value === 'rose-pine' 
+                      ? 'border-border/30 bg-card-bg/30 opacity-50'
+                      : 'border-border hover:border-primary/50 bg-card-bg hover:bg-bg-alt/50'
                 }`}
+                style={{
+                  cursor: option.value === 'rose-pine' ? 'not-allowed' : 'crosshair'
+                }}
               >
                 <div 
                   className="w-4 h-4 rounded-full mr-3 shrink-0"

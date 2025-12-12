@@ -131,7 +131,25 @@ export default function Header() {
                     className="shrink-0"
                     onClick={() => setOpen(false)}
                   >
-                    <span className="text-xl font-bold" style={{ color: 'var(--color-text)' }}>playfairs.cc</span>
+                    <span 
+                      className="text-xl font-bold" 
+                      style={{ 
+                        color: 'var(--color-text)',
+                        textDecoration: 'none',
+                        '--tw-text-opacity': '1',
+                        '--tw-border-opacity': '1',
+                        cursor: 'pointer',
+                        transition: 'color 0.2s ease-in-out'
+                      } as React.CSSProperties}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--color-primary)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--color-text)';
+                      }}
+                    >
+                      playfairs.cc
+                    </span>
                   </Link>
                 </div>
 

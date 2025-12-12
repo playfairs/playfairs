@@ -2,3 +2,25 @@
 [serve.static]
 plugins = ["bun-plugin-tailwind"]
 env = "BUN_PUBLIC_*"
+
+# Configure static file serving for development and production
+[dev]
+  publicDir = "public"
+  entrypoint = "src/frontend.tsx"
+  outdir = "dist"
+  
+  [dev.serve]
+  # Serve static files from these directories
+  static = ["public", "src/themes"]
+  # Allow serving files from node_modules (for CSS)
+  nodeModules = true
+
+[build]
+  outdir = "dist"
+  entrypoints = ["src/frontend.tsx"]
+  minify = true
+  target = "browser"
+  
+  # Copy static files to the output directory
+  [build.copy]
+  "src/themes" = "themes"

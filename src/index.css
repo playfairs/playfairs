@@ -376,7 +376,11 @@ html {
   }
 
   * {
-    cursor: inherit;
+    cursor: default;
+  }
+  
+  a, button, [role="button"], input, textarea, select, summary, label, [onclick] {
+    cursor: crosshair !important;
   }
 
   audio {
