@@ -3,7 +3,7 @@
     --color-bg: transparent;
     --color-bg-rgb: 126, 196, 255;
     --color-bg-hover: rgba(255, 255, 255, 0.7);
-    --color-text: #003366;
+    --color-text: #001a33;
     --gradient-1: #7ec4ff;
     --gradient-2: #b3e0ff;
     --gradient-3: #ffffff;
@@ -78,4 +78,149 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
   }
+  
+  .theme-frutiger-aero nav[role="navigation"],
+  .theme-frutiger-aero footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: url('https://frutiger-aero.org/taskbar.png') center center;
+    background-size: cover;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  
+  
+  .theme-frutiger-aero nav[role="navigation"] > div,
+  .theme-frutiger-aero footer > div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  .theme-frutiger-aero .nav-button,
+  .theme-frutiger-aero a[class*="nav"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    min-width: 100px;
+    height: 40px;
+    background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(245, 250, 255, 0.9) 50%, 
+      rgba(235, 245, 255, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05),
+      0 0 15px rgba(126, 196, 255, 0.3);
+    color: #003366;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .theme-frutiger-aero .nav-button::before,
+  .theme-frutiger-aero a[class*="nav"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: 8px 8px 0 0;
+    pointer-events: none;
+  }
+  
+  .theme-frutiger-aero .nav-button:hover,
+  .theme-frutiger-aero a[class*="nav"]:hover {
+    background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 1) 0%, 
+      rgba(250, 253, 255, 0.95) 50%, 
+      rgba(240, 248, 255, 0.9) 100%);
+    box-shadow: 
+      0 3px 10px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.08),
+      0 0 25px rgba(0, 120, 215, 0.5);
+    transform: translateY(-2px);
+    border-color: rgba(0, 120, 215, 0.4);
+  }
+  
+  .theme-frutiger-aero .nav-button:active,
+  .theme-frutiger-aero a[class*="nav"]:active {
+    background: linear-gradient(to bottom, 
+      rgba(230, 245, 255, 0.9) 0%, 
+      rgba(240, 250, 255, 0.85) 50%, 
+      rgba(255, 255, 255, 0.9) 100%);
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.15),
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      0 0 15px rgba(0, 120, 215, 0.4);
+    transform: translateY(0);
+  }
+  
+
+  .theme-frutiger-aero .nav-button.active,
+  .theme-frutiger-aero a[class*="nav"].active {
+    background: linear-gradient(to bottom, 
+      rgba(200, 230, 255, 0.95) 0%, 
+      rgba(220, 240, 255, 0.9) 50%, 
+      rgba(240, 250, 255, 0.85) 100%);
+    border-color: rgba(0, 120, 215, 0.6);
+    box-shadow: 
+      inset 0 1px 3px rgba(0, 120, 215, 0.3),
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      0 0 20px rgba(0, 120, 215, 0.4);
+    color: #0066cc;
+  }
+  
+  
+  .theme-frutiger-aero main,
+  .theme-frutiger-aero .main-content {
+    padding-bottom: 80px;
+  }
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
