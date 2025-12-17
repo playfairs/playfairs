@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { FiGithub, FiTwitter, FiLinkedin, FiMail, FiArrowRight, FiSun, FiMoon } from 'react-icons/fi';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { FiGithub, FiTwitter, FiLinkedin, FiMail, FiArrowRight, FiSun, FiMoon, FiSend } from 'react-icons/fi';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import ProfileCard from "../components/ProfileCard";
 import NowPlaying from "../components/NowPlaying";
 import Header from "../components/header";
@@ -159,6 +159,38 @@ export function App() {
   const { theme, setTheme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [discordData, setDiscordData] = useState<{
+    displayName: string | null;
+    username: string | null;
+  }>({ displayName: null, username: null });
+
+  useEffect(() => {
+    const fetchDiscordData = async () => {
+      try {
+        const response = await fetch('https://api.lanyard.rest/v1/users/1426711359059394662');
+        const data = await response.json();
+        if (data?.data?.discord_user) {
+          setDiscordData({
+            displayName: data.data.discord_user.display_name || data.data.discord_user.username,
+            username: data.data.discord_user.username
+          });
+        } else {
+          setDiscordData({
+            displayName: 'playfairs',
+            username: 'playfairs'
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching Discord data:', error);
+        setDiscordData({
+          displayName: 'playfairs',
+          username: 'playfairs'
+        });
+      }
+    };
+
+    fetchDiscordData();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
@@ -226,7 +258,13 @@ export function App() {
                   <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center space-y-8">
                       <div className="flex flex-col items-center space-y-4">
-                        <div className="relative group">
+                        <a 
+                          href="https://github.com/playfairs" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="relative group block"
+                          style={{ cursor: 'crosshair' }}
+                        >
                           <div className="absolute inset-0 rounded-full bg-linear-to-br from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           <div className="relative p-0.5 rounded-full bg-linear-to-br from-(--gradient-1) via-(--gradient-2) to-(--gradient-3) animate-gradient-xy">
                             <div className="relative p-0.5 rounded-full bg-linear-to-br from-white/10 to-white/5 backdrop-blur-sm">
@@ -241,31 +279,73 @@ export function App() {
                             </div>
                             <div className="absolute inset-0 rounded-full bg-linear-to-br from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           </div>
-                        </div>
+                        </a>
                       
                       <div className="space-y-4">
-                            <h1 className="text-2xl sm:text-3xl font-bold">
-                              <a 
-                                href="https://github.com/playfairs" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center transition-colors"
-                                style={{ 
-                                  color: 'var(--color-text)', 
-                                  textDecoration: 'none',
-                                  '--tw-text-opacity': '1',
-                                  '--tw-border-opacity': '1'
-                                } as React.CSSProperties}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.color = 'var(--color-primary)';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.color = 'var(--color-text)';
-                                }}
-                              >
-                                @playfairs
-                              </a>
-                            </h1>
+                            <div className="space-y-1">
+                              <AnimatePresence mode="wait">
+                                {discordData.displayName === null ? (
+                                  <motion.div 
+                                    key="loading"
+                                    className="space-y-2"
+                                    initial={{ opacity: 0.5, scale: 0.95 }}
+                                    animate={{ 
+                                      opacity: [0.5, 0.8, 0.5],
+                                      scale: [0.95, 1, 0.95],
+                                    }}
+                                    transition={{ 
+                                      duration: 1.5,
+                                      repeat: Infinity,
+                                      ease: "easeInOut"
+                                    }}
+                                  >
+                                    <div className="h-6 w-32 rounded-full bg-gray-400/30"></div>
+                                    <div className="h-4 w-24 rounded-full bg-gray-400/20"></div>
+                                  </motion.div>
+                                ) : (
+                                  <motion.div 
+                                    key="loaded"
+                                    className="space-y-0.5"
+                                    initial={{ opacity: 0, y: -5 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                  >
+                                    <motion.a
+                                      href="https://discord.com/users/1426711359059394662" 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="text-2xl sm:text-3xl font-bold text-primary hover:opacity-80 transition-opacity"
+                                      style={{ 
+                                        color: 'var(--color-primary)',
+                                        textDecoration: 'none',
+                                        display: 'block',
+                                        lineHeight: '1.2'
+                                      }}
+                                    >
+                                      {discordData.displayName}
+                                    </motion.a>
+                                    {discordData.username && (
+                                      <motion.a
+                                        href="https://discord.com/users/1426711359059394662"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-gray-400 hover:text-gray-300 transition-colors text-sm"
+                                        style={{
+                                          textDecoration: 'none',
+                                          display: 'block',
+                                          lineHeight: '1.2'
+                                        }}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 0.8 }}
+                                        transition={{ delay: 0.1, duration: 0.3 }}
+                                      >
+                                        @{discordData.username}
+                                      </motion.a>
+                                    )}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
                             <p className="text-gray-400">
                               rip your eyes out, go insane
                             </p>
@@ -283,6 +363,12 @@ export function App() {
                               href="mailto:root@playfairs.cc" 
                               label="Email" 
                               minimal 
+                            />
+                            <SocialLink 
+                              icon={FiSend} 
+                              href="https://t.me/sobbinf" 
+                              label="Telegram"
+                              minimal
                             />
                             <Link 
                               to="/themes"

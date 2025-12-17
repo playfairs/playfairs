@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import type { CSSProperties } from "react";
 import { ChevronDown, ExternalLink } from "lucide-react";
+import { fetchDiscordData } from "@/lanyard";
 
 type StyleWithHover = {
   '--hover-bg'?: string;

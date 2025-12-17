@@ -30,5 +30,8 @@
   {"name": "矔", "url": "https://www.youtube.com/@矔", "platform": "youtube", "icon": "youtube"},
   {"name": "颣", "url": "https://www.youtube.com/@颣", "platform": "youtube", "icon": "youtube"},
   {"name": "pdwk", "url": "https://www.last.fm/user/pdwk", "platform": "lastfm", "icon": "lastfm"},
-  {"name": "playfairs", "url": "https://steamcommunity.com/id/playfairs", "platform": "steam", "icon": "steam"}
+  {"name": "playfairs", "url": "https://steamcommunity.com/id/playfairs", "platform": "steam", "icon": "steam"},
+  {"name": "playfairs", "url": "https://discord.com/users/1426711359059394662", "platform": "discord", "icon": "discord"},
+  {"name": "sobbinf", "url": "https://t.me/sobbinf", "platform": "telegram", "icon": "telegram"},
+  {"name": "playfairs", "url": "https://t.me/playfairs", "platform": "telegram", "icon": "telegram"}
 ]

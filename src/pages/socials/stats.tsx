@@ -1,4 +1,4 @@
-import { FaGithub, FaSteam, FaSpotify, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaSteam, FaSpotify, FaTwitter, FaInstagram, FaYoutube, FaDiscord, FaTelegram } from "react-icons/fa";
 import { SiTiktok, SiX, SiLastdotfm, SiGitlab } from "react-icons/si";
 
 export interface PlatformStats {
@@ -18,6 +18,10 @@ export interface PlatformStats {
   topArtistPlays?: string;
   topTrack?: string;
   topAlbum?: string;
+  status?: 'online' | 'idle' | 'dnd' | 'offline';
+  username?: string;
+  discriminator?: string;
+  display_name?: string;
   [key: string]: string | undefined;
 }
 
@@ -38,7 +42,9 @@ export const platformIcons: Record<string, React.ComponentType<{ className?: str
   instagram: FaInstagram,
   youtube: FaYoutube,
   lastfm: SiLastdotfm,
-  steam: FaSteam
+  steam: FaSteam,
+  discord: FaDiscord,
+  telegram: FaTelegram
 };
 
 export const platformNames: Record<string, string> = {
@@ -52,7 +58,9 @@ export const platformNames: Record<string, string> = {
   youtube: 'YouTube',
   linkedin: 'LinkedIn',
   lastfm: 'LastFM',
-  steam: 'Steam'
+  steam: 'Steam',
+  discord: 'Discord',
+  telegram: 'Telegram'
 };
 
 async function fetchGitLabStats(username: string): Promise<PlatformStats> {
@@ -294,6 +302,29 @@ async function fetchSpotifyStats(username: string): Promise<PlatformStats> {
   }
 }
 
+async function fetchDiscordStats(userId: string): Promise<PlatformStats> {
+  try {
+    const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+    const data = await response.json();
+    
+    if (data.success && data.data) {
+      const { discord_user, discord_status, activities } = data.data;
+      return {
+        username: discord_user.username,
+        discriminator: discord_user.discriminator,
+        display_name: discord_user.display_name || discord_user.username,
+        status: discord_status,
+        avatar: `https://cdn.discordapp.com/avatars/${userId}/${discord_user.avatar}.png?size=256`,
+        activity: activities.length > 0 ? activities[0].name : undefined
+      };
+    }
+    return {};
+  } catch (error) {
+    console.error("Error fetching Discord data:", error);
+    return {};
+  }
+}
+
 export const platformConfigs: Record<string, PlatformConfig> = {
   github: {
     name: 'GitHub',
@@ -323,6 +354,22 @@ export const platformConfigs: Record<string, PlatformConfig> = {
     name: 'Spotify',
     icon: FaSpotify,
     fetchStats: fetchSpotifyStats,
+    showStats: false
+  },
+  steam: {
+    name: 'Steam',
+    icon: FaSteam,
+    showStats: false
+  },
+  discord: {
+    name: 'Discord',
+    icon: FaDiscord,
+    fetchStats: fetchDiscordStats,
+    showStats: true
+  },
+  telegram: {
+    name: 'Telegram',
+    icon: FaTelegram,
     showStats: false
   },
   x: {
