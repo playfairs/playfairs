@@ -162,34 +162,53 @@ export function App() {
   const [discordData, setDiscordData] = useState<{
     displayName: string | null;
     username: string | null;
-  }>({ displayName: null, username: null });
+    status: string | null;
+    customStatus: string | null;
+  }>({ 
+    displayName: null, 
+    username: null, 
+    status: null,
+    customStatus: null 
+  });
 
   useEffect(() => {
     const fetchDiscordData = async () => {
       try {
         const response = await fetch('https://api.lanyard.rest/v1/users/1426711359059394662');
-        const data = await response.json();
-        if (data?.data?.discord_user) {
+        const { data } = await response.json();
+        
+        if (data?.discord_user) {
+          const customStatus = data.activities?.find((a: any) => a.type === 4);
+          
           setDiscordData({
-            displayName: data.data.discord_user.display_name || data.data.discord_user.username,
-            username: data.data.discord_user.username
+            displayName: data.discord_user.display_name || data.discord_user.username,
+            username: data.discord_user.username,
+            status: data.discord_status || 'offline',
+            customStatus: customStatus?.state || null
           });
         } else {
           setDiscordData({
             displayName: 'playfairs',
-            username: 'playfairs'
+            username: 'playfairs',
+            status: 'offline',
+            customStatus: null
           });
         }
       } catch (error) {
         console.error('Error fetching Discord data:', error);
         setDiscordData({
           displayName: 'playfairs',
-          username: 'playfairs'
+          username: 'playfairs',
+          status: 'offline',
+          customStatus: null
         });
       }
     };
 
     fetchDiscordData();
+    const interval = setInterval(fetchDiscordData, 10000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -266,12 +285,27 @@ export function App() {
                           style={{ cursor: 'crosshair' }}
                         >
                           <div className="absolute inset-0 rounded-full bg-linear-to-br from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                          <div className="relative p-0.5 rounded-full bg-linear-to-br from-(--gradient-1) via-(--gradient-2) to-(--gradient-3) animate-gradient-xy">
-                            <div className="relative p-0.5 rounded-full bg-linear-to-br from-white/10 to-white/5 backdrop-blur-sm">
+                          <div className={`relative p-0.5 rounded-full ${
+                            discordData.status === 'online' ? 'bg-green-500' :
+                            discordData.status === 'idle' ? 'bg-yellow-500' :
+                            discordData.status === 'dnd' ? 'bg-red-500' :
+                            'bg-linear-to-br from-(--gradient-1) via-(--gradient-2) to-(--gradient-3) animate-gradient-xy'
+                          }`}>
+                            <div className={`relative p-0.5 rounded-full backdrop-blur-sm ${
+                              discordData.status === 'online' ? 'bg-green-500/10' :
+                              discordData.status === 'idle' ? 'bg-yellow-500/10' :
+                              discordData.status === 'dnd' ? 'bg-red-500/10' :
+                              'bg-linear-to-br from-white/10 to-white/5'
+                            }`}>
                               <img
                                 src="https://avatars.githubusercontent.com/playfairs"
                                 alt="playfairs avatar"
-                                className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover border-2 border-white/10 shadow-lg group-hover:border-white/20 transition-all duration-300 group-hover:scale-105"
+                                className={`w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover border-2 shadow-lg transition-all duration-300 group-hover:scale-105 ${
+                                  discordData.status === 'online' ? 'border-green-500 group-hover:border-green-400' :
+                                  discordData.status === 'idle' ? 'border-yellow-500 group-hover:border-yellow-400' :
+                                  discordData.status === 'dnd' ? 'border-red-500 group-hover:border-red-400' :
+                                  'border-white/10 group-hover:border-white/20'
+                                }`}
                                 width={128}
                                 height={128}
                                 loading="lazy"
@@ -329,11 +363,11 @@ export function App() {
                                         href="https://discord.com/users/1426711359059394662"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-gray-400 hover:text-gray-300 transition-colors text-sm"
+                                        className="text-gray-400 hover:text-gray-300 transition-colors text-base"
                                         style={{
                                           textDecoration: 'none',
                                           display: 'block',
-                                          lineHeight: '1.2'
+                                          lineHeight: '1.3'
                                         }}
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 0.8 }}
@@ -346,9 +380,21 @@ export function App() {
                                 )}
                               </AnimatePresence>
                             </div>
-                            <p className="text-gray-400">
-                              rip your eyes out, go insane
-                            </p>
+                            {discordData.status === 'offline' ? (
+                              <p className="text-gray-400">
+                                rip your eyes out, go insane
+                              </p>
+                            ) : discordData.customStatus ? (
+                              <p className="text-gray-400">
+                                {discordData.customStatus}
+                              </p>
+                            ) : (
+                              <p className="text-gray-400">
+                                {discordData.status === 'online' && 'Online'}
+                                {discordData.status === 'idle' && 'Idle'}
+                                {discordData.status === 'dnd' && 'Do Not Disturb'}
+                              </p>
+                            )}
                           </div>
                           
                           <div className="flex justify-center space-x-2">
