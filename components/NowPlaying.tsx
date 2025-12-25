@@ -17,54 +17,12 @@ export default function NowPlaying() {
   const [topArtist, setTopArtist] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
-  const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 })
   const { theme } = useTheme()
   const isFrutigerAero = theme === 'frutiger-aero'
 
-  const updateGlowEffect = (clientX: number, clientY: number) => {
-    if (!containerRef.current) return
-    
-    const card = containerRef.current
-    const rect = card.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    
-    const mouseX = clientX - centerX
-    const mouseY = clientY - centerY
-    
-    const distance = Math.min(1, Math.sqrt(mouseX * mouseX + mouseY * mouseY) / (rect.width / 2))
-    const intensity = 0.7 + (distance * 0.5)
-    const glowX = ((clientX - rect.left) / rect.width) * 100
-    const glowY = ((clientY - rect.top) / rect.height) * 100
-    
-    card.style.setProperty('--glow-opacity', (0.1 + (distance * 0.15)).toString())
-    card.style.setProperty('--glow-intensity', intensity.toString())
-    card.style.setProperty('--glow-spread', `${8 + (distance * 20)}px`)
-    card.style.setProperty('--glow-blur', `${20 + (distance * 40)}px`)
-    
-    setGlowPosition({ x: glowX, y: glowY })
-  }
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    updateGlowEffect(e.clientX, e.clientY)
-  }
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    const touch = e.touches?.[0]
-    if (touch) {
-      updateGlowEffect(touch.clientX, touch.clientY)
-    }
-  }
 
-  const handleMouseLeave = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty('--glow-opacity', '0.1')
-      containerRef.current.style.setProperty('--glow-intensity', '1.7')
-      containerRef.current.style.setProperty('--glow-spread', '8px')
-      containerRef.current.style.setProperty('--glow-blur', '20px')
-    }
-    setGlowPosition({ x: 50, y: 50 })
-  }
 
   const truncateText = (text: string, maxLength: number = 20): string => {
     if (typeof window !== 'undefined' && window.innerWidth < 640) {
@@ -194,9 +152,6 @@ export default function NowPlaying() {
     return (
       <div className="relative group w-full max-w-2xl mx-auto">
         <div 
-          className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 to-pink-600 opacity-75 group-hover:opacity-100 blur transition-all duration-200"
-        />
-        <div 
           className="relative w-full rounded-lg transition-all duration-200 ease-out p-4"
           style={{ 
             backgroundColor: 'var(--color-card-bg)',
@@ -213,9 +168,6 @@ export default function NowPlaying() {
     return (
       <div className="relative group w-full max-w-2xl mx-auto">
         <div 
-          className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 to-pink-600 opacity-75 group-hover:opacity-100 blur transition-all duration-200"
-        />
-        <div 
           className="relative w-full rounded-lg transition-all duration-200 ease-out p-4"
           style={{ 
             backgroundColor: 'var(--color-card-bg)',
@@ -230,37 +182,13 @@ export default function NowPlaying() {
 
   return (
     <div className="relative group w-full max-w-2xl mx-auto">
-      {isFrutigerAero ? (
-        <div 
-          className="absolute inset-0 rounded-lg opacity-75 group-hover:opacity-100 transition-opacity duration-200"
-          style={{
-            background: 'linear-gradient(135deg, rgba(0, 120, 215, 0.4) 0%, rgba(0, 90, 180, 0.6) 100%)',
-            filter: 'blur(8px)'
-          }}
-        />
-      ) : (
-        <div 
-          className="absolute -inset-1 rounded-lg bg-linear-to-r from-purple-600 via-pink-500 to-purple-600 bg-size-[200%_200%] opacity-75 group-hover:opacity-100 blur transition-all duration-200 group-hover:animate-gradient-rotate"
-          style={{
-            backgroundPosition: '0% 50%',
-            animation: 'gradient-rotate 6s linear infinite',
-            animationPlayState: 'paused'
-          }}
-        />
-      )}
       <div 
         ref={containerRef}
-        className={`relative w-full transition-all duration-200 ease-out p-4 text-left ${isFrutigerAero ? 'glass-card' : 'rounded-lg'}`}
+        className="relative w-full transition-all duration-200 ease-out p-4 text-left rounded-lg"
         style={{ 
-          backgroundColor: isFrutigerAero ? 'rgba(255, 255, 255, 0.6)' : 'var(--color-card-bg)',
-          border: isFrutigerAero ? '1px solid rgba(255, 255, 255, 0.7)' : '1px solid var(--color-border)',
-          backdropFilter: isFrutigerAero ? 'blur(8px)' : 'none',
-          WebkitBackdropFilter: isFrutigerAero ? 'blur(8px)' : 'none'
+          backgroundColor: 'var(--color-card-bg)',
+          border: '1px solid var(--color-border)'
         }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleMouseLeave}
       >
         <div className="flex items-center space-x-4 w-full">
           <div className="shrink-0 relative z-10">

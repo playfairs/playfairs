@@ -206,7 +206,7 @@ export function App() {
     };
 
     fetchDiscordData();
-    const interval = setInterval(fetchDiscordData, 10000);
+    const interval = setInterval(fetchDiscordData, 5000);
     
     return () => clearInterval(interval);
   }, []);
@@ -471,7 +471,7 @@ export function App() {
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>
                       <p className="mb-4">
-                        Hello! I'm <a 
+                        Hello, I'm <a 
                           href="https://github.com/playfairs" 
                           target="_blank" 
                           rel="noopener noreferrer"

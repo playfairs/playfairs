@@ -148,7 +148,7 @@ export default function Header() {
                         e.currentTarget.style.color = 'var(--color-text)';
                       }}
                     >
-                      playfairs.cc
+                      playfairs.cc                      
                     </span>
                   </Link>
                 </div>
