@@ -1,7 +1,18 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
 
-type Theme = 'default' | 'dark' | 'light' | 'catppuccin-latte' | 'catppuccin-frappe' | 'catppuccin-macchiato' | 'rose-pine' | 'rose-pine-moon' | 'rose-pine-dawn' | 'frutiger-aero' | 'blood-moon';
+type Theme =
+  | "default"
+  | "dark"
+  | "light"
+  | "catppuccin-latte"
+  | "catppuccin-frappe"
+  | "catppuccin-macchiato"
+  | "rose-pine"
+  | "rose-pine-moon"
+  | "rose-pine-dawn"
+  | "frutiger-aero"
+  | "blood-moon";
 
 type ThemeContextType = {
   theme: Theme;
@@ -11,10 +22,10 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('rose-pine-moon');
+  const [theme, setTheme] = useState<Theme>("blood-moon");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
     if (savedTheme) {
       setTheme(savedTheme);
     }
@@ -22,20 +33,20 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     document.documentElement.classList.remove(
-      'theme-default',
-      'theme-dark',
-      'theme-light',
-      'theme-catppuccin-latte',
-      'theme-catppuccin-frappe',
-      'theme-catppuccin-macchiato',
-      'theme-rose-pine',
-      'theme-rose-pine-moon',
-      'theme-rose-pine-dawn',
-      'theme-frutiger-aero',
-      'theme-blood-moon'
+      "theme-default",
+      "theme-dark",
+      "theme-light",
+      "theme-catppuccin-latte",
+      "theme-catppuccin-frappe",
+      "theme-catppuccin-macchiato",
+      "theme-rose-pine",
+      "theme-rose-pine-moon",
+      "theme-rose-pine-dawn",
+      "theme-frutiger-aero",
+      "theme-blood-moon",
     );
     document.documentElement.classList.add(`theme-${theme}`);
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
@@ -48,7 +59,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 };
