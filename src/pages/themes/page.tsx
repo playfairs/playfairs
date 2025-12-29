@@ -14,6 +14,7 @@ const themeOptions = [
   { value: 'rose-pine-moon', label: 'Rosé Pine Moon', color: '#c4a7e7' },
   { value: 'rose-pine-dawn', label: 'Rosé Pine Dawn', color: '#907aa9' },
   { value: 'frutiger-aero', label: 'Frutiger Aero', color: '#00a8ff' },
+  { value: 'blood-moon', label: 'Blood Moon', color: '#dc2626' },
 ] as const;
 
 export default function ThemesPage() {

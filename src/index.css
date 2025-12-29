@@ -174,6 +174,31 @@ html {
     background-color: var(--color-bg);
   }
 
+  .theme-blood-moon {
+    --color-bg: #000000;
+    --color-bg-rgb: 0, 0, 0;
+    --color-bg-hover: #0a0a0a;
+    --color-text: #e2e2e2;
+    --color-text-muted: #a0a0a0;
+    --color-primary: #dc2626;
+    --color-primary-rgb: 220, 38, 38;
+    --color-primary-hover: #b91c1c;
+    --color-primary-faded: rgba(220, 38, 38, 0.05);
+    --color-secondary: #0a0a0a;
+    --color-secondary-hover: #1a1a1a;
+    --color-accent: #ef4444;
+    --color-accent-rgb: 239, 68, 68;
+    --color-border: #1a1a1a;
+    --color-border-muted: #2a2a2a;
+    --color-card-bg: #0a0a0a;
+    --color-card-hover: #1a1a1a;
+    --color-glow-1: rgba(0, 0, 0, 0.4);
+    --color-glow-2: rgba(0, 0, 0, 0.2);
+    
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
   .theme-frutiger-aero {
     --color-bg: transparent;
     --color-bg-rgb: 126, 196, 255;
