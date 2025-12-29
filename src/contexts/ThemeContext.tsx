@@ -11,7 +11,7 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('frutiger-aero');
+  const [theme, setTheme] = useState<Theme>('rose-pine-moon');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
