@@ -2,6 +2,8 @@
 
 The website for this Repository can be found at [playfairs.cc](https://playfairs.cc)
 
+![](https://komarev.com/ghpvc/?username=playfairs)
+
 # Who am I?
 
 Hi, My name is **Playfairs**, I am a semi-mature Developer, I mostly focus on creating Websites and Bots, sometimes I make scripts as well, such as tools for platforms such as Xbox, where I 
