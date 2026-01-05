@@ -48,6 +48,24 @@
         ]
     },
     {
+        "name": "Vi-Improved",
+        "category": "Text Editor",
+        "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.",
+        "url": "https://www.vim.org",
+        "developer": "The Vim Community",
+        "license": "VIM LICENSE",
+        "platforms": ["Windows", "macOS", "Linux", "BSD", "Android", "Amiga", "UNIX & MS-DOS based Systems"],
+        "features": [
+            "Persistent, multi-level undo tree",
+            "Extensive Plugin System",
+            "Support for hundreds of programming languages and file formats",
+            "Powerful search and replace",
+            "Integrates with many tools",
+            "Preinstalled on most UNIX based systems",
+            "Over 100 vim-keys/key combinations"
+        ]
+    },
+    {
         "name": "Alacritty",
         "category": "Terminal",
         "description": "A fast, cross-platform, GPU-accelerated terminal emulator.",
