@@ -4,6 +4,6 @@
     {"name": "playlists", "url": "https://playlists.playfairs.cc", "type": "music", "description": "A small Jekyll site I made to store playlists I actively listen to :)"},
     {"name": "Vortex", "url": "https://vortex.playfairs.cc", "type": "homepage", "description": "Official homepage for the Discord Bot \"Vortex\""},
     {"name": "2048", "url": "https://2048.playfairs.cc", "type": "game", "description": "A simple 2048 game, i lowkey skidded the hell out of it"},
-    {"name": "Boykisser", "url": "https://boykisser.playfairs.cc", "type": "misc", "description": "kiss boys"}
-    {"name": "Dumbass Dog", "url": "https://dumbassdog.com", "type": "game", "description": "dumbass dog"}
+    {"name": "Boykisser", "url": "https://boykisser.playfairs.cc", "type": "misc", "description": "kiss boys"},
+    {"name": "Dumbass Dog", "url": "https://dumbassdog.com", "type": "game", "description": "dumbass dog"},
 ]
