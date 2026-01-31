@@ -5,7 +5,7 @@
   {"name": "tekhnika", "url": "https://github.com/tekhnika", "platform": "github", "icon": "github"},
   {"name": "playfairs", "url": "https://gitlab.com/playfairs", "platform": "gitlab", "icon": "gitlab"},
   {"name": "vimproved", "url": "https://tiktok.com/@vimproved", "platform": "tiktok", "icon": "tiktok"},
-  {"name": "flake.nix", "url": "https://tiktok.com/@flake.nix", "platform": "tiktok", "icon": "tiktok"},
+  {"name": "playfairs", "url": "https://tiktok.com/@playfairs", "platform": "tiktok", "icon": "tiktok"},
   {"name": "nixos.org", "url": "https://tiktok.com/@nixos.org", "platform": "tiktok", "icon": "tiktok"},
   {"name": "gitmodules", "url": "https://tiktok.com/@gitmodules", "platform": "tiktok", "icon": "tiktok"},
   {"name": "premeditations", "url": "https://tiktok.com/@premeditations", "platform": "tiktok", "icon": "tiktok"},
