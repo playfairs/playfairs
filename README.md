@@ -10,3 +10,8 @@ The website for this Repository can be found at [playfairs.cc](https://playfairs
 > - [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration
 > - [dumbassdog.com](https://dumbassdog.com) - The most peak website you've ever seen
 > - [Yet Another Wayland Compositor](https://gitlab.com/yawc.rs) - A Wayland Compositor Written in rust using Rustlings
+
+**socials**
+> - [GitLab](https://gitlab.com/playfairs)
+> - [TikTok](https://tiktok.com/@playfairs)
+> - [Discord](https://discord.com/users/1426711359059394662)
