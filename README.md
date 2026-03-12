@@ -18,6 +18,9 @@ The website for this Repository can be found at [playfairs.cc](https://playfairs
 
 >[!IMPORTANT]
 > We built empires out of sand.
+>
 > On borrowed tides that shaped our plans.
+>
 > Bit my fingers giving you a hand.
+>
 > Our foundation crumbles where we stand.
