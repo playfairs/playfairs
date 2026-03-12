@@ -15,3 +15,9 @@ The website for this Repository can be found at [playfairs.cc](https://playfairs
 > - [GitLab](https://gitlab.com/playfairs)
 > - [TikTok](https://tiktok.com/@playfairs)
 > - [Discord](https://discord.com/users/1426711359059394662)
+
+>[!IMPORTANT]
+> We built empires out of sand.
+> On borrowed tides that shaped our plans.
+> Bit my fingers giving you a hand.
+> Our foundation crumbles where we stand.
