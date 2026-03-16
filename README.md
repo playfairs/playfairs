@@ -1,4 +1,4 @@
-![banner](banner.jpg)
+![banner](sewerslvt.jpg)
 
 The website for this Repository can be found at [playfairs.cc](https://playfairs.cc)
 
