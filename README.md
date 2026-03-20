@@ -16,18 +16,3 @@ The website for this Repository can be found at [playfairs.cc](https://playfairs
 > - [TikTok](https://tiktok.com/@playfairs)
 > - [Discord](https://discord.com/users/1426711359059394662)
 
-
-> [!NOTE]  
-> Hi
-
-> [!TIP]
-> Hi again
-
-> [!IMPORTANT]  
-> Hi again again
-
-> [!WARNING]  
-> Meow
-
-> [!CAUTION]
-> Meowww
