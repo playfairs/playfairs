@@ -1,7 +1,6 @@
 ![banner](sewer.jpg)
-
-![](https://komarev.com/ghpvc/?username=playfairs)
 ---
+![](https://komarev.com/ghpvc/?username=playfairs)
 
 ### **proud projs**
 > - [playfairs.cc](https://www.playfairs.cc) - The source of this README.
