@@ -17,13 +17,7 @@
 > - [GitLab](https://gitlab.com/playfairs)
 > - [TikTok](https://tiktok.com/@playfairs)
 > - [Discord](https://discord.com/users/1426711359059394662)
----
-
-### Spotify Playlists (I think you should try)
-> - [underground-hip-hop/memphis/phonk/dark-trap/horrorcore/industrial/trap-metal/experimental/cloud](https://open.spotify.com/playlist/11CKl3zIwPJsbflyoaBMq3?si=a00670ffd5dd4006)
-> - [jumpstyle/scenecore/krushfunk/glitchcore](https://open.spotify.com/playlist/0wCxEAnJbV9ecwq4sSNd8x?si=d030b5b6e9f6477d)
-> - [hardstyle/hardtek/industrial/jumpstyle/hard-tekno/tekno](https://open.spotify.com/playlist/3LVMmE8wAKR5mQUmNtRRGY?si=f87d9cfe425c4645)
-> - [breakcore/speedcore/soreear/gorecore](https://open.spotify.com/playlist/19bbKnANdqlKj9GKTy3J40?si=be57c399a1854285)
+> - [Spotify](https://open.spotify.com/user/darklore4201)
 ---
 
 ![](https://komarev.com/ghpvc/?username=playfairs)
