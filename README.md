@@ -1,6 +1,5 @@
 ![banner](sewer.jpg)
 ---
-![](https://komarev.com/ghpvc/?username=playfairs)
 
 ### **proud projs**
 > - [playfairs.cc](https://www.playfairs.cc) - The source of this README.
@@ -19,3 +18,4 @@
 > - [TikTok](https://tiktok.com/@playfairs)
 > - [Discord](https://discord.com/users/1426711359059394662)
 ---
+![](https://komarev.com/ghpvc/?username=playfairs)
