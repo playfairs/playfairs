@@ -19,12 +19,10 @@
 > - [Discord](https://discord.com/users/1426711359059394662)
 ---
 ![](https://komarev.com/ghpvc/?username=playfairs)
-
-
-### Spotify Playlists (I think you should check out)
-
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0wCxEAnJbV9ecwq4sSNd8x?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 ---
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3LVMmE8wAKR5mQUmNtRRGY?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
----
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3LVMmE8wAKR5mQUmNtRRGY?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+### Spotify Playlists (I think you should try)
+> - [underground-hip-hop/memphis/phonk/dark-trap/horrorcore/industrial/trap-metal/experimental/cloud](https://open.spotify.com/playlist/11CKl3zIwPJsbflyoaBMq3?si=a00670ffd5dd4006)
+> - [jumpstyle/scenecore/krushfunk/glitchcore](https://open.spotify.com/playlist/0wCxEAnJbV9ecwq4sSNd8x?si=d030b5b6e9f6477d)
+> - [hardstyle/hardtek/industrial/jumpstyle/hard-tekno/tekno](https://open.spotify.com/playlist/3LVMmE8wAKR5mQUmNtRRGY?si=f87d9cfe425c4645)
+> - [breakcore/speedcore/soreear/gorecore](https://open.spotify.com/playlist/19bbKnANdqlKj9GKTy3J40?si=be57c399a1854285)
