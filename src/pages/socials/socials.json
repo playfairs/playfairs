@@ -4,13 +4,15 @@
   {"name": "gitmodules", "url": "https://github.com/gitmodules", "platform": "github", "icon": "github"},
   {"name": "93d25ccc160cdcb0cbf460f58d16d1e1", "url": "https://github.com/93d25ccc160cdcb0cbf460f58d16d1e1", "platform": "github", "icon": "github"},
   {"name": "playfairs", "url": "https://gitlab.com/playfairs", "platform": "gitlab", "icon": "gitlab"},
+  {"name": "YaWC", "url": "https://gitlab.com/yawc.rs", "platform": "gitlab", "icon": "gitlab"},
   {"name": "potfill", "url": "https://tiktok.com/@potfill", "platform": "tiktok", "icon": "tiktok"},
-  {"name": "tekknike", "url": "https://tiktok.com/@tekknike", "platform": "tiktok", "icon": "tiktok"},
+  {"name": "vimproved", "url": "https://tiktok.com/@vimproved", "platform": "tiktok", "icon": "tiktok"},
   {"name": "rosepinetheme", "url": "https://tiktok.com/@playfairs", "platform": "tiktok", "icon": "tiktok"},
-  {"name": "gunzipped", "url": "https://tiktok.com/@flake.nix", "platform": "tiktok", "icon": "tiktok"},
+  {"name": "gunzipped", "url": "https://tiktok.com/@gunzipped", "platform": "tiktok", "icon": "tiktok"},
   {"name": "premeditations", "url": "https://tiktok.com/@premeditations", "platform": "tiktok", "icon": "tiktok"},
   {"name": "c116b71595904926be30c5cb", "url": "https://tiktok.com/@c116b71595904926be30c5cb", "platform": "tiktok", "icon": "tiktok"},
   {"name": "repolishe", "url": "https://tiktok.com/@repolishe", "platform": "tiktok", "icon": "tiktok"},
+  {"name": "thugbloodlines", "url": "https://tiktok.com/@thugbloodlines", "platform": "tiktok", "icon": "tiktok"},
   {"name": "playfairs", "url": "https://open.spotify.com/user/darklore4201?si=5f13785976ef412d", "platform": "spotify", "icon": "spotify"},
   {"name": "playfairs.cc", "url": "https://instagram.com/playfairs.cc", "platform": "instagram", "icon": "instagram"},
   {"name": "THUGBLOODLINES", "url": "https://www.instagram.com/thugbloodlines/", "platform": "instagram", "icon": "instagram"},
@@ -36,7 +38,10 @@
   {"name": "repolishe", "url": "https://steamcommunity.com/id/repolishe", "platform": "steam", "icon": "steam"},
   {"name": "smezir", "url": "https://steamcommunity.com/id/smezir", "platform": "steam", "icon": "steam"},  
   {"name": "playfairs", "url": "https://discord.com/users/1426711359059394662", "platform": "discord", "icon": "discord"},
-  {"name": "c4dbb05b40a4220f627fd02fdd8e8762", "url": "https://discord.com/users/816725924959354890", "platform": "discord", "icon": "discord"},
+  {"name": "c52743fe425efb52a32ced403259f689", "url": "https://discord.com/users/816725924959354890", "platform": "discord", "icon": "discord"},
+  {"name": "gunzipped", "url": "https://discord.com/users/1427809899630563428", "platform": "discord", "icon": "discord"},
   {"name": "sobbinf", "url": "https://t.me/sobbinf", "platform": "telegram", "icon": "telegram"},
   {"name": "playfairs", "url": "https://t.me/playfairs", "platform": "telegram", "icon": "telegram"}
+  {"name": "c067e801a884358cf53f5af244edf959", "url": "https://t.me/c067e801a884358cf53f5af244edf959", "platform": "telegram", "icon": "telegram"}
+
 ]
