@@ -15,7 +15,7 @@
 
 ### **socials**
 > - [GitLab](https://gitlab.com/playfairs)
-> - [TikTok](https://tiktok.com/@playfairs)
+> - [TikTok](https://tiktok.com/@rosepinetheme)
 > - [Discord](https://discord.com/users/1426711359059394662)
 > - [Spotify](https://open.spotify.com/user/darklore4201)
 ---
