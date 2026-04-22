@@ -2,6 +2,7 @@
 ---
 
 ### **proud projs**
+> - [Asteride](https://github.com/playfairs/AsterIDE) - **A Simple Text Editor** written in **Rust**, made for Femboys 🌸
 > - [playfairs.cc](https://www.playfairs.cc) - The source of this README.
 > - [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration
 > - [dumbassdog.com](https://dumbassdog.com) - The most peak website you've ever seen
@@ -9,7 +10,6 @@
 
 ### **currently working on**
 > - [Yet Another Wayland Compositor](https://gitlab.com/yawc.rs) - A batteries-included Wayland Compositor Written in rust using Rustlings
-> - [Asteride](https://github.com/playfairs/AsterIDE) - **A Simple Text Editor** written in **Rust**, made for Femboys 🌸
 > - [DOOMBOX](https://github.com/playfairs/doombox) - A LiveBoot ISO Creation Tool for DOOM, created from the ground up, EFI and Everything.
 > - [ProxyBox](https://github.com/playfairs/proxybox) - A lightweight Rust tool for tunneling and proxying network traffic.
 > - [Aegis](https://github.com/the-aegis-foundation) - An All-in-One Operating System focused on Privacy and Anonymity. (Not in active development.)
