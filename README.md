@@ -1,4 +1,4 @@
-![banner](sewer.jpg)
+<!-- ![banner](sewer.jpg) -->
 ---
 
 ### **proud projs**
