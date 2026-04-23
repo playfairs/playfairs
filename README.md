@@ -2,7 +2,7 @@
 
 
 ### **proud projs**
-> - [Asteride](https://github.com/Aster-IDE/AsterIDE) - **A Simple Text Editor** written in **Rust**, made for Femboys 🌸
+> - [Asteride](https://asteride.dev) - **A Simple Text Editor** written in **Rust**, made for Femboys 🌸
 > - [playfairs.cc](https://www.playfairs.cc) - The source of this README.
 > - [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration
 > - [dumbassdog.com](https://dumbassdog.com) - The most peak website you've ever seen
