@@ -1,6 +1,6 @@
 <!-- ![banner](sewer.jpg) -->
 
-[![stats](https://github-readme-stats.vercel.app/api?username=playfairs)](https://github.com/anuraghazra/github-readme-stats)
+[![stats](https://github-readme-stats.vercel.app/api?username=playfairs)]
 
 ---
 
