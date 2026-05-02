@@ -21,6 +21,8 @@
 > - [Spotify](https://open.spotify.com/user/darklore4201)
 ---
 
+![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=playfairs&theme=rose_pine)
 ![](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=playfairs&theme=rose_pine)
+---
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ---
