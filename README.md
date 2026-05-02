@@ -1,5 +1,8 @@
 <!-- ![banner](sewer.jpg) -->
 
+[![stats](https://github-readme-stats.vercel.app/api?username=playfairs)](https://github.com/anuraghazra/github-readme-stats)
+
+---
 
 ### **proud projs**
 > - [Asteride](https://asteride.dev) - **A Simple Text Editor** written in **Rust**, made for Femboys 🌸
