@@ -1,6 +1,6 @@
 <!-- ![banner](sewer.jpg) -->
 
-[![stats](https://github-readme-stats.vercel.app/api?username=playfairs)]
+![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=playfairs&theme=rose_pine)
 
 ---
 
