@@ -1,4 +1,7 @@
 <!-- ![banner](sewer.jpg) -->
+
+![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=playfairs&theme=rose_pine)
+
 ---
 
 ### **proud projs**
