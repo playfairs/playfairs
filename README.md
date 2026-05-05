@@ -5,7 +5,8 @@
 ---
 
 ### **proud projs**
-> - [Asteride](https://asteride.dev) - **A Simple Text Editor** written in **Rust**, made for Femboys 🌸
+> - [AsterIDE](https://asteride.dev) ([GitHub](https://github.com/Aster-IDE)) - A Simple Text Editor written in Rust.
+> - [Solaritty](https://github.com/playfairs/solaritty) & [Solaris](https://github.com/playfairs/solaris) - Two Space themed Terminals, written in Rust and Zig.
 > - [playfairs.cc](https://www.playfairs.cc) - The source of this README.
 > - [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration
 > - [dumbassdog.com](https://dumbassdog.com) - The most peak website you've ever seen
