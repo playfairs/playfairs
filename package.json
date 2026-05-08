@@ -5,25 +5,26 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:worker": "npx @cloudflare/next-on-pages",
-    "deploy": "npm run build && npm run build:worker && wrangler pages deploy .vercel/output/static --branch main"
+    "build:worker": "npx @opennextjs/cloudflare build",
+    "deploy": "npm run build && npm run build:worker && wrangler deploy"
   },
-    "dependencies": {
+  "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
-    "next": "16.2.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "@opennextjs/cloudflare": "^1.19.8",
+    "next": "15.5.16",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-icons": "^5.6.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
