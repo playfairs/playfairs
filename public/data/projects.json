@@ -1,0 +1,24 @@
+{
+  "projectLinks": [
+    {
+      "name": "Asteride",
+      "description": "A Simple Text Editor written in Rust",
+      "url": "https://asteride.dev"
+    },
+    {
+      "name": "ByteLabs",
+      "description": "ByteLabs is a Open-Source Application for making Byte music.",
+      "url": "https://bytelabs.uk"
+    },
+    {
+      "name": "Dumbass Dog",
+      "description": "the greatest website you've ever seen",
+      "url": "https://dumbassdog.com"
+    },
+    {
+      "name": "github.io root",
+      "description": "literally just my github.io thingy",
+      "url": "https://playfairs.github.io"
+    }
+  ]
+}
