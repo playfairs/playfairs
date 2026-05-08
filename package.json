@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:worker": "npx @cloudflare/next-on-pages",
-    "deploy": "npm run build && npm run build:worker && wrangler pages deploy .vercel/output/static"
+    "deploy": "npm run build && npm run build:worker && wrangler pages deploy .vercel/output/static --branch main"
   },
     "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",

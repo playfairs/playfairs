@@ -7,9 +7,7 @@ pages_build_output_dir = ".vercel/output/static"
 ENVIRONMENT = "production"
 
 [env.production]
-NODE_VERSION = "20"
-NODE_ENV = "production"
+vars = { ENVIRONMENT = "production" }
 
 [env.preview]
-NODE_VERSION = "20"
-NODE_ENV = "production"
+vars = { ENVIRONMENT = "preview" }
