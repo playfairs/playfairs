@@ -2,35 +2,11 @@
 
 import { useState, useEffect } from 'react';
 
-const customStyles = `
-  @keyframes tabPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  
-  @keyframes rotate-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.05); }
-  }
-  
-  .animate-rotate-slow {
-    animation: rotate-slow 8s linear infinite;
-  }
-  
-  .animate-pulse-slow {
-    animation: pulse-slow 3s ease-in-out infinite;
-  }
-`;
 import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-  faArrowRight
+  faArrowRight,
+  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { 
   SiRust, SiNixos, SiZig, SiC, SiPython, SiReact, SiVim, SiGit, 
@@ -58,17 +34,7 @@ export default function TechStack() {
   const [techData, setTechData] = useState<TechStackData | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Inject custom styles
-    const styleElement = document.createElement('style');
-    styleElement.textContent = customStyles;
-    document.head.appendChild(styleElement);
-    
-    return () => {
-      document.head.removeChild(styleElement);
-    };
-  }, []);
-
+  
   const tabs = [
     { id: 'languages', label: 'LANGUAGES' },
     { id: 'software', label: 'SOFTWARE & UTILS' },
@@ -132,69 +98,45 @@ export default function TechStack() {
         
         <div className="relative z-10 w-full max-w-4xl animate-fade-in">
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-transparent to-purple-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition-all duration-1000" />
-            
-            <div className="relative bg-black/60 backdrop-blur-2xl rounded-3xl p-8 md:p-10 border border-white/10 shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
+                        
+            <div className="relative bg-black/60 backdrop-blur-2xl rounded-3xl p-8 md:p-10 border border-white/10 shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 ease-in-out">
               <div className="flex items-center gap-6 mb-10">
-                <div className="relative group/avatar">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/40 via-purple-400/40 to-pink-400/40 rounded-full blur-lg opacity-0 group-hover/avatar:opacity-100 transition-all duration-700 animate-pulse-slow" />
-                  <div className="relative w-16 h-16 rounded-full border-2 border-white/20 group-hover/avatar:border-white/60 transition-all duration-500 group-hover/avatar:scale-110 group-hover/avatar:rotate-3 shadow-xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-full" />
-                    <Image 
-                      src="https://github.com/playfairs.png" 
-                      alt="GitHub Avatar"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-cover group-hover/avatar:brightness-110 transition-all duration-500"
-                    />
-                  </div>
-                  <div className="absolute -inset-0 rounded-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover/avatar:opacity-100 transition-all duration-500 animate-rotate-slow" />
-                </div>
+                <button
+                  onClick={() => window.history.back()}
+                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 group"
+                >
+                  <FontAwesomeIcon 
+                    icon={faArrowLeft} 
+                    className="w-4 h-4 text-white/60 group-hover:text-white/80 transition-colors duration-300" 
+                  />
+                </button>
                 <div className="flex-1 min-w-0">
                   <h1 className="text-3xl font-light text-white tracking-wider mb-1 animate-slide-in group-hover/header:text-blue-400 transition-all duration-500">Tech Stack</h1>
                   <p className="text-white/60 text-sm font-light animate-slide-in-delayed group-hover/header:text-white/80 transition-all duration-500">Languages, software, and hardware I use</p>
                 </div>
               </div>
 
-              <div className="flex gap-2 mb-8 bg-white/5 rounded-xl p-1.5 backdrop-blur-sm relative group/tab-container">
-                <div 
-                  className="absolute top-1.5 bottom-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg transition-all duration-500 ease-out shadow-lg"
-                  style={{
-                    left: `${(tabs.findIndex(tab => tab.id === activeTab) * 100) / tabs.length}%`,
-                    width: `${100 / tabs.length}%`,
-                    transform: 'translateX(0.5rem)'
-                  }}
-                />
+              <div className="flex gap-2 mb-8 bg-white/5 rounded-xl p-1.5 backdrop-blur-sm">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 py-3 px-6 rounded-lg text-sm font-medium tracking-wide transition-all duration-500 transform hover:scale-105 relative z-10 ${
+                    className={`flex-1 py-3 px-6 rounded-lg text-sm font-medium tracking-wide transition-all duration-300 ${
                       activeTab === tab.id
-                        ? 'text-white shadow-lg'
-                        : 'text-white/50 hover:text-white/70'
+                        ? 'text-white bg-white/10'
+                        : 'text-white/50 hover:text-white/70 hover:bg-white/5'
                     }`}
-                    style={{
-                      animation: activeTab === tab.id ? 'tabPulse 0.5s ease-out' : 'none'
-                    }}
                   >
-                    <span className={`relative inline-block transition-all duration-300 ${
-                      activeTab === tab.id ? 'scale-110' : 'hover:scale-105'
-                    }`}>
-                      {tab.label}
-                    </span>
-                    {activeTab === tab.id && (
-                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse" />
-                    )}
+                    {tab.label}
                   </button>
                 ))}
               </div>
 
               {activeTab === 'languages' && (
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 transition-all duration-500 ease-in-out">
                   {loading ? (
                     Array.from({ length: 6 }).map((_, i) => (
-                      <div key={i} className="p-6 rounded-xl bg-white/5 animate-pulse">
+                      <div key={i} className="p-6 rounded-xl bg-white/5">
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-12 h-12 bg-white/10 rounded-lg" />
                           <div className="h-4 bg-white/10 rounded w-24" />
@@ -238,10 +180,10 @@ export default function TechStack() {
               )}
 
               {activeTab === 'software' && (
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 transition-all duration-500 ease-in-out">
                   {loading ? (
                     Array.from({ length: 6 }).map((_, i) => (
-                      <div key={i} className="p-6 rounded-xl bg-white/5 animate-pulse">
+                      <div key={i} className="p-6 rounded-xl bg-white/5">
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-12 h-12 bg-white/10 rounded-lg" />
                           <div className="h-4 bg-white/10 rounded w-24" />
@@ -312,10 +254,10 @@ export default function TechStack() {
               )}
 
               {activeTab === 'hardware' && (
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 transition-all duration-500 ease-in-out">
                   {loading ? (
                     Array.from({ length: 6 }).map((_, i) => (
-                      <div key={i} className="p-6 rounded-xl bg-white/5 animate-pulse">
+                      <div key={i} className="p-6 rounded-xl bg-white/5">
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-12 h-12 bg-white/10 rounded-lg" />
                           <div className="h-4 bg-white/10 rounded w-24" />
