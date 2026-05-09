@@ -1,0 +1,123 @@
+{
+  "languages": [
+    {
+      "name": "Rust",
+      "icon": "SiRust",
+      "description": "Memory safe without garbage collection",
+      "color": "#dea584"
+    },
+    {
+      "name": "Nix",
+      "icon": "SiNixos",
+      "description": "Purely functional package manager",
+      "color": "#5277C3"
+    },
+    {
+      "name": "Zig",
+      "icon": "SiZig",
+      "description": "Simple, fast, and reliable programming language",
+      "color": "#ec915c"
+    },
+    {
+      "name": "C",
+      "icon": "SiC",
+      "description": "Low-level systems programming",
+      "color": "#555555"
+    },
+    {
+      "name": "Python",
+      "icon": "SiPython",
+      "description": "Versatile and beginner-friendly",
+      "color": "#3572A5"
+    },
+    {
+      "name": "TypeScript React",
+      "icon": "SiReact",
+      "description": "TypeScript with React for .tsx development",
+      "color": "#3178c6"
+    }
+  ],
+  "software": [
+    {
+      "name": "Helix",
+      "icon": "https://helix-editor.com/logo.svg",
+      "description": "A post-modern text editor.",
+      "color": "#997BC8",
+      "url": "https://helix-editor.com"
+    },
+    {
+      "name": "Zen Browser",
+      "icon": "https://zen-browser.app/favicon.svg",
+      "description": "welcome to a calmer internet",
+      "color": "#ff7139",
+      "url": "https://zen-browser.app"
+    },
+        {
+      "name": "Ghostty",
+      "icon": "https://ghostty.org/favicon.ico",
+      "description": "A post-modern terminal emulator",
+      "color": "#4A90E2",
+      "url": "https://ghostty.org"
+    },
+    {
+      "name": "Zshell",
+      "icon": "https://raw.githubusercontent.com/Zsh-art/logo/refs/heads/main/png/color_vertical_icon.png",
+      "description": "Z shell",
+      "color": "#ffd700",
+      "url": "https://zsh.org"
+    },
+    {
+      "name": "Nix",
+      "icon": "SiNixos",
+      "description": "Declarative builds and deployments.",
+      "color": "#5277C3",
+      "url": "https://nixos.org"
+    },
+        {
+      "name": "Prism Launcher",
+      "icon": "https://prismlauncher.org/img/favicon.png",
+      "description": "An open-source Minecraft launcher",
+      "color": "#4CAF50",
+      "url": "https://prismlauncher.org"
+    },
+    {
+      "name": "Git",
+      "icon": "SiGit",
+      "description": "fast, scalable, distributed revision control system",
+      "color": "#f05032",
+      "url": "https://git-scm.com"
+    }
+  ],
+  "hardware": [
+    {
+      "name": "Mac Mini M4",
+      "icon": "SiApple",
+      "description": "Apple M4 2024 - Desktop workstation",
+      "color": "#000000"
+    },
+    {
+      "name": "HP ENVY TS 17",
+      "icon": "https://www.hp.com/favicon.ico",
+      "description": "HP ENVY TouchSmart 17 - Running NixOS",
+      "color": "#0096D6"
+    },
+    {
+      "name": "HP Laptop 15-dy2xxx",
+      "icon": "https://www.hp.com/favicon.ico",
+      "description": "HP Laptop 15-dy2xxx - Running NixOS",
+      "color": "#0096D6"
+    },
+    {
+      "name": "HP Laptop 15-dy2xxx",
+      "icon": "https://www.hp.com/favicon.ico",
+      "description": "HP Laptop 15-dy2xxx - Running Debian",
+      "color": "#0096D6"
+    },
+    {
+      "name": "Lenovo ThinkCentre",
+      "icon": "https://www.lenovo.com/favicon.ico",
+      "description": "ThinkCentre workstation - Running Proxmox",
+      "color": "#E4002B"
+    }
+  ]
+}
