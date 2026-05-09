@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePageCache } from '../contexts/PageCacheContext';
 import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as solidIcons from "@fortawesome/free-solid-svg-icons";
@@ -71,21 +72,29 @@ interface SocialData {
 }
 
 export default function Socials() {
+  const { socialsMounted, setSocialsMounted, socialData, setSocialData } = usePageCache();
   const [activeTab, setActiveTab] = useState('socials');
-  const [socialData, setSocialData] = useState<SocialData | null>(null);
 
   const tabs = [
-    { id: 'socials', label: 'SOCIALS' },
+    { id: 'socials', label: 'MEDIA' },
     { id: 'communication', label: 'COMMUNICATION' },
     { id: 'development', label: 'DEVELOPMENT' }
   ];
 
   useEffect(() => {
-    fetch('/data/socials.json')
-      .then(res => res.json())
-      .then(data => setSocialData(data))
-      .catch(err => console.error('Failed to load socials data:', err));
-  }, []);
+    if (!socialsMounted) {
+      fetch('/data/socials.json')
+        .then(res => res.json())
+        .then(data => {
+          setSocialData(data);
+          setSocialsMounted(true);
+        })
+        .catch(err => {
+          console.error('Failed to load socials data:', err);
+          setSocialsMounted(true);
+        });
+    }
+  }, [socialsMounted, setSocialsMounted, setSocialData]);
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
@@ -119,15 +128,22 @@ export default function Socials() {
                 </div>
               </div>
 
-              <div className="flex gap-1 mb-8 bg-white/5 rounded-lg p-1 backdrop-blur-sm">
+              <div className="flex gap-1 mb-8 bg-white/5 rounded-lg p-1 backdrop-blur-sm relative">
+                <div 
+                  className="absolute top-1 bottom-1 bg-white/10 rounded-md transition-all duration-500 ease-out"
+                  style={{
+                    left: `${(tabs.findIndex(tab => tab.id === activeTab) / tabs.length) * 100}%`,
+                    width: `${(1 / tabs.length) * 100}%`
+                  }}
+                />
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 py-2 px-4 rounded-md text-sm font-light tracking-wide transition-all duration-300 transform hover:scale-105 ${
+                    className={`flex-1 py-2 px-4 rounded-md text-sm font-light tracking-wide transition-all duration-300 ease-out relative z-10 ${
                       activeTab === tab.id
-                        ? 'bg-white/15 text-white shadow-lg'
-                        : 'text-white/40 hover:text-white/60 hover:bg-white/5'
+                        ? 'text-white'
+                        : 'text-white/40 hover:text-white/60'
                     }`}
                   >
                     {tab.label}
@@ -136,31 +152,40 @@ export default function Socials() {
               </div>
 
               <div className="space-y-3">
-                {socialData && socialData[activeTab as keyof SocialData]?.map((link: SocialLink, index: number) => (
-                  <a
-                    key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:scale-102 hover:border hover:border-white/10"
-                  >
-                    <div className="flex items-center gap-4">
-                      {link.icon === 'SiMatrix' ? (
-                        <SiMatrix className={`w-5 h-5 text-white/60 transition-colors duration-300 group-hover/link:${getPlatformColor(link.icon).replace('hover:', '')}`} />
-                      ) : link.icon === 'siCodeberg' ? (
-                        <SiCodeberg className={`w-5 h-5 text-white/60 transition-colors duration-300 group-hover/link:${getPlatformColor(link.icon).replace('hover:', '')}`} />
-                      ) : (
-                        <FontAwesomeIcon icon={getIcon(link.icon)} className={`w-5 h-5 text-white/60 transition-colors duration-300 group-hover/link:${getPlatformColor(link.icon).replace('hover:', '')}`} />
-                      )}
-                      <span className="text-white/80 group-hover/link:text-white transition-colors duration-300 font-light tracking-wide">
-                        {link.name}
-                      </span>
+                {socialData && tabs.map((tab) => (
+                  activeTab === tab.id && (
+                    <div key={tab.id} className="space-y-3">
+                      {socialData[tab.id as keyof SocialData]?.map((link: SocialLink, index: number) => (
+                        <a
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/8 transition-all duration-200 ease-out"
+                          style={{
+                            transitionDelay: `${index * 50}ms`
+                          }}
+                        >
+                          <div className="flex items-center gap-4">
+                            {link.icon === 'SiMatrix' ? (
+                              <SiMatrix className={`w-5 h-5 text-white/60 transition-colors duration-300 group-hover/link:${getPlatformColor(link.icon).replace('hover:', '')}`} />
+                            ) : link.icon === 'siCodeberg' ? (
+                              <SiCodeberg className={`w-5 h-5 text-white/60 transition-colors duration-300 group-hover/link:${getPlatformColor(link.icon).replace('hover:', '')}`} />
+                            ) : (
+                              <FontAwesomeIcon icon={getIcon(link.icon)} className={`w-5 h-5 text-white/60 transition-colors duration-300 group-hover/link:${getPlatformColor(link.icon).replace('hover:', '')}`} />
+                            )}
+                            <span className="text-white/80 group-hover/link:text-white transition-colors duration-300 font-light tracking-wide">
+                              {link.name}
+                            </span>
+                          </div>
+                          <FontAwesomeIcon 
+                            icon={getIcon('faArrowRight')} 
+                            className="w-4 h-4 text-white/40 group-hover/link:text-white group-hover/link:translate-x-1 transition-all duration-200 ease-out" 
+                          />
+                        </a>
+                      ))}
                     </div>
-                    <FontAwesomeIcon 
-                      icon={getIcon('faArrowRight')} 
-                      className="w-4 h-4 text-white/40 group-hover/link:text-white group-hover/link:translate-x-1 transition-all duration-300" 
-                    />
-                  </a>
+                  )
                 ))}
               </div>
             </div>

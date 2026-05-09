@@ -1,11 +1,6 @@
 {
   "socials": [
     {
-      "name": "Discord",
-      "url": "https://discord.com/users/1426711359059394662",
-      "icon": "faDiscord"
-    },
-    {
       "name": "TikTok",
       "url": "https://tiktok.com/@rosepinetheme",
       "icon": "siTiktok"
@@ -21,6 +16,11 @@
       "name": "Email",
       "url": "mailto:root@playfairs.cc",
       "icon": "faEnvelope"
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.com/users/1426711359059394662",
+      "icon": "faDiscord"
     },
     {
       "name": "Telegram",

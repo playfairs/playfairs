@@ -6,40 +6,33 @@ import { faGithub, faGitlab, faTiktok } from "@fortawesome/free-brands-svg-icons
 import { faUsers, faCodeBranch, faCalendar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
 import { useState, useEffect } from "react";
-
-interface GitHubUser {
-  login: string;
-  name: string;
-  avatar_url: string;
-  followers: number;
-  following: number;
-  public_repos: number;
-  created_at: string;
-  location: string;
-}
+import { usePageCache } from "./contexts/PageCacheContext";
 
 export default function Home() {
-  const [githubData, setGithubData] = useState<GitHubUser | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { homeMounted, setHomeMounted, githubData, setGithubData } = usePageCache();
+  const [loading, setLoading] = useState(!homeMounted && !githubData);
 
   useEffect(() => {
-    async function getGitHubData() {
-      try {
-        const res = await fetch('https://api.github.com/users/playfairs');
-        if (!res.ok) {
-          throw new Error('Failed to fetch GitHub data');
+    if (!homeMounted) {
+      async function getGitHubData() {
+        try {
+          const res = await fetch('https://api.github.com/users/playfairs');
+          if (!res.ok) {
+            throw new Error('Failed to fetch GitHub data');
+          }
+          const data = await res.json();
+          setGithubData(data);
+        } catch (error) {
+          console.error('Error fetching GitHub data:', error);
+        } finally {
+          setLoading(false);
+          setHomeMounted(true);
         }
-        const data = await res.json();
-        setGithubData(data);
-      } catch (error) {
-        console.error('Error fetching GitHub data:', error);
-      } finally {
-        setLoading(false);
       }
-    }
 
-    getGitHubData();
-  }, []);
+      getGitHubData();
+    }
+  }, [homeMounted, setHomeMounted, setGithubData]);
   
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
