@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faGitlab, faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { faUsers, faCodeBranch, faCalendar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
+import { useState, useEffect } from "react";
 
 interface GitHubUser {
   login: string;
@@ -15,16 +18,28 @@ interface GitHubUser {
   location: string;
 }
 
-async function getGitHubData(): Promise<GitHubUser> {
-  const res = await fetch('https://api.github.com/users/playfairs');
-  if (!res.ok) {
-    throw new Error('Failed to fetch GitHub data');
-  }
-  return res.json();
-}
+export default function Home() {
+  const [githubData, setGithubData] = useState<GitHubUser | null>(null);
+  const [loading, setLoading] = useState(true);
 
-export default async function Home() {
-  const githubData = await getGitHubData();
+  useEffect(() => {
+    async function getGitHubData() {
+      try {
+        const res = await fetch('https://api.github.com/users/playfairs');
+        if (!res.ok) {
+          throw new Error('Failed to fetch GitHub data');
+        }
+        const data = await res.json();
+        setGithubData(data);
+      } catch (error) {
+        console.error('Error fetching GitHub data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getGitHubData();
+  }, []);
   
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -33,6 +48,22 @@ export default async function Home() {
       day: 'numeric'
     });
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
+        <div className="text-white/60">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!githubData) {
+    return (
+      <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
+        <div className="text-white/60">Failed to load profile data</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
