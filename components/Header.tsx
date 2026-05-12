@@ -60,13 +60,12 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <Link 
             href="/" 
-            className="group flex items-center gap-3 relative"
+            className="group flex items-center gap-4 relative px-4 py-2 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
-            <span className="relative text-white font-light text-xl tracking-widest transition-all duration-300 group-hover:text-blue-400">
+            <span className="relative text-white font-light text-2xl tracking-widest transition-all duration-300 group-hover:text-gray-300">
               playfairs
             </span>
-            <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400/60 to-purple-400/60 rounded-full transition-all duration-300 group-hover:w-full" />
+            <div className="absolute -top-1 -right-1 w-2 h-2 bg-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100" />
           </Link>
 
           <div className="flex items-center gap-1">
@@ -76,26 +75,17 @@ const Header = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-4 py-2 text-sm font-light tracking-wider transition-all duration-300 group ${
+                  className={`relative px-6 py-3 text-sm font-light tracking-wider transition-all duration-300 group ${
                     isActive
-                      ? 'text-white'
-                      : 'text-white/50 hover:text-white/80'
+                      ? 'text-white bg-gray-800/50 border border-white/20'
+                      : 'text-white/60 border border-transparent hover:border-white/10'
                   }`}
                 >
                   <span className="relative inline-block transition-all duration-300">
                     {item.name}
                   </span>
                   
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                  
-                  {isActive && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-blue-400/60 to-purple-400/60 rounded-full" />
-                  )}
-                  
-                  {!isActive && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-400/40 to-purple-400/40 rounded-full transition-all duration-300 group-hover:w-6" />
-                  )}
-                </Link>
+                                  </Link>
               );
             })}
           </div>
