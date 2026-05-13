@@ -84,8 +84,8 @@ const Header = () => {
                   <span className="relative inline-block transition-all duration-300">
                     {item.name}
                   </span>
-                  
-                                  </Link>
+
+                </Link>
               );
             })}
           </div>
