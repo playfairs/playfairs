@@ -6,80 +6,15 @@ import { faGithub, faGitlab, faTiktok } from "@fortawesome/free-brands-svg-icons
 import { faUsers, faCodeBranch, faCalendar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState, useEffect, useMemo, useRef, type CSSProperties } from "react";
+import { useState, useEffect } from "react";
 import { usePageCache } from "./contexts/PageCacheContext";
-
-type DogMotion = {
-  id: number;
-  top: string;
-  left: string;
-  size: number;
-  height: number;
-  duration: string;
-  xTravel: string;
-  yTravel: string;
-  xMid: string;
-  yMid: string;
-  xBack: string;
-  yBack: string;
-};
-
-const getBrightRgb = () =>
-  `rgb(${120 + Math.round(Math.random() * 135)}, ${120 + Math.round(Math.random() * 135)}, ${120 + Math.round(Math.random() * 135)})`;
-
-const createDogMotion = (id: number): DogMotion => {
-  const size = 150 + Math.round(Math.random() * 105);
-  const height = Math.round(size * 0.62);
-  const padding = 16;
-  const maxX = Math.max(padding, window.innerWidth - size - padding);
-  const maxY = Math.max(padding, window.innerHeight - height - padding);
-  const randomX = () => padding + Math.random() * Math.max(0, maxX - padding);
-  const randomY = () => padding + Math.random() * Math.max(0, maxY - padding);
-  const startX = randomX();
-  const startY = randomY();
-  const pointA = { x: randomX(), y: randomY() };
-  const pointB = { x: randomX(), y: randomY() };
-  const pointC = { x: randomX(), y: randomY() };
-
-  return {
-    id,
-    top: `${startY}px`,
-    left: `${startX}px`,
-    size,
-    height,
-    duration: `${3.2 + Math.random() * 6.8}s`,
-    xTravel: `${pointA.x - startX}px`,
-    yTravel: `${pointA.y - startY}px`,
-    xMid: `${pointB.x - startX}px`,
-    yMid: `${pointB.y - startY}px`,
-    xBack: `${pointC.x - startX}px`,
-    yBack: `${pointC.y - startY}px`
-  };
-};
 
 export default function Home() {
   const { homeMounted, setHomeMounted, githubData, setGithubData } = usePageCache();
   const [loading, setLoading] = useState(!homeMounted && !githubData);
-  const [texasMode, setTexasMode] = useState(false);
-  const [dogVideos, setDogVideos] = useState<DogMotion[]>([]);
-  const [texasGradient, setTexasGradient] = useState(
-    "linear-gradient(135deg, rgb(255, 180, 120), rgb(120, 220, 255), rgb(255, 140, 230))"
-  );
-  const dogVideoRef = useRef<HTMLVideoElement>(null);
-  const confettiPieces = useMemo(
-    () => Array.from({ length: 90 }, (_, index) => ({
-      id: index,
-      left: `${(index * 37) % 100}%`,
-      delay: `${((index * 17) % 40) / 10}s`,
-      duration: `${2.5 + ((index * 13) % 30) / 10}s`,
-      color: ["#ef4444", "#f59e0b", "#22c55e", "#38bdf8", "#a78bfa", "#f472b6"][index % 6],
-      size: `${6 + ((index * 11) % 8)}px`
-    })),
-    []
-  );
 
   useEffect(() => {
-    document.title = "dog";
+    document.title = "playfairs.cc";
   }, []);
 
   useEffect(() => {
@@ -104,92 +39,11 @@ export default function Home() {
     }
   }, [homeMounted, setHomeMounted, setGithubData]);
 
-  useEffect(() => {
-    const dogVideo = dogVideoRef.current;
-    if (loading || !githubData || !dogVideo) {
-      return;
-    }
-
-    dogVideo.loop = true;
-    dogVideo.preload = "auto";
-    dogVideo.load();
-  }, [loading, githubData]);
-
-  useEffect(() => {
-    if (!texasMode) {
-      return;
-    }
-
-    document.querySelectorAll<HTMLVideoElement>("[data-dog-video='true']").forEach((dogVideo) => {
-      dogVideo.loop = true;
-      dogVideo.preload = "auto";
-      void dogVideo.play().catch(() => {
-        dogVideo.controls = true;
-      });
-    });
-  }, [texasMode, dogVideos]);
-  
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
-    });
-  };
-
-  const launchTexasMode = () => {
-    setTexasGradient(`linear-gradient(${Math.round(Math.random() * 360)}deg, ${getBrightRgb()}, ${getBrightRgb()}, ${getBrightRgb()})`);
-    setDogVideos([createDogMotion(Date.now())]);
-    setTexasMode(true);
-
-    const dogVideo = dogVideoRef.current;
-    if (dogVideo) {
-      dogVideo.loop = true;
-      dogVideo.preload = "auto";
-      dogVideo.currentTime = 0;
-      void dogVideo.play().catch(() => {
-        dogVideo.controls = true;
-      });
-    }
-  };
-
-  const addDogVideo = () => {
-    setDogVideos((currentVideos) => {
-      if (currentVideos.length >= 67) {
-        return currentVideos;
-      }
-
-      return [...currentVideos, createDogMotion(Date.now() + currentVideos.length)];
-    });
-  };
-
-  const keepDogVideoLooping = (dogVideo: HTMLVideoElement) => {
-    if (dogVideo.duration > 0 && dogVideo.duration - dogVideo.currentTime < 0.12) {
-      dogVideo.currentTime = 0;
-      void dogVideo.play().catch(() => {
-        dogVideo.controls = true;
-      });
-    }
-  };
-
-  const renderLocation = (location: string) => {
-    const parts = location.split(/(TX)/g);
-
-    return parts.map((part, index) => {
-      if (part !== "TX") {
-        return part;
-      }
-
-      return (
-        <button
-          key={`${part}-${index}`}
-          type="button"
-          onClick={launchTexasMode}
-          className="text-sky-100/60 hover:text-sky-100/70 transition-colors duration-200"
-        >
-          {part}
-        </button>
-      );
     });
   };
 
@@ -211,136 +65,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      <video
-        ref={dogVideoRef}
-        src="/dog.mp4"
-        preload="auto"
-        loop
-        playsInline
-        className="fixed opacity-0 pointer-events-none"
-      />
-      {dogVideos.map((dogMotion) => (
-        <video
-          key={dogMotion.id}
-          data-dog-video="true"
-          src="/dog.mp4"
-          preload="auto"
-          autoPlay
-          loop
-          playsInline
-          onTimeUpdate={(event) => keepDogVideoLooping(event.currentTarget)}
-          onEnded={(event) => {
-            event.currentTarget.currentTime = 0;
-            void event.currentTarget.play().catch(() => {
-              event.currentTarget.controls = true;
-            });
-          }}
-          onCanPlay={(event) => {
-            void event.currentTarget.play().catch(() => {
-              event.currentTarget.controls = true;
-            });
-          }}
-          className="texas-dog-video pointer-events-none fixed z-50 rounded-lg border border-white/30 bg-black object-cover opacity-100 shadow-2xl shadow-blue-500/20"
-          style={{
-            top: dogMotion.top,
-            left: dogMotion.left,
-            width: dogMotion.size,
-            height: dogMotion.height,
-            "--dog-duration": dogMotion.duration,
-            "--dog-x": dogMotion.xTravel,
-            "--dog-y": dogMotion.yTravel,
-            "--dog-x-mid": dogMotion.xMid,
-            "--dog-y-mid": dogMotion.yMid,
-            "--dog-x-back": dogMotion.xBack,
-            "--dog-y-back": dogMotion.yBack
-          } as CSSProperties}
-        />
-      ))}
-      <style>{`
-        @keyframes texasConfettiFall {
-          0% {
-            opacity: 0;
-            transform: translate3d(0, -12vh, 0) rotate(0deg);
-          }
-          10% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0.85;
-            transform: translate3d(0, 115vh, 0) rotate(720deg);
-          }
-        }
-
-        @keyframes texasDogFloat {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(-2deg);
-          }
-          25% {
-            transform: translate3d(var(--dog-x), var(--dog-y), 0) rotate(3deg);
-          }
-          50% {
-            transform: translate3d(var(--dog-x-mid), var(--dog-y-mid), 0) rotate(-1deg);
-          }
-          75% {
-            transform: translate3d(var(--dog-x-back), var(--dog-y-back), 0) rotate(2deg);
-          }
-        }
-
-        @keyframes texasGradientSpin {
-          from {
-            filter: hue-rotate(0deg) saturate(1.15);
-            transform: rotate(0deg) scale(1.25);
-          }
-          to {
-            filter: hue-rotate(360deg) saturate(1.15);
-            transform: rotate(360deg) scale(1.25);
-          }
-        }
-
-        .texas-confetti {
-          animation-name: texasConfettiFall;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-
-        .texas-dog-video {
-          animation: texasDogFloat var(--dog-duration) ease-in-out infinite;
-        }
-
-        .texas-gradient-field {
-          animation: texasGradientSpin 28s linear infinite;
-        }
-      `}</style>
-
-      {texasMode ? (
-        <main
-          className="relative min-h-screen overflow-hidden flex items-center justify-center p-6 bg-white"
-          onClick={addDogVideo}
-        >
-          <div
-            className="texas-gradient-field absolute -inset-1/2"
-            style={{ background: texasGradient }}
-          />
-          {confettiPieces.map((piece) => (
-            <span
-              key={piece.id}
-              className="texas-confetti pointer-events-none absolute top-[-10vh]"
-              style={{
-                left: piece.left,
-                width: piece.size,
-                height: piece.size,
-                backgroundColor: piece.color,
-                animationDelay: piece.delay,
-                animationDuration: piece.duration
-              }}
-            />
-          ))}
-          <h1 className="relative z-10 select-none text-center text-4xl sm:text-6xl font-thin tracking-widest text-white">
-            Texas? More like Tex ASS!!!
-          </h1>
-        </main>
-      ) : (
-        <>
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:50px_50px] opacity-20" />
       
       <Header />
@@ -398,7 +122,7 @@ export default function Home() {
                       <span>Joined {formatDate(githubData.created_at)}</span>
                     </div>
                     {githubData.location && (
-                      <p className="text-white/50 text-sm font-light text-center">{renderLocation(githubData.location)}</p>
+                      <p className="text-white/50 text-sm font-light text-center">{githubData.location}</p>
                     )}
                   </div>
                 </div>
@@ -448,8 +172,6 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-        </>
-      )}
     </div>
   );
 }
