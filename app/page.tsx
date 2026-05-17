@@ -155,7 +155,7 @@ export default function Home() {
 
   const addDogVideo = () => {
     setDogVideos((currentVideos) => {
-      if (currentVideos.length >= 200) {
+      if (currentVideos.length >= 67) {
         return currentVideos;
       }
 
