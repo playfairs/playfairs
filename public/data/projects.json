@@ -19,6 +19,11 @@
       "name": "github.io root",
       "description": "literally just my github.io thingy",
       "url": "https://playfairs.github.io"
+    },
+    {
+      "name": "Playlists",
+      "description": "my playlists which I deemed worthy enough to plaster on a website.",
+      "url": "https://playlists.playfairs.cc"
     }
   ]
 }
