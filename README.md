@@ -1,10 +1,5 @@
 <!-- ![banner](sewer.jpg) -->
-
-![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=playfairs&theme=rose_pine)
-
----
-
-i hate python
+![](https://komarev.com/ghpvc/?username=playfairs)
 
 ---
 
@@ -28,11 +23,4 @@ i hate python
 > 3. [Discord](https://discord.com/users/1426711359059394662)  
 > 4. [Spotify](https://open.spotify.com/user/darklore4201)  
 
----
-
-![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=playfairs&theme=rose_pine)
-![](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=playfairs&theme=rose_pine)
----
-
-![](https://komarev.com/ghpvc/?username=playfairs)
 ---
