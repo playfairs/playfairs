@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const headerStyles = `
   @keyframes slideInFromTop {
@@ -18,17 +18,17 @@ const headerStyles = `
 interface NavItem {
   name: string;
   href: string;
+  external?: boolean;
 }
 
 const Header = () => {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const styleElement = document.createElement('style');
     styleElement.textContent = headerStyles;
     document.head.appendChild(styleElement);
-    
+
     return () => {
       document.head.removeChild(styleElement);
     };
@@ -36,55 +36,50 @@ const Header = () => {
 
   const navItems: NavItem[] = [
     { name: 'HOME', href: '/' },
-    { name: 'SOCIALS', href: '/socials' },
-    { name: 'PROJECTS', href: '/projects' },
-    { name: 'TECHSTACK', href: '/techstack' },
+    { name: 'EXPLORE', href: '/explore' },
+    { name: 'MUSIC TASTE', href: 'https://playlists.playfairs.cc', external: true },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
-        : 'bg-transparent'
-    }`}>
-      <nav className="max-w-7xl mx-auto px-6 py-6">
+    <header className="fixed top-6 left-0 right-0 z-50 transition-all duration-300 mx-auto max-w-4xl bg-black/90 backdrop-blur-xl border-white/10 shadow-2xl border">
+      <nav className="px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link 
-            href="/" 
-            className="group flex items-center gap-4 relative px-4 py-2 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
+          <Link
+            href="/"
+            className="group flex items-center gap-3"
           >
-            <span className="relative text-white font-light text-2xl tracking-widest transition-all duration-300 group-hover:text-gray-300">
+            <span className="font-bold text-lg tracking-wider text-white">
               playfairs
             </span>
-            <div className="absolute -top-1 -right-1 w-2 h-2 bg-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100" />
           </Link>
 
           <div className="flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
+              if (item.external) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 text-white/60 hover:text-white"
+                  >
+                    {item.name}
+                  </a>
+                );
+              }
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-6 py-3 text-sm font-light tracking-wider transition-all duration-300 group ${
+                  className={`px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 ${
                     isActive
-                      ? 'text-white bg-gray-800/50 border border-white/20'
-                      : 'text-white/60 border border-transparent hover:border-white/10'
+                      ? 'text-white'
+                      : 'text-white/60 hover:text-white'
                   }`}
                 >
-                  <span className="relative inline-block transition-all duration-300">
-                    {item.name}
-                  </span>
-
+                  {item.name}
                 </Link>
               );
             })}

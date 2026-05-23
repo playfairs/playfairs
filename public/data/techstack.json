@@ -31,9 +31,9 @@
       "color": "#3572A5"
     },
     {
-      "name": "TypeScript React",
-      "icon": "SiReact",
-      "description": "TypeScript with React for .tsx development",
+      "name": "TypeScript",
+      "icon": "SiTypescript",
+      "description": "JavaScript but it's like, better",
       "color": "#3178c6"
     }
   ],

@@ -22,12 +22,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-center gap-4">
+    <footer className="fixed bottom-6 left-0 right-0 z-50 mx-auto max-w-4xl rounded-xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-2xl">
+      <div className="px-6 py-4">
+        <div className="flex items-center justify-center gap-3">
           <button
             onClick={Meow}
-            className="px-4 py-2 text-sm font-light tracking-wider text-white/60 border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg"
+            className="px-4 py-2 text-xs font-medium tracking-wide text-white/50 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 rounded-lg"
           >
             Meow :3
           </button>
@@ -35,7 +35,7 @@ const Footer = () => {
             href="https://www.google.com/search?q=inverted+aquarium"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 text-sm font-light tracking-wider text-white/60 border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg"
+            className="px-4 py-2 text-xs font-medium tracking-wide text-white/50 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 rounded-lg"
           >
             Inverted Aquarium
           </a>
