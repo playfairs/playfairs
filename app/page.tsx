@@ -164,7 +164,7 @@ export default function Home() {
                     {[
                       { name: 'GITHUB', icon: faGithub, url: 'https://github.com/playfairs', color: 'hover:text-gray-300' },
                       { name: 'GITLAB', icon: faGitlab, url: 'https://gitlab.com/playfairs', color: 'hover:text-orange-300' },
-                      { name: 'TIKTOK', icon: faTiktok, url: 'https://tiktok.com/@rosepinetheme', color: 'hover:text-pink-300' }
+                      { name: 'TIKTOK', icon: faTiktok, url: 'https://tiktok.com/@playfairs', color: 'hover:text-pink-300' }
                     ].map((link, index) => (
                       <a
                         key={index}
