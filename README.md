@@ -19,7 +19,6 @@
 ### **currently working on**
 > 1. [Yet Another Wayland Compositor](https://gitlab.com/yawc.rs) - A batteries-included Wayland Compositor Written in rust using Rustlings.
 > 2. [Clifford](https://github.com/playfairs/clifford) - A Neural Network with a future planned LLM called Avon.
-> 3. 
 
 ### **socials**
 > 1. [GitLab](https://gitlab.com/playfairs)  
