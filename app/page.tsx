@@ -140,6 +140,9 @@ export default function Home() {
                       <FontAwesomeIcon icon={faCalendar} className="w-3 h-3" />
                       <span>Joined {formatDate(githubData.created_at)}</span>
                     </div>
+                    {githubData.bio && (
+                      <p className="text-sm font-light text-center text-white/70">{githubData.bio}</p>
+                    )}
                     {githubData.location && (
                       <p className="text-sm font-light text-center text-white/50">{githubData.location}</p>
                     )}

@@ -11,6 +11,7 @@ interface GitHubUser {
   public_repos: number;
   created_at: string;
   location: string;
+  bio: string | null;
 }
 
 interface SocialLink {
