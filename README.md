@@ -1,7 +1,7 @@
 ![banner](public/banner.jpg)
 
 ![](https://komarev.com/ghpvc/?username=playfairs)
-![Views](https://repoviewer.repolishe.workers.dev/playfairs/cancer)
+![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
 
 ---
 
