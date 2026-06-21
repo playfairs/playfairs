@@ -18,7 +18,7 @@
 > 4. [fsscan](https://github.com/playfairs/fsscan) - A simple File System Scanner written in Go, for Linux and macOS.
 > 5. [ByteBuilder](https://github.com/playfairs/ByteBuilder) - A simple C++ tool for generating files of any size with custom content.
 > 6. [snek](https://github.com/playfairs/snek) - A simple snake game written in C.
-> 7. [rv](https://github.com/playfairs/rv) - A repository view counter.
+> 7. [rv](https://rv.playfairs.cc) - A repository view counter.
 > 8. [NSFreeway](https://github.com/playfairs/NSFreeway) - A service written in Swift to hide the Traffic Light window buttons on macOS.
 
 ### **socials**
