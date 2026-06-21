@@ -11,16 +11,15 @@
 > 3. [playfairs.cc](https://playfairs.cc) - The source of this README.  
 > 4. [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration.  
 
-### **side projs i made**
+### **side projs**
 > 1. [dumbassdog.com](https://dumbassdog.com) - The greatest website you've ever seen.
 > 2. [vortex](https://vortex.playfairs.cc) - Another shitty all-in-one discord bot written in Python.
 > 3. [webstorm](https://github.com/playfairs/webstorm) - a dogshit cli webhook tool for discord webhooks
 > 4. [fsscan](https://github.com/playfairs/fsscan) - A simple File System Scanner written in Go, for Linux and macOS.
-> 5. [ByteBuilder](https://github.com/playfairs/ByteBuilder) - A simple C++ tool for generating files of any size with custom content. Perfect for testing storage, benchmarking, or creating dummy data.
-
-### **currently working on**
-> 1. [Yet Another Wayland Compositor](https://gitlab.com/yawc.rs) - A batteries-included Wayland Compositor Written in rust using Rustlings.
-> 2. [Clifford](https://github.com/playfairs/clifford) - A Neural Network with a future planned LLM called Avon.
+> 5. [ByteBuilder](https://github.com/playfairs/ByteBuilder) - A simple C++ tool for generating files of any size with custom content.
+> 6. [snek](https://github.com/playfairs/snek) - A simple snake game written in C.
+> 7. [rv](https://github.com/playfairs/rv) - A repository view counter.
+> 8. [NSFreeway](https://github.com/playfairs/NSFreeway) - A service written in Swift to hide the Traffic Light window buttons on macOS.
 
 ### **socials**
 > 1. [GitLab](https://gitlab.com/playfairs)  
