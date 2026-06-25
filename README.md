@@ -30,53 +30,78 @@
 ---
 
 ```txt
-Fuck my life, can't save that, girl
-Don't tell me you could save that shit
-All she want is payback for the way I always play that shit
-You ain't gettin' nothin' that I'm sayin'
-Don't tell me you is
-Nothin' like them other motherfuckers
-I can make you rich (I can make you rich)
-I can make you this, baby, I can make you that
-I can take you there, but baby, you won't make it back
-Growin' sick of this and I don't wanna make you sad
-Do I make you scared? Baby, won't you take me back?
 
-Nothin' like them other motherfuckers
-I can make you rich (I can make you rich)
-Nothin' like them other motherfuckers
-I can make you rich
+Have faith in me
 
-Fuck my life, can't save that, girl
-Don't tell me you could save that shit
-All she want is payback for the way I always play that shit
-You ain't gettin' nothin' that I'm sayin'
-Don't tell me you is
-Nothin' like them other motherfuckers
-I can (Make you rich), make you rich
-I can make you this, baby, I can make you that
-I can take you there, but baby, you won't make it back
-Growin' sick of this and I don't wanna make you sad
-Do I make you scared? Baby, won't you take me back?
+???
 
-Down another lonely road, I go
-Just another lonely road to home
-I just wanna know, I just gotta know
-Do you wanna glo? Baby, we could glo
+Nigga, we be on some Dogpound shit
+Makin’ hella money while your ass talkin’ to kids
+Bitches talkin’ hella shit, we take you off the grid
+Keep talkin’; speak in caps, we gon’ cap, take off his lid
 
-Fuck my life, can't save that, girl
-Don't tell me you could save that shit
-All she want is payback for the way I always play that shit
-You ain't gettin' nothin' that I'm sayin'
-Don't tell me you is
-Nothin' like them other motherfuckers
-I can make you rich (I can make you rich)
-I can make you this, baby, I can make you that
-I can take you there, but baby, you won't make it back
-Growin' sick of this and I don't wanna make you sad
-Do I make you scared? Baby, won't you take me back?
+Lift up your shirt, baby, lemme see your titties
+I wanna breed you, baby, I wanna see your-
+L-l-l-lift up your shirt, baby, lemme see your titties
+I wanna breed you, baby, I-
+L-l-l-lift up your shirt, baby, lemme see your titties (Fuck)
+I wanna breed you, baby, I wanna see your kitty
+Take you 'round the world and visit all these different cities
+Girl, we can get fucked up; in the morning, feel shitty
 
-Do I make you scared? Baby, won't you take me back?
-Nothin' like them other motherfuckers
-I can make you rich (I can make you rich)
+Fuck, fuck, fuck
+Fuck, fuck, fuck
+Fuck, fuck, fuck
+
+Yeah, yeah, yeah, yeah, yeah
+This is Ocelot im smokin' hella shit
+
+Lift up your shirt, baby, lemmе see your titties
+I wanna breed you, baby, I wanna see your kitty
+Take you 'round the world and visit all thеse different cities
+Girl, we can get fucked up; in the morning, feel shitty
+
+Lift up your shirt, baby, lemme see your titties
+I wanna breed you, baby, I wanna see your ki—
+Lift up your shirt, baby, lemme see your titties
+I wanna breed you, baby, I wanna see your kitty
+Take you 'round the world and visit all these different cities
+Girl, we can get fucked up; in the morning, feel shitty
+Take you 'round the world and visit all these different cities
+Girl, we can get fucked up; in the morning, feel shitty
+
+Fuck, fuck, fuck
+Fuck, fuck, fuck
+Fuck, fuck
+
+Yeah, yeah, yeah, yeah, yeah
+Yeah, yeah, yeah, yeah, yeah
+Yeah
+This is Ocelot
+
+???
+
+Lift up your shirt, baby, lemme see your titties
+I wanna breed you, baby, I wanna see your kitty
+Take you 'round the world and visit all these different cities
+Girl, we can get fucked up; in the morning, feel shitty
+
+Didn't you already ask me that?
+Absolutely
+
+You're, you're, you're not dogpound, you fucking
+[Larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp]
+
+Lift up your shirt, baby, lemme see your titties
+I wanna breed you, baby, I wanna see your ki—
+Lift up your shirt, baby, lemme see your titties
+I wanna breed you, baby, I wanna see your kitty
+Take you 'round the world and visit all these different cities
+Girl, we can get fucked up; in the morning, feel shitty
+Take you 'round the world and visit all these different cities
+Girl, we can get fucked up; in the morning, feel shitty
+
+
+I can't find the fucking rest
+
 ```
