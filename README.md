@@ -1,6 +1,6 @@
 <!-- ![banner](public/banner.jpg) -->
 
-so I guess, I'll just, **fuck off and die**
+**Fuck Off and Die**
 
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
