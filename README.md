@@ -1,5 +1,7 @@
 <!-- ![banner](public/banner.jpg) -->
 
+so I guess, I'll just, **fuck off and die**
+
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
 
@@ -29,79 +31,79 @@
 > 5. [тгк](https://t.me/sobbinf)
 ---
 
-```txt
+<!-- ```txt -->
 
-Have faith in me
+<!-- Have faith in me -->
 
-???
+<!-- ??? -->
 
-Nigga, we be on some Dogpound shit
-Makin’ hella money while your ass talkin’ to kids
-Bitches talkin’ hella shit, we take you off the grid
-Keep talkin’; speak in caps, we gon’ cap, take off his lid
+<!-- Nigga, we be on some Dogpound shit -->
+<!-- Makin’ hella money while your ass talkin’ to kids -->
+<!-- Bitches talkin’ hella shit, we take you off the grid -->
+<!-- Keep talkin’; speak in caps, we gon’ cap, take off his lid -->
 
-Lift up your shirt, baby, lemme see your titties
-I wanna breed you, baby, I wanna see your-
-L-l-l-lift up your shirt, baby, lemme see your titties
-I wanna breed you, baby, I-
-L-l-l-lift up your shirt, baby, lemme see your titties (Fuck)
-I wanna breed you, baby, I wanna see your kitty
-Take you 'round the world and visit all these different cities
-Girl, we can get fucked up; in the morning, feel shitty
+<!-- Lift up your shirt, baby, lemme see your titties -->
+<!-- I wanna breed you, baby, I wanna see your- -->
+<!-- L-l-l-lift up your shirt, baby, lemme see your titties -->
+<!-- I wanna breed you, baby, I- -->
+<!-- L-l-l-lift up your shirt, baby, lemme see your titties (Fuck) -->
+<!-- I wanna breed you, baby, I wanna see your kitty -->
+<!-- Take you 'round the world and visit all these different cities -->
+<!-- Girl, we can get fucked up; in the morning, feel shitty -->
 
-Fuck, fuck, fuck
-Fuck, fuck, fuck
-Fuck, fuck, fuck
+<!-- Fuck, fuck, fuck -->
+<!-- Fuck, fuck, fuck -->
+<!-- Fuck, fuck, fuck -->
 
-Yeah, yeah, yeah, yeah, yeah
-This is Ocelot im smokin' hella shit
+<!-- Yeah, yeah, yeah, yeah, yeah -->
+<!-- This is Ocelot im smokin' hella shit -->
 
-Lift up your shirt, baby, lemmе see your titties
-I wanna breed you, baby, I wanna see your kitty
-Take you 'round the world and visit all thеse different cities
-Girl, we can get fucked up; in the morning, feel shitty
+<!-- Lift up your shirt, baby, lemmе see your titties -->
+<!-- I wanna breed you, baby, I wanna see your kitty -->
+<!-- Take you 'round the world and visit all thеse different cities -->
+<!-- Girl, we can get fucked up; in the morning, feel shitty -->
 
-Lift up your shirt, baby, lemme see your titties
-I wanna breed you, baby, I wanna see your ki—
-Lift up your shirt, baby, lemme see your titties
-I wanna breed you, baby, I wanna see your kitty
-Take you 'round the world and visit all these different cities
-Girl, we can get fucked up; in the morning, feel shitty
-Take you 'round the world and visit all these different cities
-Girl, we can get fucked up; in the morning, feel shitty
+<!-- Lift up your shirt, baby, lemme see your titties -->
+<!-- I wanna breed you, baby, I wanna see your ki— -->
+<!-- Lift up your shirt, baby, lemme see your titties -->
+<!-- I wanna breed you, baby, I wanna see your kitty -->
+<!-- Take you 'round the world and visit all these different cities -->
+<!-- Girl, we can get fucked up; in the morning, feel shitty -->
+<!-- Take you 'round the world and visit all these different cities -->
+<!-- Girl, we can get fucked up; in the morning, feel shitty -->
 
-Fuck, fuck, fuck
-Fuck, fuck, fuck
-Fuck, fuck
+<!-- Fuck, fuck, fuck -->
+<!-- Fuck, fuck, fuck -->
+<!-- Fuck, fuck -->
 
-Yeah, yeah, yeah, yeah, yeah
-Yeah, yeah, yeah, yeah, yeah
-Yeah
-This is Ocelot
+<!-- Yeah, yeah, yeah, yeah, yeah -->
+<!-- Yeah, yeah, yeah, yeah, yeah -->
+<!-- Yeah -->
+<!-- This is Ocelot -->
 
-???
+<!-- ??? -->
 
-Lift up your shirt, baby, lemme see your titties
-I wanna breed you, baby, I wanna see your kitty
-Take you 'round the world and visit all these different cities
-Girl, we can get fucked up; in the morning, feel shitty
+<!-- Lift up your shirt, baby, lemme see your titties -->
+<!-- I wanna breed you, baby, I wanna see your kitty -->
+<!-- Take you 'round the world and visit all these different cities -->
+<!-- Girl, we can get fucked up; in the morning, feel shitty -->
 
-Didn't you already ask me that?
-Absolutely
+<!-- Didn't you already ask me that? -->
+<!-- Absolutely -->
 
-You're, you're, you're not dogpound, you fucking
-[Larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp]
+<!-- You're, you're, you're not dogpound, you fucking -->
+<!-- [Larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp, larp] -->
 
-Lift up your shirt, baby, lemme see your titties
-I wanna breed you, baby, I wanna see your ki—
-Lift up your shirt, baby, lemme see your titties
-I wanna breed you, baby, I wanna see your kitty
-Take you 'round the world and visit all these different cities
-Girl, we can get fucked up; in the morning, feel shitty
-Take you 'round the world and visit all these different cities
-Girl, we can get fucked up; in the morning, feel shitty
+<!-- Lift up your shirt, baby, lemme see your titties -->
+<!-- I wanna breed you, baby, I wanna see your ki— -->
+<!-- Lift up your shirt, baby, lemme see your titties -->
+<!-- I wanna breed you, baby, I wanna see your kitty -->
+<!-- Take you 'round the world and visit all these different cities -->
+<!-- Girl, we can get fucked up; in the morning, feel shitty -->
+<!-- Take you 'round the world and visit all these different cities -->
+<!-- Girl, we can get fucked up; in the morning, feel shitty -->
 
 
-I can't find the fucking rest
+<!-- I can't find the fucking rest -->
 
-```
+<!-- ``` -->
