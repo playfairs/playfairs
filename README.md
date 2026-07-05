@@ -1,9 +1,9 @@
 <!-- ![banner](public/banner.jpg) -->
 
-**Fuck Off and Die**
-
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
+
+**where will you spend eternity**
 
 ---
 
