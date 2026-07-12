@@ -3,6 +3,12 @@
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
 
+**resources**
+> 1. [AsterIDE](https://asteride.dev) - an ide i made out of boredom and still maintain
+> 2. [playfairs.cc](https://playfairs.cc) - personal website and this readme
+> 3. [nix](https://github.com/playfairs/nix) - my nix config
+
+
 <!-- ### **proud projs** -->
 <!-- > 1. [AsterIDE](https://asteride.dev) ([GitHub](https://github.com/Aster-IDE)) - A Simple Text Editor written in Rust. -->  
 <!-- > 2. [Magnolia](https://github.com/Aster-IDE/magnolia) - A Markdown editor written in Rust for backend and TypeScript for frontend. -->
