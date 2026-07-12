@@ -3,8 +3,6 @@
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
 
----
-
 <!-- ### **proud projs** -->
 <!-- > 1. [AsterIDE](https://asteride.dev) ([GitHub](https://github.com/Aster-IDE)) - A Simple Text Editor written in Rust. -->  
 <!-- > 2. [Magnolia](https://github.com/Aster-IDE/magnolia) - A Markdown editor written in Rust for backend and TypeScript for frontend. -->
