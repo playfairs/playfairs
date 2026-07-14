@@ -8,7 +8,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCodeBranch, faStar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import * as solidIcons from "@fortawesome/free-solid-svg-icons";
 import * as brandIcons from "@fortawesome/free-brands-svg-icons";
-import { SiMatrix, SiCodeberg, SiRust, SiNixos, SiZig, SiC, SiPython, SiTypescript, SiReact, SiVim, SiGit, SiDocker, SiLinux, SiArchlinux, SiApple, SiUbuntu, SiAndroid, SiSpotify, SiFirefox, SiDiscord, SiGnubash } from "react-icons/si";
+import { SiMatrix, SiCodeberg, SiRust, SiNixos, SiZig, SiC, SiCplusplus, SiPython, SiTypescript, SiReact, SiVim, SiGit, SiDocker, SiLinux, SiArchlinux, SiApple, SiUbuntu, SiAndroid, SiSpotify, SiFirefox, SiDiscord, SiGnubash } from "react-icons/si";
 import Header from "@/components/Header";
 
 const getIcon = (iconName: string) => {
@@ -41,6 +41,8 @@ const getTechIcon = (iconName: string) => {
     case 'SiNixos': return SiNixos;
     case 'SiZig': return SiZig;
     case 'SiC': return SiC;
+    case 'SiC++':
+    case 'SiCplusplus': return SiCplusplus;
     case 'SiPython': return SiPython;
     case 'SiTypescript': return SiTypescript;
     case 'SiReact': return SiReact;
@@ -132,19 +134,8 @@ export default function Explore() {
   const [techData, setTechData] = useState<TechStackData | null>(null);
   const [languageCounts, setLanguageCounts] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [indicatorPosition, setIndicatorPosition] = useState({ top: 0, height: 0 });
-  const gridRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   useEffect(() => {
     if (!navRef.current) return;
@@ -153,7 +144,7 @@ export default function Explore() {
     if (activeButton) {
       setIndicatorPosition({
         top: activeButton.offsetTop,
-        height: activeButton.offsetHeight
+        height: activeButton.offsetHeight,
       });
     }
   }, [activeSection, activeSubSection, loading]);
@@ -170,9 +161,6 @@ export default function Explore() {
           fetch('https://api.github.com/users/playfairs/repos?sort=pushed&direction=desc&per_page=6')
         ]);
 
-        console.log('Repos response status:', reposRes.status, reposRes.statusText);
-        console.log('Repos response headers:', Object.fromEntries(reposRes.headers.entries()));
-
         const [socialsData, projectsData, techstackData, reposData] = await Promise.all([
           socialsRes.json(),
           projectsRes.json(),
@@ -180,16 +168,11 @@ export default function Explore() {
           reposRes.json()
         ]);
 
-        console.log('Repos data:', reposData);
-        console.log('Repos data type:', typeof reposData);
-        console.log('Is array?', Array.isArray(reposData));
-
         if (!Array.isArray(reposData)) {
-          console.error('reposData is not an array:', reposData);
           setSocialData(socialsData);
           setProjectData({
             repositories: [],
-            projectLinks: projectsData.projectLinks
+            projectLinks: projectsData.projectLinks,
           });
           setTechData(techstackData);
           setLanguageCounts({});
@@ -211,7 +194,7 @@ export default function Explore() {
                 forks: detailData.forks_count,
                 license: detailData.license?.spdx_id || 'Not Licensed',
                 url: detailData.html_url,
-                updatedAt: detailData.updated_at
+                updatedAt: detailData.updated_at,
               };
             } catch {
               return {
@@ -222,7 +205,7 @@ export default function Explore() {
                 forks: repo.forks_count,
                 license: 'Unknown',
                 url: repo.html_url,
-                updatedAt: repo.updated_at
+                updatedAt: repo.updated_at,
               };
             }
           })
@@ -231,13 +214,13 @@ export default function Explore() {
         setSocialData(socialsData);
         setProjectData({
           repositories: detailedRepos,
-          projectLinks: projectsData.projectLinks
+          projectLinks: projectsData.projectLinks,
         });
         setTechData(techstackData);
 
         const languages = techstackData.languages.map((item: TechItem) => item.name);
         const counts: Record<string, number> = {};
-        
+
         await Promise.all(languages.map(async (language: string) => {
           try {
             const response = await fetch(`https://api.github.com/search/repositories?q=user:playfairs+language:${encodeURIComponent(language)}`);
@@ -266,16 +249,16 @@ export default function Explore() {
       subSections: [
         { id: 'socials', label: 'Media' },
         { id: 'communication', label: 'Communication' },
-        { id: 'development', label: 'Development' }
-      ]
+        { id: 'development', label: 'Development' },
+      ],
     },
     {
       id: 'projects',
       label: 'PROJECTS',
       subSections: [
         { id: 'repos', label: 'Repositories' },
-        { id: 'links', label: 'Project Links' }
-      ]
+        { id: 'links', label: 'Project Links' },
+      ],
     },
     {
       id: 'techstack',
@@ -283,9 +266,9 @@ export default function Explore() {
       subSections: [
         { id: 'languages', label: 'Languages' },
         { id: 'software', label: 'Software' },
-        { id: 'hardware', label: 'Hardware' }
-      ]
-    }
+        { id: 'hardware', label: 'Hardware' },
+      ],
+    },
   ];
 
   const getLanguageColor = (language: string) => {
@@ -305,7 +288,7 @@ export default function Explore() {
       'Dart': '#00B4AB',
       'Nix': '#5277C3',
       'HTML': '#e34c26',
-      'Unknown': '#6b7280'
+      'Unknown': '#6b7280',
     };
     return colors[language] || colors['Unknown'];
   };
@@ -317,327 +300,321 @@ export default function Explore() {
     return num.toString();
   };
 
+  const handleTechItemClick = (item: TechItem) => {
+    if (activeSubSection === 'languages') {
+      const languageQuery = encodeURIComponent(item.name.toLowerCase());
+      const url = `https://github.com/playfairs?tab=repositories&q=&type=&language=${languageQuery}&sort=`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (item.url) {
+      window.open(item.url, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
-    <div className="min-h-screen relative overflow-hidden bg-black">
-      <div
-        ref={gridRef}
-        className="absolute inset-0 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:60px_60px] opacity-30"
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.08) 0%, transparent 40%)`,
-        }}
-      />
+    <div className="relative min-h-screen overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.16),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(124,58,237,0.16),transparent_28%)]" />
 
       <Header />
 
-      <main className="relative min-h-screen p-6 pt-32 pb-24">
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="flex gap-8">
-            <aside className="w-64 flex-shrink-0">
-              <div className="relative border p-4 sticky top-32 bg-black border-white/30">
-                <h2 className="text-xs font-bold tracking-widest mb-4 border-b pb-2 text-white border-white/20">EXPLORE</h2>
-                <nav ref={navRef} className="space-y-0 relative">
-                  <div
-                    className="absolute left-0 w-0.5 bg-white transition-all duration-300 ease-out"
-                    style={{
-                      top: indicatorPosition.top,
-                      height: indicatorPosition.height,
-                    }}
-                  />
-                  {sections.map((section) => (
-                    <div key={section.id}>
-                      <button
-                        data-active={activeSection === section.id}
-                        onClick={() => {
-                          setActiveSection(section.id);
-                          setActiveSubSection(section.subSections[0].id);
-                        }}
-                        className={`w-full text-left px-3 py-2 text-xs font-bold tracking-wider transition-all duration-300 ${
-                          activeSection === section.id
-                            ? 'text-white bg-white/5'
-                            : 'text-white/40 hover:text-white/60 hover:bg-white/5'
-                        }`}
-                      >
-                        {section.label}
-                      </button>
-                      <div className="ml-4 mt-0 space-y-0 relative">
-                        {section.subSections.map((sub) => (
-                          <div key={sub.id} className="relative">
-                            <div
-                              className={`absolute left-0 w-0.5 transition-all duration-300 ease-out ${
-                                activeSubSection === sub.id ? 'opacity-100' : 'opacity-0'
-                              }`}
-                              style={{
-                                top: 0,
-                                height: '100%',
-                                backgroundColor: '#333333',
-                              }}
+      <main className="relative px-6 py-24 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="glass-panel p-6 sm:p-8">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.35em] text-cyan-300">digital archive</p>
+                <h1 className="mt-3 text-3xl font-semibold tracking-[0.2em] text-white sm:text-4xl">
+                  Explore the layers
+                </h1>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65">
+                  Same content, different atmosphere. Navigate the same data with a fresh visual rhythm.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-white/55">
+                  social
+                </span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-white/55">
+                  projects
+                </span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-white/55">
+                  stack
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+            <aside className="glass-panel p-4 sm:p-5">
+              <h2 className="text-[10px] font-semibold uppercase tracking-[0.35em] text-white/45">catalog</h2>
+              <nav ref={navRef} className="relative mt-4 space-y-1">
+                <div
+                  className="absolute left-0 w-0.5 rounded-full bg-gradient-to-b from-cyan-400 to-violet-500 transition-all duration-300"
+                  style={{
+                    top: indicatorPosition.top,
+                    height: indicatorPosition.height,
+                  }}
+                />
+                {sections.map((section) => (
+                  <div key={section.id}>
+                    <button
+                      data-active={activeSection === section.id}
+                      onClick={() => {
+                        setActiveSection(section.id);
+                        setActiveSubSection(section.subSections[0].id);
+                      }}
+                      className={`w-full rounded-2xl px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.28em] transition ${
+                        activeSection === section.id
+                          ? 'bg-white/10 text-white'
+                          : 'text-white/50 hover:bg-white/5 hover:text-white/80'
+                      }`}
+                    >
+                      {section.label}
+                    </button>
+                    <div className="ml-4 mt-1 space-y-1">
+                      {section.subSections.map((sub) => (
+                        <button
+                          key={sub.id}
+                          data-active={activeSubSection === sub.id}
+                          onClick={() => {
+                            setActiveSection(section.id);
+                            setActiveSubSection(sub.id);
+                          }}
+                          className={`w-full rounded-xl px-3 py-2 text-left text-[11px] uppercase tracking-[0.28em] transition ${
+                            activeSubSection === sub.id
+                              ? 'bg-cyan-400/10 text-cyan-200'
+                              : 'text-white/45 hover:bg-white/5 hover:text-white/75'
+                          }`}
+                        >
+                          {sub.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </nav>
+            </aside>
+
+            <section className="glass-panel p-6 sm:p-8">
+              {loading ? (
+                <div className="flex h-64 items-center justify-center text-sm uppercase tracking-[0.35em] text-white/60">
+                  loading data…
+                </div>
+              ) : (
+                <>
+                  {activeSection === 'socials' && (
+                    <div className="space-y-4">
+                      <div className="mb-6 border-b border-white/10 pb-4">
+                        <p className="text-[10px] uppercase tracking-[0.35em] text-white/45">socials</p>
+                        <h2 className="mt-2 text-2xl font-semibold tracking-[0.18em] text-white">
+                          platforms I use
+                        </h2>
+                      </div>
+                      <div className="space-y-3">
+                        {socialData && socialData[activeSubSection as keyof SocialData]?.map((link: SocialLink, index: number) => (
+                          <a
+                            key={index}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-4 py-3 transition hover:border-cyan-400/30 hover:bg-cyan-400/10"
+                          >
+                            <div className="flex items-center gap-3">
+                              {link.icon === 'SiMatrix' ? (
+                                <SiMatrix className="h-5 w-5 text-white/70" />
+                              ) : link.icon === 'siCodeberg' ? (
+                                <SiCodeberg className="h-5 w-5 text-white/70" />
+                              ) : (
+                                <FontAwesomeIcon icon={getIcon(link.icon)} className="h-5 w-5 text-white/70" />
+                              )}
+                              <span className="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">
+                                {link.name}
+                              </span>
+                            </div>
+                            <FontAwesomeIcon
+                              icon={getIcon('faArrowRight')}
+                              className="h-3.5 w-3.5 text-white/45 transition group-hover:translate-x-1 group-hover:text-white"
                             />
-                            <button
-                              data-sub-active={activeSubSection === sub.id}
-                              onClick={() => {
-                                setActiveSection(section.id);
-                                setActiveSubSection(sub.id);
-                              }}
-                              className={`w-full text-left px-3 py-1.5 text-xs font-medium tracking-wide transition-all duration-300 ${
-                                activeSubSection === sub.id
-                                  ? 'text-white bg-white/5'
-                                  : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
-                              }`}
-                            >
-                              {sub.label}
-                            </button>
-                          </div>
+                          </a>
                         ))}
                       </div>
                     </div>
-                  ))}
-                </nav>
-              </div>
-            </aside>
+                  )}
 
-            <div className="flex-1 min-w-0">
-              <div className="relative border p-6 bg-black border-white/30">
-                {loading ? (
-                  <div className="flex items-center justify-center h-64">
-                    <div className="text-white/60">Loading...</div>
-                  </div>
-                ) : (
-                  <>
-                    {activeSection === 'socials' && (
-                      <div className="space-y-4">
-                        <div className="mb-6">
-                          <div className="text-xs font-bold tracking-widest mb-2 border-b pb-2 text-white/50 border-white/20">SOCIALS</div>
-                          <h1 className="text-2xl font-bold tracking-tight text-white">social platforms I use</h1>
-                        </div>
-                        <div className="space-y-2">
-                          {socialData && socialData[activeSubSection as keyof SocialData]?.map((link: SocialLink, index: number) => (
+                  {activeSection === 'projects' && activeSubSection === 'repos' && (
+                    <div className="space-y-4">
+                      <div className="mb-6 border-b border-white/10 pb-4">
+                        <p className="text-[10px] uppercase tracking-[0.35em] text-white/45">projects</p>
+                        <h2 className="mt-2 text-2xl font-semibold tracking-[0.18em] text-white">
+                          repositories
+                        </h2>
+                      </div>
+                      <div className="space-y-3">
+                        {projectData?.repositories?.map((repo: Repository, index: number) => (
+                          <a
+                            key={index}
+                            href={repo.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group block rounded-2xl border border-white/10 bg-black/20 px-5 py-4 transition hover:border-violet-400/30 hover:bg-violet-400/10"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="flex min-w-0 items-center gap-3">
+                                <FontAwesomeIcon icon={faGithub} className="h-5 w-5 flex-shrink-0 text-white/70" />
+                                <h3 className="truncate text-base font-semibold tracking-[0.16em] text-white">
+                                  {repo.name}
+                                </h3>
+                              </div>
+                              <FontAwesomeIcon
+                                icon={faArrowRight}
+                                className="h-3.5 w-3.5 flex-shrink-0 text-white/45 transition group-hover:translate-x-1 group-hover:text-white"
+                              />
+                            </div>
+                            <p className="mt-3 text-sm leading-7 text-white/70">{repo.description}</p>
+                            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-[11px] uppercase tracking-[0.28em] text-white/55">
+                              <div className="flex items-center gap-2">
+                                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: getLanguageColor(repo.language) }} />
+                                <span>{repo.language}</span>
+                              </div>
+                              <div className="flex items-center gap-3">
+                                <span>{repo.license}</span>
+                                <span className="flex items-center gap-1">
+                                  <FontAwesomeIcon icon={faStar} className="h-3.5 w-3.5" />
+                                  {formatNumber(repo.stars)}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <FontAwesomeIcon icon={faCodeBranch} className="h-3.5 w-3.5" />
+                                  {formatNumber(repo.forks)}
+                                </span>
+                              </div>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {activeSection === 'projects' && activeSubSection === 'links' && (
+                    <div className="space-y-4">
+                      <div className="mb-6 border-b border-white/10 pb-4">
+                        <p className="text-[10px] uppercase tracking-[0.35em] text-white/45">projects</p>
+                        <h2 className="mt-2 text-2xl font-semibold tracking-[0.18em] text-white">
+                          project links
+                        </h2>
+                      </div>
+                      <div className="space-y-3">
+                        {projectData?.projectLinks?.map((link: ProjectLink, index: number) => {
+                          const getFaviconUrl = (url: string) => {
+                            try {
+                              const domain = new URL(url).hostname;
+                              return `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+                            } catch {
+                              return null;
+                            }
+                          };
+
+                          const faviconUrl = getFaviconUrl(link.url);
+
+                          return (
                             <a
                               key={index}
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group/link flex items-center justify-between px-4 py-3 transition-all duration-150 border-l-2 border-transparent bg-white/5 hover:bg-white/10 hover:border-white"
+                              className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 transition hover:border-cyan-400/30 hover:bg-cyan-400/10"
                             >
-                              <div className="flex items-center gap-3">
-                                {link.icon === 'SiMatrix' ? (
-                                  <SiMatrix className="w-5 h-5 text-white/70" />
-                                ) : link.icon === 'siCodeberg' ? (
-                                  <SiCodeberg className="w-5 h-5 text-white/70" />
-                                ) : (
-                                  <FontAwesomeIcon icon={getIcon(link.icon)} className="w-5 h-5 text-white/70" />
-                                )}
-                                <span className="group-hover/link:text-white transition-colors duration-150 font-bold tracking-wide text-white/90">
+                              {faviconUrl ? (
+                                <Image
+                                  src={faviconUrl}
+                                  alt=""
+                                  width={24}
+                                  height={24}
+                                  className="flex-shrink-0"
+                                  onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                  }}
+                                />
+                              ) : (
+                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10">
+                                  <div className="h-3 w-3 rounded-full bg-white/30" />
+                                </div>
+                              )}
+                              <div className="min-w-0 flex-1">
+                                <span className="block truncate text-sm font-semibold uppercase tracking-[0.28em] text-white/85">
                                   {link.name}
+                                </span>
+                                <span className="mt-1 block text-sm text-white/55">
+                                  {link.description}
                                 </span>
                               </div>
                               <FontAwesomeIcon
-                                icon={getIcon('faArrowRight')}
-                                className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-1 transition-all duration-150 text-white/50"
+                                icon={faArrowRight}
+                                className="h-3.5 w-3.5 flex-shrink-0 text-white/45 transition group-hover:translate-x-1 group-hover:text-white"
                               />
                             </a>
-                          ))}
-                        </div>
+                          );
+                        })}
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                    {activeSection === 'projects' && activeSubSection === 'repos' && (
-                      <div className="space-y-4">
-                        <div className="mb-6">
-                          <div className="text-xs font-bold tracking-widest mb-2 border-b pb-2 text-white/50 border-white/20">PROJECTS</div>
-                          <h1 className="text-2xl font-bold tracking-tight text-white">Repositories</h1>
-                        </div>
-                        <div className="space-y-2">
-                          {projectData?.repositories?.map((repo: Repository, index: number) => (
-                            <a
-                              key={index}
-                              href={repo.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="group/repo block px-5 py-4 transition-all duration-150 border-l-2 border-transparent bg-white/5 hover:bg-white/10 hover:border-white"
-                            >
-                              <div className="flex items-start justify-between mb-3">
-                                <div className="flex items-center gap-3 min-w-0 flex-1">
-                                  <FontAwesomeIcon icon={faGithub} className="w-5 h-5 flex-shrink-0 text-white/70" />
-                                  <h3 className="font-bold tracking-wide truncate text-base text-white">{repo.name}</h3>
-                                </div>
-                                <FontAwesomeIcon
-                                  icon={faArrowRight}
-                                  className="w-4 h-4 group-hover/repo:text-white group-hover/repo:translate-x-1 transition-all duration-150 flex-shrink-0 ml-2 text-white/50"
-                                />
-                              </div>
-                              <p className="text-sm mb-4 line-clamp-2 leading-relaxed text-white/80">{repo.description}</p>
-                              <div className="flex items-center justify-between text-xs text-white/60">
-                                <div className="flex items-center gap-2">
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: getLanguageColor(repo.language) }}
-                                  />
-                                  <span
-                                    className="font-bold px-2 py-0.5 rounded"
-                                    style={{ backgroundColor: getLanguageColor(repo.language) + '40' }}
-                                  >
-                                    {repo.language}
-                                  </span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                  <span className="font-bold">{repo.license}</span>
-                                  <span className="flex items-center gap-2 font-bold">
-                                    <FontAwesomeIcon icon={faStar} className="w-3.5 h-3.5" />
-                                    {formatNumber(repo.stars)}
-                                  </span>
-                                  <span className="flex items-center gap-2 font-bold">
-                                    <FontAwesomeIcon icon={faCodeBranch} className="w-3.5 h-3.5" />
-                                    {formatNumber(repo.forks)}
-                                  </span>
-                                </div>
-                              </div>
-                            </a>
-                          ))}
-                        </div>
+                  {activeSection === 'techstack' && (
+                    <div className="space-y-4">
+                      <div className="mb-6 border-b border-white/10 pb-4">
+                        <p className="text-[10px] uppercase tracking-[0.35em] text-white/45">tech stack</p>
+                        <h2 className="mt-2 text-2xl font-semibold tracking-[0.18em] text-white">
+                          tools and languages
+                        </h2>
                       </div>
-                    )}
-
-                    {activeSection === 'projects' && activeSubSection === 'links' && (
-                      <div className="space-y-4">
-                        <div className="mb-6">
-                          <div className="text-xs font-bold tracking-widest mb-2 border-b pb-2 text-white/50 border-white/20">PROJECTS</div>
-                          <h1 className="text-2xl font-bold tracking-tight text-white">Project Links</h1>
-                        </div>
-                        <div className="space-y-2">
-                          {projectData?.projectLinks?.map((link: ProjectLink, index: number) => {
-                            const getFaviconUrl = (url: string) => {
-                              try {
-                                const domain = new URL(url).hostname;
-                                return `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
-                              } catch {
-                                return null;
-                              }
-                            };
-
-                            const faviconUrl = getFaviconUrl(link.url);
-
-                            return (
-                              <a
-                                key={index}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group/link flex items-center gap-4 px-4 py-3 transition-all duration-150 border-l-2 border-transparent bg-white/5 hover:bg-white/10 hover:border-white"
+                      <div className="space-y-3">
+                        {techData && techData[activeSubSection as keyof TechStackData]?.map((item: TechItem, index: number) => (
+                          <div
+                            key={index}
+                            className={`group rounded-2xl border border-white/10 bg-black/20 px-5 py-4 transition hover:border-white/25 hover:bg-white/10 ${item.url || activeSubSection === 'languages' ? 'cursor-pointer' : ''}`}
+                            onClick={() => handleTechItemClick(item)}
+                          >
+                            <div className="flex items-center gap-4">
+                              <div
+                                className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 transition group-hover:scale-105"
+                                style={{ backgroundColor: `${item.color}22`, borderColor: `${item.color}44` }}
                               >
-                                {faviconUrl ? (
-                                  <Image
-                                    src={faviconUrl}
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="flex-shrink-0"
-                                    onError={(e) => {
-                                      e.currentTarget.style.display = 'none';
-                                    }}
-                                  />
+                                {item.icon.startsWith('http') ? (
+                                  <Image src={item.icon} alt={item.name} width={24} height={24} className="h-6 w-6" />
                                 ) : (
-                                  <div className="w-6 h-6 flex items-center justify-center bg-white/10">
-                                    <div className="w-3 h-3 bg-white/30" />
-                                  </div>
+                                  (() => {
+                                    const IconComponent = getTechIcon(item.icon);
+                                    return <IconComponent className="h-6 w-6" style={{ color: item.color }} />;
+                                  })()
                                 )}
-                                <div className="min-w-0 flex-1">
-                                  <span className="group-hover/link:text-white transition-colors duration-150 font-bold tracking-wide block truncate text-base text-white/90">
-                                    {link.name}
-                                  </span>
-                                  <span className="text-sm font-normal tracking-wide text-white/50">
-                                    {link.description}
-                                  </span>
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <div className="flex items-center gap-2">
+                                  <h3 className="truncate text-base font-semibold tracking-[0.16em] text-white">
+                                    {item.name}
+                                  </h3>
+                                  {activeSubSection === 'languages' && languageCounts[item.name] !== undefined && (
+                                    <span className="text-[11px] uppercase tracking-[0.28em] text-white/45">
+                                      ({languageCounts[item.name]} projects)
+                                    </span>
+                                  )}
                                 </div>
-                                <FontAwesomeIcon
-                                  icon={faArrowRight}
-                                  className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-1 transition-all duration-150 flex-shrink-0 text-white/50"
-                                />
-                              </a>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
-
-                    {activeSection === 'techstack' && (
-                      <div className="space-y-4">
-                        <div className="mb-6">
-                          <div className="text-xs font-bold tracking-widest mb-2 border-b pb-2 text-white/50 border-white/20">TECH STACK</div>
-                          <h1 className="text-2xl font-bold tracking-tight text-white">Languages, software, and hardware I use</h1>
-                        </div>
-                        <div className="space-y-2">
-                          {techData && techData[activeSubSection as keyof TechStackData]?.map((item: TechItem, index: number) => (
-                            <div
-                              key={index}
-                              className={`group relative px-5 py-4 transition-all duration-150 border-l-2 border-transparent ${
-                                item.url ? 'cursor-pointer' : ''
-                              } bg-white/5 hover:bg-white/10 hover:border-white`}
-                              onClick={() => {
-                                if (item.url) {
-                                  window.open(item.url, '_blank', 'noopener,noreferrer');
-                                }
-                              }}
-                            >
-                              <div className="relative z-10">
-                                <div className="flex items-center gap-4 mb-3">
-                                  <div
-                                    className="w-12 h-12 flex items-center justify-center transform transition-transform duration-150 group-hover:scale-105"
-                                    style={{ backgroundColor: item.color + '20', border: `2px solid ${item.color}40` }}
-                                  >
-                                    {(() => {
-                                      if (item.icon.startsWith('http')) {
-                                        return (
-                                          <Image
-                                            src={item.icon}
-                                            alt={item.name}
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                          />
-                                        );
-                                      } else {
-                                        const IconComponent = getTechIcon(item.icon);
-                                        return <IconComponent
-                                          className="w-6 h-6"
-                                          style={{ color: item.color }}
-                                        />;
-                                      }
-                                    })()}
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <h3 className="font-bold tracking-wide truncate flex items-center gap-2 text-base text-white">
-                                      {item.name}
-                                      {activeSubSection === 'languages' && languageCounts[item.name] !== undefined && (
-                                        <span className="text-xs font-normal text-white/50">
-                                          ({languageCounts[item.name]} projects)
-                                        </span>
-                                      )}
-                                      {item.url && (
-                                        <FontAwesomeIcon
-                                          icon={faArrowRight}
-                                          className="w-4 h-4 group-hover:text-white group-hover:translate-x-1 transition-all duration-150 text-white/50"
-                                        />
-                                      )}
-                                    </h3>
-                                  </div>
-                                </div>
-                                <p className="text-sm leading-relaxed text-white/70">{item.description}</p>
+                                <p className="mt-2 text-sm leading-7 text-white/65">{item.description}</p>
                               </div>
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        ))}
                       </div>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
+                    </div>
+                  )}
+                </>
+              )}
+            </section>
           </div>
         </div>
       </main>
+
     </div>
   );
 }

@@ -25,6 +25,12 @@
       "color": "#555555"
     },
     {
+      "name": "C++",
+      "icon": "SiCplusplus",
+      "description": "High-performance systems and application development",
+      "color": "#00599C"
+    },
+    {
       "name": "Python",
       "icon": "SiPython",
       "description": "Versatile and beginner-friendly",
@@ -86,6 +92,20 @@
       "description": "fast, scalable, distributed revision control system",
       "color": "#f05032",
       "url": "https://git-scm.com"
+    },
+    {
+      "name": "Xcode",
+      "icon": "https://developer.apple.com/assets/elements/icons/xcode/xcode-96x96.png",
+      "description": "Apple's integrated development environment for macOS",
+      "color": "#1575C4",
+      "url": "https://developer.apple.com/xcode/"
+    },
+    {
+      "name": "AsterIDE",
+      "icon": "https://asteride.dev/favicon.ico",
+      "description": "A Simple Text Editor written in Rust.",
+      "color": "#ff82b4",
+      "url": "https://asteride.dev"
     }
   ],
   "hardware": [

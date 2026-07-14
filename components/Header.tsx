@@ -2,18 +2,6 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
-
-const headerStyles = `
-  @keyframes slideInFromTop {
-    from { transform: translateY(-100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  
-  .animate-slide-in {
-    animation: slideInFromTop 0.5s ease-out;
-  }
-`;
 
 interface NavItem {
   name: string;
@@ -24,16 +12,6 @@ interface NavItem {
 const Header = () => {
   const pathname = usePathname();
 
-  useEffect(() => {
-    const styleElement = document.createElement('style');
-    styleElement.textContent = headerStyles;
-    document.head.appendChild(styleElement);
-
-    return () => {
-      document.head.removeChild(styleElement);
-    };
-  }, []);
-
   const navItems: NavItem[] = [
     { name: 'HOME', href: '/' },
     { name: 'EXPLORE', href: '/explore' },
@@ -41,49 +19,47 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 transition-all duration-300 mx-auto max-w-4xl bg-black/90 backdrop-blur-xl border-white/10 shadow-2xl border">
-      <nav className="px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link
-            href="/"
-            className="group flex items-center gap-3"
-          >
-            <span className="font-bold text-lg tracking-wider text-white">
-              playfairs
-            </span>
-          </Link>
+    <header className="fixed inset-x-0 top-4 z-50 mx-auto w-[min(92vw,56rem)]">
+      <nav className="glass-panel flex items-center justify-between px-4 py-3 sm:px-6">
+        <Link href="/" className="flex items-center gap-3">
+          <span className="inline-flex h-9 w-9 items-center justify-center border border-white/15 bg-white/5 text-sm font-semibold text-white/80">
+            P
+          </span>
+          <span className="text-sm font-semibold uppercase tracking-[0.35em] text-white/90">
+            playfairs
+          </span>
+        </Link>
 
-          <div className="flex items-center gap-1">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              if (item.external) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 text-white/60 hover:text-white"
-                  >
-                    {item.name}
-                  </a>
-                );
-              }
+        <div className="flex items-center gap-2">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            if (item.external) {
               return (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
-                  className={`px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 ${
-                    isActive
-                      ? 'text-white'
-                      : 'text-white/60 hover:text-white'
-                  }`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/60 transition hover:bg-white/10 hover:text-white"
                 >
                   {item.name}
-                </Link>
+                </a>
               );
-            })}
-          </div>
+            }
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] transition ${
+                  isActive
+                    ? 'bg-white/12 text-white'
+                    : 'text-white/60 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </header>

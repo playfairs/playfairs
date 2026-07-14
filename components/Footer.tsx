@@ -22,24 +22,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="fixed bottom-6 left-0 right-0 z-50 mx-auto max-w-4xl rounded-xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-2xl">
-      <div className="px-6 py-4">
-        <div className="flex items-center justify-center gap-3">
-          <button
-            onClick={Meow}
-            className="px-4 py-2 text-xs font-medium tracking-wide text-white/50 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 rounded-lg"
-          >
-            Meow :3
-          </button>
-          <a
-            href="https://www.google.com/search?q=inverted+aquarium"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 text-xs font-medium tracking-wide text-white/50 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 rounded-lg"
-          >
-            Inverted Aquarium
-          </a>
-        </div>
+    <footer className="fixed inset-x-0 bottom-4 z-50 mx-auto w-[min(92vw,40rem)]">
+      <div className="glass-panel flex flex-wrap items-center justify-center gap-2 px-3 py-3 sm:gap-3 sm:px-4">
+        <button
+          onClick={Meow}
+          className="border border-white/10 bg-white/5 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/65 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+        >
+          Meow :3
+        </button>
+        <a
+          href="https://www.google.com/search?q=inverted+aquarium"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border border-white/10 bg-white/5 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/65 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+        >
+          Inverted Aquarium
+        </a>
       </div>
     </footer>
   );

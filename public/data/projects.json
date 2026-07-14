@@ -2,8 +2,17 @@
   "projectLinks": [
     {
       "name": "Asteride",
-      "description": "A Simple Text Editor written in Rust",
+      "description": "A Simple Text Editor written in Rust.",
       "url": "https://asteride.dev"
+    },    {
+      "name": "ripnet",
+      "description": "Network diagnostics, packet analysis, observability, and authorized load-testing toolkit.",
+      "url": "https://ripnet.cc"
+    },
+    {
+      "name": "Cherry Blossom Theme",
+      "description": "A calm palette system for thoughtful interfaces.",
+      "url": "https://cherryblossomtheme.org"
     },
     {
       "name": "ByteLabs",
