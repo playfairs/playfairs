@@ -12,6 +12,6 @@
 | [playfairs.cc](https://playfairs.cc) | [webstorm](https://github.com/playfairs/webstorm) | [Discord](https://discord.com/users/1426711359059394662) |
 | [nix](https://github.com/playfairs/nix) | [fsscan](https://github.com/playfairs/fsscan) | [Discord Server](https://discord.gg/dZSGMfjZAU) |
 | | [ByteBuilder](https://github.com/playfairs/ByteBuilder) | [Spotify](https://open.spotify.com/user/darklore4201) |
-| | [snek](https://github.com/playfairs/snek) | [тгк](https://t.me/sobbinf) |
+| [snek](https://github.com/playfairs/snek) | | [тгк](https://t.me/sobbinf) |
 | | [rv](https://rv.playfairs.cc) | |
 | | [NSFreeway](https://github.com/playfairs/NSFreeway) | |
