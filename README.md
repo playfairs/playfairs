@@ -10,6 +10,7 @@
 > 2. [Magnolia](https://github.com/Aster-IDE/magnolia) - A Markdown editor written in Rust for backend and TypeScript for frontend.
 > 3. [playfairs.cc](https://playfairs.cc) - The source of this README.  
 > 4. [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration.  
+> 5. [Gram-Discord-Presence](https://github.com/playfairs/gram-discord-presence) - Hardfork of **Zed-Discord-Presence** with Gram-branding.
 
 ### **side projs**
 > 1. [dumbassdog.com](https://dumbassdog.com) - The greatest website you've ever seen.
