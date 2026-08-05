@@ -1,4 +1,4 @@
-if (typeof globalThis !== 'undefined') {
+if (typeof globalThis !== "undefined") {
   interface ProcessPolyfill {
     env: {
       NODE_ENV: string;
@@ -19,8 +19,8 @@ if (typeof globalThis !== 'undefined') {
   const g = globalThis as unknown as GlobalThisWithProcess;
   g.process = {
     env: {
-      NODE_ENV: 'production',
-      ENVIRONMENT: 'production',
+      NODE_ENV: "production",
+      ENVIRONMENT: "production",
     },
     stdout: {
       write: (message: string) => console.log(message),
@@ -31,4 +31,4 @@ if (typeof globalThis !== 'undefined') {
   };
 }
 
-export const polyfills = '/app/polyfills.js';
+export const polyfills = "/app/polyfills.js";

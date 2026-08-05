@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
+import { useRef } from "react";
 
 const Footer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const Meow = () => {
     if (!audioRef.current) {
-      const audio = new Audio('/meow-1.mp3');
+      const audio = new Audio("/meow-1.mp3");
       audioRef.current = audio;
     }
 
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch((error) => {
-        if (error.name !== 'AbortError') {
+        if (error.name !== "AbortError") {
           console.error(error);
         }
       });

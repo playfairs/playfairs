@@ -6,10 +6,10 @@
 <!-- --- -->
 
 <!-- ### **proud projs** -->
-<!-- > 1. [AsterIDE](https://asteride.dev) ([GitHub](https://github.com/Aster-IDE)) - A Simple Text Editor written in Rust. -->  
+<!-- > 1. [AsterIDE](https://asteride.dev) ([GitHub](https://github.com/Aster-IDE)) - A Simple Text Editor written in Rust. -->
 <!-- > 2. [Magnolia](https://github.com/Aster-IDE/magnolia) - A Markdown editor written in Rust for backend and TypeScript for frontend. -->
-<!-- > 3. [playfairs.cc](https://playfairs.cc) - The source of this README. -->  
-<!-- > 4. [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration. -->  
+<!-- > 3. [playfairs.cc](https://playfairs.cc) - The source of this README. -->
+<!-- > 4. [nix](https://github.com/playfairs/nix) - My [NixOS](https://nixos.org) and [Home Manager](https://home-manager.dev) Configuration. -->
 <!-- > 5. [Gram-Discord-Presence](https://github.com/playfairs/gram-discord-presence) - Hardfork of **Zed-Discord-Presence** with Gram-branding. -->
 
 <!-- ### **side projs** -->
@@ -23,9 +23,9 @@
 <!-- > 8. [NSFreeway](https://github.com/playfairs/NSFreeway) - A service written in Swift to hide the Traffic Light window buttons on macOS. -->
 
 <!-- ### **socials** -->
-<!-- > 1. [GitLab](https://gitlab.com/playfairs) -->  
-<!-- > 2. [TikTok](https://tiktok.com/@playfairs) -->  
-<!-- > 3. [Discord](https://discord.com/users/1426711359059394662) -->  
+<!-- > 1. [GitLab](https://gitlab.com/playfairs) -->
+<!-- > 2. [TikTok](https://tiktok.com/@playfairs) -->
+<!-- > 3. [Discord](https://discord.com/users/1426711359059394662) -->
 <!-- > 4. [Discord Server](https://discord.gg/dZSGMfjZAU) -->
-<!-- > 5. [Spotify](https://open.spotify.com/user/darklore4201) -->  
-<!-- > 6. [тгк](https://t.me/sobbinf) -->  
+<!-- > 5. [Spotify](https://open.spotify.com/user/darklore4201) -->
+<!-- > 6. [тгк](https://t.me/sobbinf) -->

@@ -2,14 +2,24 @@
 
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faGitlab, faTiktok } from "@fortawesome/free-brands-svg-icons";
-import { faUsers, faCodeBranch, faCalendar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faGitlab,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faUsers,
+  faCodeBranch,
+  faCalendar,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
 import { useState, useEffect } from "react";
 import { usePageCache } from "./contexts/PageCacheContext";
 
 export default function Home() {
-  const { homeMounted, setHomeMounted, githubData, setGithubData } = usePageCache();
+  const { homeMounted, setHomeMounted, githubData, setGithubData } =
+    usePageCache();
   const [loading, setLoading] = useState(!homeMounted && !githubData);
 
   useEffect(() => {
@@ -97,7 +107,8 @@ export default function Home() {
                     @{githubData.login}
                   </p>
                   <p className="mt-3 max-w-xl text-sm leading-7 text-white/70 sm:text-[15px]">
-                    {githubData.bio || "Building things, collecting weird corners of the internet, and keeping the signal honest."}
+                    {githubData.bio ||
+                      "Building things, collecting weird corners of the internet, and keeping the signal honest."}
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {githubData.location && (
@@ -111,9 +122,24 @@ export default function Home() {
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {[
-                  { label: "Followers", value: githubData.followers, icon: faUsers, url: `https://github.com/${githubData.login}?tab=followers` },
-                  { label: "Repos", value: githubData.public_repos, icon: faCodeBranch, url: `https://github.com/${githubData.login}?tab=repositories` },
-                  { label: "Following", value: githubData.following, icon: faUsers, url: `https://github.com/${githubData.login}?tab=following` },
+                  {
+                    label: "Followers",
+                    value: githubData.followers,
+                    icon: faUsers,
+                    url: `https://github.com/${githubData.login}?tab=followers`,
+                  },
+                  {
+                    label: "Repos",
+                    value: githubData.public_repos,
+                    icon: faCodeBranch,
+                    url: `https://github.com/${githubData.login}?tab=repositories`,
+                  },
+                  {
+                    label: "Following",
+                    value: githubData.following,
+                    icon: faUsers,
+                    url: `https://github.com/${githubData.login}?tab=following`,
+                  },
                 ].map((item) => (
                   <a
                     key={item.label}
@@ -123,10 +149,17 @@ export default function Home() {
                     className="border border-white/10 bg-white/5 p-4 transition hover:border-white/30 hover:bg-white/10"
                   >
                     <div className="flex items-center gap-2 text-white/55">
-                      <FontAwesomeIcon icon={item.icon} className="h-3.5 w-3.5" />
-                      <span className="text-[10px] uppercase tracking-[0.3em]">{item.label}</span>
+                      <FontAwesomeIcon
+                        icon={item.icon}
+                        className="h-3.5 w-3.5"
+                      />
+                      <span className="text-[10px] uppercase tracking-[0.3em]">
+                        {item.label}
+                      </span>
                     </div>
-                    <p className="mt-3 text-2xl font-semibold text-white">{item.value}</p>
+                    <p className="mt-3 text-2xl font-semibold text-white">
+                      {item.value}
+                    </p>
                   </a>
                 ))}
               </div>
@@ -134,9 +167,13 @@ export default function Home() {
               <div className="mt-8 border-t border-white/10 pt-6">
                 <div className="flex items-center gap-2 text-white/55">
                   <FontAwesomeIcon icon={faCalendar} className="h-3.5 w-3.5" />
-                  <span className="text-[10px] uppercase tracking-[0.3em]">joined</span>
+                  <span className="text-[10px] uppercase tracking-[0.3em]">
+                    joined
+                  </span>
                 </div>
-                <p className="mt-3 text-sm leading-7 text-white/75">{formatDate(githubData.created_at)}</p>
+                <p className="mt-3 text-sm leading-7 text-white/75">
+                  {formatDate(githubData.created_at)}
+                </p>
               </div>
             </section>
 
@@ -146,9 +183,21 @@ export default function Home() {
 
                 <div className="mt-6 space-y-3">
                   {[
-                    { name: "GITHUB", icon: faGithub, url: "https://github.com/playfairs" },
-                    { name: "GITLAB", icon: faGitlab, url: "https://gitlab.com/playfairs" },
-                    { name: "TIKTOK", icon: faTiktok, url: "https://tiktok.com/@playfairs" },
+                    {
+                      name: "GITHUB",
+                      icon: faGithub,
+                      url: "https://github.com/playfairs",
+                    },
+                    {
+                      name: "GITLAB",
+                      icon: faGitlab,
+                      url: "https://gitlab.com/playfairs",
+                    },
+                    {
+                      name: "TIKTOK",
+                      icon: faTiktok,
+                      url: "https://tiktok.com/@playfairs",
+                    },
                   ].map((link) => (
                     <a
                       key={link.name}
@@ -159,7 +208,10 @@ export default function Home() {
                     >
                       <div className="flex items-center gap-3">
                         <span className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/5 text-white/70">
-                          <FontAwesomeIcon icon={link.icon} className="h-4 w-4" />
+                          <FontAwesomeIcon
+                            icon={link.icon}
+                            className="h-4 w-4"
+                          />
                         </span>
                         <span className="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">
                           {link.name}
@@ -173,12 +225,10 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-
             </section>
           </div>
         </div>
       </main>
-
     </div>
   );
 }

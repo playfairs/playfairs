@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavItem {
   name: string;
@@ -13,9 +13,13 @@ const Header = () => {
   const pathname = usePathname();
 
   const navItems: NavItem[] = [
-    { name: 'HOME', href: '/' },
-    { name: 'EXPLORE', href: '/explore' },
-    { name: 'MUSIC TASTE', href: 'https://playlists.playfairs.cc', external: true },
+    { name: "HOME", href: "/" },
+    { name: "EXPLORE", href: "/explore" },
+    {
+      name: "MUSIC TASTE",
+      href: "https://playlists.playfairs.cc",
+      external: true,
+    },
   ];
 
   return (
@@ -52,8 +56,8 @@ const Header = () => {
                 href={item.href}
                 className={`rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] transition ${
                   isActive
-                    ? 'bg-white/12 text-white'
-                    : 'text-white/60 hover:bg-white/10 hover:text-white'
+                    ? "bg-white/12 text-white"
+                    : "text-white/60 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {item.name}

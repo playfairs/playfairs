@@ -58,7 +58,7 @@
       "color": "#ff7139",
       "url": "https://zen-browser.app"
     },
-        {
+    {
       "name": "Ghostty",
       "icon": "https://ghostty.org/favicon.ico",
       "description": "A post-modern terminal emulator",
@@ -79,7 +79,7 @@
       "color": "#5277C3",
       "url": "https://nixos.org"
     },
-        {
+    {
       "name": "Prism Launcher",
       "icon": "https://prismlauncher.org/img/favicon.png",
       "description": "An open-source Minecraft launcher",

@@ -4,7 +4,8 @@
       "name": "Asteride",
       "description": "A Simple Text Editor written in Rust.",
       "url": "https://asteride.dev"
-    },    {
+    },
+    {
       "name": "ripnet",
       "description": "Network diagnostics, packet analysis, observability, and authorized load-testing toolkit.",
       "url": "https://ripnet.cc"

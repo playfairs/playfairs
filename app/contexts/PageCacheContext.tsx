@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from "react";
 
 interface GitHubUser {
   login: string;
@@ -37,7 +37,9 @@ interface PageCacheContextType {
   setSocialData: (data: SocialData | null) => void;
 }
 
-const PageCacheContext = createContext<PageCacheContextType | undefined>(undefined);
+const PageCacheContext = createContext<PageCacheContextType | undefined>(
+  undefined,
+);
 
 export function PageCacheProvider({ children }: { children: ReactNode }) {
   const [homeMounted, setHomeMounted] = useState(false);
@@ -46,16 +48,18 @@ export function PageCacheProvider({ children }: { children: ReactNode }) {
   const [socialData, setSocialData] = useState<SocialData | null>(null);
 
   return (
-    <PageCacheContext.Provider value={{
-      homeMounted,
-      socialsMounted,
-      githubData,
-      socialData,
-      setHomeMounted,
-      setSocialsMounted,
-      setGithubData,
-      setSocialData
-    }}>
+    <PageCacheContext.Provider
+      value={{
+        homeMounted,
+        socialsMounted,
+        githubData,
+        socialData,
+        setHomeMounted,
+        setSocialsMounted,
+        setGithubData,
+        setSocialData,
+      }}
+    >
       {children}
     </PageCacheContext.Provider>
   );
@@ -64,7 +68,7 @@ export function PageCacheProvider({ children }: { children: ReactNode }) {
 export function usePageCache() {
   const context = useContext(PageCacheContext);
   if (context === undefined) {
-    throw new Error('usePageCache must be used within a PageCacheProvider');
+    throw new Error("usePageCache must be used within a PageCacheProvider");
   }
   return context;
 }
