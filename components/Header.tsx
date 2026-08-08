@@ -23,20 +23,18 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 mx-auto w-[min(92vw,56rem)]">
-      <nav className="glass-panel flex items-center justify-between px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="inline-flex h-9 w-9 items-center justify-center border border-white/15 bg-white/5 text-sm font-semibold text-white/80">
-            P
-          </span>
-          <span className="text-sm font-semibold uppercase tracking-[0.35em] text-white/90">
-            playfairs
-          </span>
+    <header className="fixed inset-x-0 top-3 z-50 mx-auto w-[min(92vw,48rem)]">
+      <nav className="glass-panel flex items-center justify-between px-4 py-2.5 sm:px-5">
+        <Link href="/" className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/90">
+          playfairs
         </Link>
 
         <div className="flex items-center gap-2">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
+            const baseClass =
+              "px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.28em] transition";
+
             if (item.external) {
               return (
                 <a
@@ -44,7 +42,7 @@ const Header = () => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/60 transition hover:bg-white/10 hover:text-white"
+                  className={`${baseClass} text-white/60 hover:text-white`}
                 >
                   {item.name}
                 </a>
@@ -54,10 +52,8 @@ const Header = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] transition ${
-                  isActive
-                    ? "bg-white/12 text-white"
-                    : "text-white/60 hover:bg-white/10 hover:text-white"
+                className={`${baseClass} ${
+                  isActive ? "text-white" : "text-white/60 hover:text-white"
                 }`}
               >
                 {item.name}

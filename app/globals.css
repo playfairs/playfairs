@@ -23,18 +23,16 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(34, 211, 238, 0.2),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(124, 58, 237, 0.2),
-      transparent 24%
-    ),
-    linear-gradient(135deg, #04050d 0%, #070b19 42%, #050816 100%);
+  background-color: #060812;
+  background-image:
+    linear-gradient(135deg, rgba(6, 8, 18, 0.38), rgba(6, 8, 18, 0.16)),
+    url("https://raw.githubusercontent.com/playfairs/nix/main/wallpapers/misc/lett.png"),
+    radial-gradient(circle at 12% 14%, rgba(255, 183, 217, 0.16), transparent 26%),
+    radial-gradient(circle at 86% 18%, rgba(125, 211, 252, 0.12), transparent 24%);
+  background-position: center, center, center, center;
+  background-size: cover, cover, auto, auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-jetbrains-mono), monospace;
   font-weight: 300;
@@ -50,8 +48,22 @@ body::before {
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 36px 36px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 90%);
-  opacity: 0.45;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: -10%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 184, 207, 0.14), transparent 20%),
+    radial-gradient(circle at 80% 18%, rgba(125, 211, 252, 0.1), transparent 22%),
+    radial-gradient(circle at 50% 82%, rgba(244, 114, 182, 0.12), transparent 24%);
+  filter: blur(26px);
+  animation: drift 14s ease-in-out infinite alternate;
+  opacity: 0.55;
 }
 
 ::selection {
@@ -62,10 +74,11 @@ body::before {
 .glass-panel {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 0;
-  background: #0e1118;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.6rem;
+  background: rgba(8, 12, 22, 0.72);
   box-shadow: none;
+  backdrop-filter: blur(10px);
 }
 
 .glass-panel::before {
@@ -74,10 +87,10 @@ body::before {
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.04),
-    transparent 40%,
-    rgba(255, 255, 255, 0.02)
+    120deg,
+    rgba(255, 255, 255, 0.08),
+    transparent 38%,
+    rgba(255, 255, 255, 0.03)
   );
 }
 
@@ -100,6 +113,15 @@ body::before {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.06);
   }
 }
 
