@@ -3,6 +3,8 @@
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
 
+[Sponsor Me?](https://github.com/sponsors/playfairs)
+
 <!-- --- -->
 
 <!-- ### **proud projs** -->
