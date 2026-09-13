@@ -3,10 +3,12 @@
 ![](https://komarev.com/ghpvc/?username=playfairs)
 ![Views](https://repoviewer.repolishe.workers.dev/playfairs/playfairs)
 
-### Real life  
-### Oh, Baby, yeah, in real life  
-### Can't stand another whi-i-i-i-i-ite lie  
-### Damn another go-o-o-o-o-oodbye  
+<p>
+  <span style="color:#c4a7e7;">Real life</span><br>
+  <span style="color:#c4a7e7;">Oh, Baby, yeah, in real life</span><br>
+  Can't stand another <span style="color:#ebbcba;">whi-i-i-i-i-ite lie</span><br>
+  Damn another <span style="color:#ebbcba;">go-o-o-o-o-oodbye</span>
+</p>
 
 <!-- --- -->
 
